@@ -1,52 +1,58 @@
 import React, {Component} from 'react';
+import {Link} from "react-router-dom";
 import MyImage from "./img/logo.svg";
 import mainGrp from "./img/mGrp.svg";
 import ipethotel from "./img/ic_pet_hotel_1.svg"
 import telegram from "./img/telegram.svg"
 import vk from "./img/vk.svg"
-
-import './MainWindow.scss';
+import '../Common.scss';
 
 class MainWindow extends Component {
     render() {
         return (
-            <div className="wrapper">
-                <header className="fullhead d-flex justify-between">
-                    <div className="headerLeft d-flex align-center">
-                        <img width={50} height={50} src={MyImage} className="logo" alt="logotip"/>
-                        <div className="headerInfo">
-                            <h3 className="headh3">Pet</h3>
-                            <h3 className="headh3">Hotel</h3>
+            <div>
+                <header className="headerwrapp clear">
+                    <Link to="/">
+                        <div className="headerLeft">
+                            <img width={50} height={50} src={MyImage} className="logo mt-5" alt="logotip"/>
+                            <div className="mt-5 logotxt">
+                                <h3 className="mr-5">Pet</h3>
+                                <h3 className="">Hotel</h3>
+                            </div>
                         </div>
-                    </div>
-                    <ul className="headerRight d-flex clear">
+                    </Link>
+                    <ul className="headerRight d-flex mt-15 mr-20">
                         <li>
                             <button className="enter">
-                                Войти
+                                <Link to="/Autorization">
+                                    Войти
+                                </Link>
                             </button>
                         </li>
                         <li>
                             <button className="registration">
-                                Зарегистрироваться
+                                <Link to="/Registration">
+                                    Зарегистрироваться
+                                </Link>
                             </button>
                         </li>
                     </ul>
                 </header>
-                <div className="content d-flex justify-center">
-                    <img width={248} height={214} src={mainGrp} className="mgrp" alt="mainpicture"></img>
-                    <block className="maincontent text-center align-center">
+                <div className="maincontent">
+                    <img width={200} height={160} src={mainGrp} className="mgrp mt-20" alt="mainpicture"></img>
+                    <block className="maintxt">
                         <p>Добро пожаловать в веб-приложение</p>
                         <p>для поиска временного дома для</p>
                         <p>вашего питомца</p>
                     </block>
                 </div>
-                <mainpic className="mainpicture">
+                <div className="mainpic">
 
-                </mainpic>
-                <footer className="footerall d-flex justify-center clear">
+                </div>
+                <footer className="footerall clear d-flex justify-center">
                     <img width={114} height={114} src={ipethotel} className="iPetHotel mr-50 mt-15" alt="IconPetHotel"/>
                     <div className="mr-50">
-                        <block1 className="footercontent text-center align-center">
+                        <block1 className="footercontent2">
                             <p>Контакты</p>
                             <p>+7 (xxx)xxx-xx-xx</p>
                             <p>+7 (xxx)xxx-xx-xx</p>
@@ -68,7 +74,7 @@ class MainWindow extends Component {
                     </ul>
                 </footer>
             </div>
-        );
+        )
     }
 }
 
