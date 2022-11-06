@@ -5,29 +5,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
 }
-.headerwrapp{
-  display: flex;
-  justify-content: space-between;
-  background: #E18D29;
-  height: 70px;
-  width: 100vw;
-  h3{
-    margin-top: 10px;
-    line-height: 3px;
-    color: #FFFFFF;
-  }
-  .headerLeft{
-    display: flex;
-    max-width: 10vw;
-  }
-  .logotxt{
-    text-align: center;
-    vertical-align: middle;
-  }
-}
 .maincontent{
   background: #FFAA00;
-  height: 200px;
+  height: 30vh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -44,37 +24,10 @@ body {
   background: url("./img/backnd.svg");
   display: flex;
   background-size: cover;
-  height: 45vh;
+  height: 65vh;
   width: 100vw;
 }
-.footerall{
-  bottom: 0;
-  display: flex;
-  background: #FFAA00;
-  height: 150px;
-  width: 100vw;
-  .footercontent{
-    color: #FFFFFF;
-    line-height: 5px;
-    margin-top: 50px;
-  }
-  .footercontent1{
-    color: #FFFFFF;
-    line-height: 50px;
-    margin-top: 50px;
-  }
-  .footercontent2{
-    text-align: center;
-    vertical-align: middle;
-    color: #FFFFFF;
-    line-height: 5px;
-    margin-top: 50px;
-  }
-  .footerright{
-    margin-left: 0;
-    margin-top: -20px;
-  }
-}
+
 
 
 

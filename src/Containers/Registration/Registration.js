@@ -1,37 +1,15 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-// import clsx from 'clsx';
-// import IconButton from '@material-ui/core/IconButton';
-// import Input from '@material-ui/core/Input';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import InputAdornment from '@material-ui/core/InputAdornment';
-// import FormControl from '@material-ui/core/FormControl';
-// import Visibility from '@material-ui/icons/Visibility';
-// import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import MyImage from "../Registration/img/logo.svg";
-import ipethotel from "../Registration/img/ic_pet_hotel_1.svg";
-import telegram from "../Registration/img/telegram.svg";
-import vk from "../Registration/img/vk.svg";
-import './Registration.scss';
 import imgvanna from "../Registration/img/vanna.svg";
-// import visibly from "../Registration/img/visibility.svg";
-
+import Header from "../Components/Header";
+import Footer from "../Components/Footer"
+import '../Common.scss';
 
 class Registration extends Component {
     render() {
         return (
             <div>
-                <header className="headerwrapp clear">
-                    <Link to="/">
-                        <div className="headerLeft">
-                            <img width={50} height={50} src={MyImage} className="logo mt-5" alt="logotip"/>
-                            <div className="mt-5 logotxt">
-                                <h3 className="mr-5">Pet</h3>
-                                <h3 className="">Hotel</h3>
-                            </div>
-                        </div>
-                    </Link>
-                </header>
+                <Header></Header>
                 <div className="bodyrega">
                     <div className="mainrega">
                         <img width={250} height={150} src={imgvanna} className="cssvanna" alt="ImageVanna"/>
@@ -64,34 +42,14 @@ class Registration extends Component {
                                     </svg>
                                 </span>
                             </div>
+                            <button className="butrega">Зарегистрироваться</button>
+                            <div>
+                                <h5 className="d-flex ml-30 mr-5 clear h5rega">У вас уже есть аккаунт? <Link to="/Autorization"><div className="d-flex justify-center align-center ml-5 h5regalink">Войти</div></Link></h5>
+                            </div>
                         </div>
-
                     </div>
                 </div>
-                <footer className="footerall d-flex justify-center clear">
-                    <img width={114} height={114} src={ipethotel} className="iPetHotel mr-50 mt-15" alt="IconPetHotel"/>
-                    <div className="mr-50">
-                        <block1 className="footercontent text-center align-center">
-                            <p>Контакты</p>
-                            <p>+7 (xxx)xxx-xx-xx</p>
-                            <p>+7 (xxx)xxx-xx-xx</p>
-                        </block1>
-                        <block2 className="footercontent1">
-                            <p>
-                                @2022-2023 PetHotel.ru Все права защищены
-                            </p>
-                        </block2>
-                    </div>
-                    <ul className="footerright">
-                        <li>
-                            <h4 className="footercontent">
-                                Мы в соцсетях
-                            </h4>
-                            <img width={33} height={33} src={telegram} className="iTelegram ml-15" alt="IconTelegram"/>
-                            <img width={33} height={33} src={vk} className="iVK ml-10" alt="IconVK"/>
-                        </li>
-                    </ul>
-                </footer>
+                <Footer/>
             </div>
         );
     }

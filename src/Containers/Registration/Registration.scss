@@ -5,14 +5,14 @@
   background: url("./img/fullbacknd.svg");
   background-size: cover;
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   .mainrega{
     /* Задний фон у регистрации */
     margin: 20px auto;
     position: center;
     background: #FFE6C9;
     width: 800px;
-    height: 500px;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-content: center;
@@ -38,7 +38,42 @@
       flex-direction: column;
       .padinput{
         padding-bottom: 10px;
+      }
+      .text-field__icon {
+        position: absolute;
+      }
 
+      .text-field__icon .text-field__input {
+        padding-right: 2.5rem;
+      }
+
+      .text-field__aicon {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        top: -105px;
+        bottom: 0;
+        right: 1rem;
+        width: 1rem;
+        cursor: pointer;
+      }
+      .text-field__icon2 {
+        position: relative;
+      }
+
+      .text-field__icon2 .text-field__input {
+        padding-right: 2.5rem;
+      }
+
+      .text-field__aicon2 {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        top: -10px;
+        bottom: 0;
+        right: 1rem;
+        width: 1rem;
+        cursor: pointer;
       }
     }
   }
@@ -70,6 +105,7 @@
   background-clip: padding-box;
   border: 0;
   border-radius: 0.25rem;
+
 }
 .text-field__input::placeholder {color: #AC8E71;}
 .text-field__input:focus {
@@ -83,42 +119,36 @@
   background-position: 7px;
 
 }
-.text-field__icon {
-  position: relative;
-}
 
-.text-field__icon .text-field__input {
-  padding-right: 2.5rem;
-}
+.butrega{
+  /* Rectangle */
 
-.text-field__aicon {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  top: 30px;
-  bottom: 0;
-  right: 1rem;
-  width: 1rem;
-  cursor: pointer;
-}
-.text-field__icon2 {
-  position: relative;
-}
+  margin-top: 3vh;
+  width: 250px;
+  height: 50px;
+  left: 0;
+  top: 25px;
 
-.text-field__icon2 .text-field__input {
-  padding-right: 2.5rem;
+  background: #FF5E00;
+  border-radius: 30px;
+  color: #FFFFFF;
 }
+.butrega:hover{
+  /* Rectangle */
 
-.text-field__aicon2 {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  top: 125px;
-  bottom: 0;
-  right: 1rem;
-  width: 1rem;
-  cursor: pointer;
+  margin-top: 3vh;
+  width: 250px;
+  height: 50px;
+  background: #FFFFFF;
+  border-radius: 30px;
+  color: #000000;
 }
-
+.h5rega{
+  color: #7F4E1D;
+  opacity: 51;
+}
+.h5regalink {
+  color: #FF5E00;
+}
 
 
