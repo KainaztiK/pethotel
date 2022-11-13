@@ -6,8 +6,8 @@ class Footer extends Component {
     render() {
         return (
             <footer className="footerall d-flex justify-center clear">
-                <img width={114} height={114} src={ipethotel} className="iPetHotel mr-50 mt-15" alt="IconPetHotel"/>
-                <div className="mr-50">
+                <img src={ipethotel} className="iPetHotel" alt="IconPetHotel"/>
+                <div className="mr-5">
                     <block1 className="footercontent text-center align-center">
                         <p>Контакты</p>
                         <p>+7 (xxx)xxx-xx-xx</p>
@@ -21,11 +21,11 @@ class Footer extends Component {
                 </div>
                 <ul className="footerright">
                     <li>
-                        <h4 className="footercontent">
+                        <h4 className="footercontent2">
                             Мы в соцсетях
                         </h4>
-                        <img width={33} height={33} src={telegram} className="iTelegram ml-15" alt="IconTelegram"/>
-                        <img width={33} height={33} src={vk} className="iVK ml-10" alt="IconVK"/>
+                        <img src={telegram} className="iTelegram" alt="IconTelegram"/>
+                        <img src={vk} className="iVK" alt="IconVK"/>
                     </li>
                 </ul>
             </footer>

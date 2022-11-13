@@ -16,15 +16,20 @@ body {
     text-align: center;
     vertical-align: middle;
     color: #7F4E1D;
-    margin-top: 50px;
+    margin-top: 3vh;
     line-height: 5px;
+    width: 42vw;
+    height: 15vh;
+    font-size: 2vw;
+    white-space: nowrap;
+    position: relative;
   }
 }
 .mainpic{
   background: url("./img/backnd.svg");
   display: flex;
   background-size: cover;
-  height: 65vh;
+  height: 60vh;
   width: 100vw;
 }
 
@@ -48,6 +53,7 @@ body {
   height: 35px;
   background: #FF5E00;
   border-radius: 35px;
+  border-width: 0;
   transform: rotate(-0.34deg);
 }
 
@@ -71,6 +77,7 @@ body {
   height: 35px;
   background: #FF5E00;
   border-radius: 35px;
+  border-width: 0;
   transform: rotate(-0.34deg);
 }
 .registration:hover{

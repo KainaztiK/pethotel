@@ -2,27 +2,57 @@
   bottom: 0;
   display: flex;
   background: #FFAA00;
-  height: 150px;
+  height: 20vh;
   width: 100vw;
+  .iPetHotel{
+
+    white-space: nowrap;
+    position: relative;
+    width: 15vw;
+    height: 15vh;
+    margin-top: 1vh;
+  }
   .footercontent{
     color: #FFFFFF;
-    line-height: 5px;
-    margin-top: 50px;
+    line-height: 1vh;
+    white-space: nowrap;
+    position: relative;
+    font-size: 1vw;
+
   }
   .footercontent1{
     color: #FFFFFF;
-    line-height: 50px;
     margin-top: 50px;
+    white-space: nowrap;
+    position: relative;
+    font-size: 1vw;
   }
-  .footercontent2{
-    text-align: center;
-    vertical-align: middle;
-    color: #FFFFFF;
-    line-height: 5px;
-    margin-top: 50px;
-  }
-  .footerright{
-    margin-left: 0;
-    margin-top: -20px;
+    .footerright{
+    margin-top: 0;
+    height: 1vh;
+    vertical-align: top;
+
+    .footercontent2{
+      text-align: center;
+      vertical-align: middle;
+      color: #FFFFFF;
+      white-space: nowrap;
+      position: relative;
+      font-size: 1vw;
+    }
+    .iTelegram{
+
+      white-space: nowrap;
+      position: absolute;
+      width: 5vw;
+      height: 5vh;
+    }
+    .iVK{
+      margin-left: 3vw;
+      white-space: nowrap;
+      position: absolute;
+      width: 5vw;
+      height: 5vh;
+    }
   }
 }

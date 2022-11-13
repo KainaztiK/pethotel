@@ -12,7 +12,7 @@ class Registration extends Component {
                 <Header></Header>
                 <div className="bodyrega">
                     <div className="mainrega">
-                        <img width={250} height={150} src={imgvanna} className="cssvanna" alt="ImageVanna"/>
+                        <img src={imgvanna} className="cssvanna" alt="ImageVanna"/>
                         <h2 className="regatxt">Регистрация</h2>
                         <div className="form-rega text-field">
 
@@ -44,7 +44,7 @@ class Registration extends Component {
                             </div>
                             <button className="butrega">Зарегистрироваться</button>
                             <div>
-                                <h5 className="d-flex ml-30 mr-5 clear h5rega">У вас уже есть аккаунт? <Link to="/Autorization"><div className="d-flex justify-center align-center ml-5 h5regalink">Войти</div></Link></h5>
+                                <h5 className="d-flex justify-center clear h5rega">У вас уже есть аккаунт? <Link to="/Autorization"><div className="d-flex justify-center align-center ml-5 h5regalink">Войти</div></Link></h5>
                             </div>
                         </div>
                     </div>

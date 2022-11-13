@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  background: url("./img/fullbacknd.svg");
+  background: url("../MethodRegistration/img/fullbacknd.svg");
   background-size: cover;
   width: 100vw;
   height: 100vh;
@@ -11,36 +11,38 @@
     margin: 20px auto;
     position: center;
     background: #FFE6C9;
-    width: 800px;
+    width: 60vw;
     height: 80vh;
     display: flex;
     justify-content: center;
     align-content: center;
     .cssvanna{
-      margin-top: 15px;
+      margin-top: 1vh;
+      width: 40vw;
+      height: 20vh;
     }
     .regatxt{
       /* Регистрация Текст */
 
       position: absolute;
-      margin-top: 165px;
+      margin-top: 22vh;
       font-style: normal;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 41px;
+      font-weight: 600;
+      font-size: 2vw;
       letter-spacing: 0.41px;
       color: #FF5E00;
     }
     .form-rega{
       display: flex;
       position: absolute;
-      margin-top: 220px;
+      margin-top: 30vh;
+      width: 25vw;
       flex-direction: column;
       .padinput{
-        padding-bottom: 10px;
+        padding-bottom: 1vh;
       }
       .text-field__icon {
-        position: absolute;
+        position: relative;
       }
 
       .text-field__icon .text-field__input {
@@ -50,11 +52,11 @@
       .text-field__aicon {
         position: absolute;
         display: flex;
-        align-items: center;
-        top: -105px;
+        top: 11vh;
         bottom: 0;
-        right: 1rem;
-        width: 1rem;
+        right: 1vw;
+        width: 1vmax;
+        height: 3vmax;
         cursor: pointer;
       }
       .text-field__icon2 {
@@ -68,11 +70,11 @@
       .text-field__aicon2 {
         position: absolute;
         display: flex;
-        align-items: center;
-        top: -10px;
+        top: 17vh;
         bottom: 0;
-        right: 1rem;
-        width: 1rem;
+        right: 1vw;
+        width: 1vmax;
+        height: 3vmax;
         cursor: pointer;
       }
     }
@@ -93,11 +95,10 @@
 
 .text-field__input {
   display: flex;
+  position: relative;
   width: 100%;
-  height: calc(2.25rem + 2px);
-  padding: 0.375rem 0.75rem;
+  height: 5vh;
   font-family: inherit;
-  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #AC8E71;
@@ -105,6 +106,8 @@
   background-clip: padding-box;
   border: 0;
   border-radius: 0.25rem;
+  padding-left: 2vw;
+  font-size: 2vh;
 
 }
 .text-field__input::placeholder {color: #AC8E71;}
@@ -115,37 +118,41 @@
 .icon{
   background-image: url("./img/zamochek.svg");
   background-repeat: no-repeat;
-  padding-left: 25px;
-  background-position: 7px;
-
+  padding-left: 2vw;
+  background-position: 0.5vh;
+  background-size: 1.5vw 3vh;
 }
 
 .butrega{
   /* Rectangle */
 
   margin-top: 3vh;
-  width: 250px;
-  height: 50px;
+  width: 25vw;
+  height: 5vh;
   left: 0;
-  top: 25px;
-
+  border-width: 0;
   background: #FF5E00;
   border-radius: 30px;
   color: #FFFFFF;
+  font-size: 2vh;
 }
 .butrega:hover{
   /* Rectangle */
 
   margin-top: 3vh;
-  width: 250px;
-  height: 50px;
-  background: #FFFFFF;
-  border-radius: 30px;
+  width: 25vw;
+  height: 5vh;
   color: #000000;
+  background: #FFFFFF;
+  border: 1px solid #FF5E00;
+  border-radius: 35px;
+  font-size: 2vh;
+}
+h5{
+  font-size: 2vh;
 }
 .h5rega{
   color: #7F4E1D;
-  opacity: 51;
 }
 .h5regalink {
   color: #FF5E00;

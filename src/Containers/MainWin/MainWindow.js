@@ -21,23 +21,23 @@ class MainWindow extends Component {
                     </Link>
                     <ul className="headerRight d-flex mt-15 mr-20">
                         <li>
-                            <button className="enter">
-                                <Link to="/Autorization">
+                            <Link to="/Autorization">
+                                <button className="enter">
                                     Войти
-                                </Link>
-                            </button>
+                                </button>
+                            </Link>
                         </li>
                         <li>
-                            <button className="registration">
-                                <Link to="/Registration">
-                                    Зарегистрироваться
-                                </Link>
-                            </button>
+                            <Link to="/MethodRegistration">
+                                <button className="registration">
+                                        Зарегистрироваться
+                                </button>
+                            </Link>
                         </li>
                     </ul>
                 </header>
                 <div className="maincontent">
-                    <img width={200} height={160} src={mainGrp} className="mgrp mt-20" alt="mainpicture"></img>
+                    <img src={mainGrp} className="mgrp" alt="mainpicture"></img>
                     <block className="maintxt">
                         <p>Добро пожаловать в веб-приложение</p>
                         <p>для поиска временного дома для</p>
