@@ -7,7 +7,7 @@ class Footer extends Component {
         return (
             <footer className="footerall d-flex justify-center clear">
                 <img src={ipethotel} className="iPetHotel" alt="IconPetHotel"/>
-                <div className="mr-5">
+                <div className="contentftr">
                     <block1 className="footercontent text-center align-center">
                         <p>Контакты</p>
                         <p>+7 (xxx)xxx-xx-xx</p>

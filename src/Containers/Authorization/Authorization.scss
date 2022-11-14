@@ -35,18 +35,32 @@
       }
       .textfieldrightblock{
         display: flex;
-        justify-content: center;
+        position: absolute;
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 4vw;
+        margin-top: 50vh;
+        height: 40vh;
+        width: 10vw;
+        line-height: 10vh;
+        text-wrap: normal;
+        text-align: center;
+      }
+      .blocklinkandroid{
+        display: flex;
         position: relative;
         color: #FFFFFF;
-        font-weight: 600;
-        font-size: 4vw;
-        flex-direction: column;
-        margin-top: 50vh;
-        line-height: 0;
-        height: 30vh;
-        width: 10vw;
-        word-break: break-word;
-
+        margin-top: 70vh;
+        .h5auth{
+          font-weight: 700;
+          font-size: 1vw;
+        }
+        .androidlink{
+          display: flex;
+          position: relative;
+          color: #FFFFFF;
+          margin-left: 1vh;
+        }
       }
     }
 
@@ -95,6 +109,8 @@
 
           .hrega{
             font-size: 2vh;
+            color: #7F4E1D;
+            //opacity: 51%;
           }
         }
 
@@ -163,7 +179,7 @@
 
           margin-top: 3vh;
           width: 20vw;
-          height: 5vh;
+          height: 7vh;
           left: 0;
           top: 2vh;
           border-width: 0;
@@ -177,7 +193,8 @@
 
           margin-top: 3vh;
           width: 20vw;
-          height: 5vh;
+          height: 7vh;
+          top: 2vh;
           color: #000000;
           background: #FFFFFF;
           border: 1px solid #FF5E00;

@@ -43,8 +43,10 @@ class Authorization extends Component {
                         <div className="rightblockenter">
                             <img className="lapkimg" src={lapkimg} alt="lapki"/>
                             <div className="textfieldrightblock">
-                                Pet
-                                Hotel
+                                Pet Hotel
+                            </div>
+                            <div className="blocklinkandroid">
+                                <h5 className="h5auth d-flex">скачать для <Link to="/"><div className="d-flex justify-center align-center androidlink">Android</div></Link></h5>
                             </div>
                         </div>
                     </div>
