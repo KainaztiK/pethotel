@@ -4,6 +4,7 @@ import Autorization from "./Containers/Authorization/Authorization";
 import MethodRegistration from "./Containers/MethodRegistration/MethodRegistration"
 import Registration from "./Containers/Registration/Registration";
 function App() {
+
   return (
     <>
       <Routes>

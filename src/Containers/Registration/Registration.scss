@@ -41,41 +41,13 @@
       .padinput{
         padding-bottom: 1vh;
       }
-      .text-field__icon {
-        position: relative;
-      }
 
-      .text-field__icon .text-field__input {
-        padding-right: 2.5rem;
-      }
-
-      .text-field__aicon {
-        position: absolute;
-        display: flex;
-        top: 11vh;
-        bottom: 0;
-        right: 1vw;
-        width: 1vmax;
-        height: 3vmax;
-        cursor: pointer;
-      }
       .text-field__icon2 {
-        position: relative;
+        position: absolute;
       }
 
       .text-field__icon2 .text-field__input {
         padding-right: 2.5rem;
-      }
-
-      .text-field__aicon2 {
-        position: absolute;
-        display: flex;
-        top: 17vh;
-        bottom: 0;
-        right: 1vw;
-        width: 1vmax;
-        height: 3vmax;
-        cursor: pointer;
       }
     }
   }
@@ -116,13 +88,13 @@
   outline: 0;
 }
 .icon{
-  background-image: url("./img/zamochek.svg");
+  background-image: url("./img/visibility.svg");
   background-repeat: no-repeat;
-  padding-left: 2vw;
-  background-position: 0.5vh;
+  padding-right: 2vw;
+  background-position: 23vw;
   background-size: 1.5vw 3vh;
+  cursor: pointer;
 }
-
 .butrega{
   /* Rectangle */
 
@@ -156,6 +128,10 @@ h5{
 }
 .h5regalink {
   color: #FF5E00;
+}
+.Errors{
+  color: red;
+  font-size: 2.2vh;
 }
 
 
