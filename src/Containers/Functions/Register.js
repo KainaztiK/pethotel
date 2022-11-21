@@ -48,8 +48,8 @@ function Registr() {
     }
     const passwordHandler = (e) => {
         setPassword(e.target.value)
-        if (e.target.value.length < 3 || e.target.value.length > 30) {
-            setPasswordError('Пароль должен быть длиннее 3 и меньше 30')
+        if (e.target.value.length < 10 || e.target.value.length > 30) {
+            setPasswordError('Пароль должен быть длиннее 10 и меньше 30')
             if (e.target.value) {
                 setPasswordError('Пароль не должен быть пустым')
             }

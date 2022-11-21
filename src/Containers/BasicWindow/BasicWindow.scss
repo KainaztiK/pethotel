@@ -1,0 +1,59 @@
+.blockBackBasicWindow{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: url("./img/fullbacknd.svg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  .blockBasicWindow{
+    display: flex;
+    background-color: #FFFFFF;
+    width: 60vw;
+    height: 100vh;
+    position: center;
+    justify-content: center;
+    align-content: center;
+    .logoBasicWindow{
+      width: 10vw;
+      height: 10vh;
+    }
+    .petChoose{
+      /* категориии */
+      margin-top: 12vh;
+      height: 9vh;
+      width: 20vw;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      position: absolute;
+
+    }
+    .textPopularHotel{
+      font-size: 3vh;
+      position: absolute;
+      margin-top: 21vh;
+      margin-right: 43vw;
+      font-weight: 700;
+      color: #7F4E1D;
+    }
+
+    .BlockHotels{
+      margin-top: 27vh;
+      position: absolute;
+      display: flex;
+      height: 73vh;
+      width: 50vw;
+      margin-right: 2vh;
+      .hotels{
+        background-color: #FF5E00;
+        position: relative;
+        display: flex;
+        height: 10vh;
+        width: 20vw;
+        margin-right: 2vh;
+      }
+    }
+
+  }
+}

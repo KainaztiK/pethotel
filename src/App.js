@@ -3,6 +3,7 @@ import MainWindow from "./Containers/MainWin/MainWindow";
 import Autorization from "./Containers/Authorization/Authorization";
 import MethodRegistration from "./Containers/MethodRegistration/MethodRegistration"
 import Registration from "./Containers/Registration/Registration";
+import BasicWindow from "./Containers/BasicWindow/BasicWindow";
 function App() {
 
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path={"/Autorization"} element={<Autorization/>}/>
         <Route path={"/MethodRegistration"} element={<MethodRegistration/>}/>
         <Route path={"/Registration"} element={<Registration/>}/>
+        <Route path={"/BasicWindow"} element={<BasicWindow/>}/>
       </Routes>
     </>
   );
