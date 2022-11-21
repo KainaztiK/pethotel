@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 import React from "react";
 import enterimg from "../Authorization/img/enterimg.svg";
 import {useEffect, useState} from "react";
+import axios from "axios";
 
 function Autorizat() {
     const [email1, setEmail1] = useState('')
@@ -32,8 +33,8 @@ function Autorizat() {
     }
     const passwordHandler = (e) => {
         setPassword1(e.target.value)
-        if (e.target.value.length < 3 || e.target.value.length > 30) {
-            setPassword1Error('Пароль должен быть длиннее 3 и меньше 30')
+        if (e.target.value.length < 10 || e.target.value.length > 30) {
+            setPassword1Error('Пароль должен быть длиннее 10 и меньше 30')
             if (e.target.value) {
                 setPassword1Error('Пароль не должен быть пустым')
             }
@@ -54,6 +55,20 @@ function Autorizat() {
         }
     }
 
+    const signIN = async (e) => {
+        console.log(email1, password1)
+        const res = await axios.post('https://localhost:5001/api/authentication/login/', {
+            email: email1,
+            password: password1
+        })
+        console.log(res)
+        // console.log(res.data)
+        localStorage.setItem('token:', res.data.token)
+    }
+    // const token = localStorage.getItem('token')
+
+
+
     return (
         <div className="form-enter text-field">
             <div className="picentertxt">
@@ -71,12 +86,12 @@ function Autorizat() {
                 <div className="padinput">
                     {(password1Dirty && password1Error) && <div className="Errors">{password1Error}</div> }
                     <input value={password1} onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)}
-                           className="text-field__input icon2" type="text"
+                           className="text-field__input icon2" type="password"
                            name="password" id="password"
                            placeholder="Введите пароль"/>
                 </div>
 
-                <Link to="/"><button disabled={!formValid} className="butenter" name="signbutton">Войти</button></Link>
+                <Link to=""><button disabled={!formValid} onClick={signIN} className="butenter" name="signbutton">Войти</button></Link>
                 <div>
                     <h5 className="hrega d-flex clear">У вас нет аккаунта? <Link to="/MethodRegistration">
                         <div className="d-flex justify-center align-center ml-5 h5regalink">Зарегистрируйтесь</div>

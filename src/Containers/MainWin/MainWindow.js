@@ -38,11 +38,11 @@ class MainWindow extends Component {
                 </header>
                 <div className="maincontent">
                     <img src={mainGrp} className="mgrp" alt="mainpicture"></img>
-                    <block className="maintxt">
+                    <div className="maintxt">
                         <p>Добро пожаловать в веб-приложение</p>
                         <p>для поиска временного дома для</p>
                         <p>вашего питомца</p>
-                    </block>
+                    </div>
                 </div>
                 <div className="mainpic">
 

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import axios from "axios";
 function Registr() {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
@@ -58,11 +59,11 @@ function Registr() {
     }
     const doublePasswordHandler = (e) => {
         setDoublePassword(e.target.value)
-        if(password === doublePassword){
-            setDoublePasswordError('Пароли не совпадают')
+        if(password !== doublePassword){
+            setDoublePasswordError('')
         }
         else {
-            setDoublePasswordError('')
+            setDoublePasswordError('Пароли не совпадают')
         }
     }
 
@@ -83,6 +84,18 @@ function Registr() {
             default:
         }
     }
+    const signUP = async (e) => {
+        console.log(username, email, password)
+        const res = await axios.post('https://localhost:5001/api/authentication/registrationUser', {
+            username,
+            email,
+            password,
+            "roles": [
+                "User"
+            ]
+        })
+        console.log(res)
+    }
 
 
     return(
@@ -99,15 +112,15 @@ function Registr() {
             </div>
             <div className="padinput">
                 {(passwordDirty && passwordError) && <div className="Errors">{passwordError}</div> }
-                <input value={password} onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} className="text-field__input icon" type="text" name="password" id="password"
+                <input value={password} onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} className="text-field__input icon" type="password" name="password" id="password"
                        placeholder="Введите пароль" />
             </div>
             <div className="padinput">
                 {(doublePasswordDirty && doublePasswordError) && <div className="Errors">{doublePasswordError}</div> }
-                <input value={doublePassword} onChange={e => doublePasswordHandler(e)} onBlur={e => blurHandler(e)} className="icon text-field__input" type="text" name="doublePassword" id="password"
+                <input value={doublePassword} onChange={e => doublePasswordHandler(e)} onBlur={e => blurHandler(e)} className="icon text-field__input" type="password" name="doublePassword" id="password"
                        placeholder="Повторите пароль"/>
             </div>
-            <Link to="/Autorization"><button disabled={!formValid} className="butrega">Зарегистрироваться</button></Link>
+            <Link to="/Autorization"><button disabled={!formValid} onClick={signUP} className="butrega">Зарегистрироваться</button></Link>
             <div>
                 <h5 className="d-flex justify-center clear h5rega">У вас уже есть аккаунт? <Link to="/Autorization"><div className="d-flex justify-center align-center ml-5 h5regalink">Войти</div></Link></h5>
             </div>

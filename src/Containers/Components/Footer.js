@@ -8,16 +8,16 @@ class Footer extends Component {
             <footer className="footerall d-flex justify-center clear">
                 <img src={ipethotel} className="iPetHotel" alt="IconPetHotel"/>
                 <div className="contentftr">
-                    <block1 className="footercontent text-center align-center">
+                    <div className="footercontent text-center align-center">
                         <p>Контакты</p>
                         <p>+7 (xxx)xxx-xx-xx</p>
                         <p>+7 (xxx)xxx-xx-xx</p>
-                    </block1>
-                    <block2 className="footercontent1">
+                    </div>
+                    <div className="footercontent1">
                         <p>
                             @2022-2023 PetHotel.ru Все права защищены
                         </p>
-                    </block2>
+                    </div>
                 </div>
                 <ul className="footerright">
                     <li>
