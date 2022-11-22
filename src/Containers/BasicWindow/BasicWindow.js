@@ -28,8 +28,14 @@ function BasicWindow(){
     const arr = data.map((data, index) => {
         return(
             <div className="hotels">
-                {data.name}
-                {data.city}
+
+                <div className="leftBlockHotels">
+
+                </div>
+                <div className="rightBlockHotels">
+                    {data.name}
+                    {data.city}
+                </div>
             </div>
         )
     })
