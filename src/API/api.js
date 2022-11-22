@@ -1,27 +1,12 @@
-class Api {
-    constructor (url, headers) {
-        this._url = url
-        this._headers = headers
-    }
+import axios from "axios";
 
-    getRecipes ({
-                    page = 1,
-                    limit = 6,
-                 } = {}) {
-        const token = localStorage.getItem('token')
-        const authorization = token ? { 'authorization': `Token ${token}` } : {}
-        return fetch(
-            `/api/hotels/advertisements/`,
-            {
-                method: 'GET',
-                headers: {
-                    ...this._headers,
-                    ...authorization
-                }
-            }
-        ).then(this.checkResponse)
+export default class Api{
+    static async getHotels(){
+        const response = await axios.get('https://localhost:5001/api/hotels/advertisements/')
+        return response;
     }
-
+    static async getHotel(id){
+        const response = await axios.get(`https://localhost:5001/api/hotels/advertisements/${id}`)
+        return response;
+    }
 }
-
-export default new Api(process.env.API_URL || 'https://localhost:5001', { 'content-type': 'application/json' })

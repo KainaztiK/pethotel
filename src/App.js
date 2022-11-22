@@ -3,8 +3,12 @@ import MainWindow from "./Containers/MainWin/MainWindow";
 import Autorization from "./Containers/Authorization/Authorization";
 import MethodRegistration from "./Containers/MethodRegistration/MethodRegistration"
 import Registration from "./Containers/Registration/Registration";
-import BasicWindow from "./Containers/BasicWindow/BasicWindow";
+import Hotels from "./Containers/Hotels/Hotels";
+import Hotelid from "./Containers/Hotelid/Hotelid";
+
 function App() {
+
+
 
   return (
     <>
@@ -13,7 +17,9 @@ function App() {
         <Route path={"/Autorization"} element={<Autorization/>}/>
         <Route path={"/MethodRegistration"} element={<MethodRegistration/>}/>
         <Route path={"/Registration"} element={<Registration/>}/>
-        <Route path={"/BasicWindow"} element={<BasicWindow/>}/>
+        <Route exact path={"/Hotels"} element={<Hotels/>}/>
+        <Route exact path={`/Hotelid/:id`} element={<Hotelid/>}/>
+
       </Routes>
     </>
   );

@@ -14,6 +14,7 @@
     position: center;
     justify-content: center;
     align-content: center;
+
     .logoBasicWindow{
       width: 10vw;
       height: 10vh;
@@ -42,16 +43,49 @@
       margin-top: 27vh;
       position: absolute;
       display: flex;
-      height: 73vh;
+      flex-wrap: wrap;
+
       width: 50vw;
       margin-right: 2vh;
       .hotels{
-        background-color: #FF5E00;
+        flex: 31%;
+        max-width: 31%;
+        background-color: #EBEBEB;
+        margin-top: 2vh;
         position: relative;
         display: flex;
         height: 10vh;
         width: 20vw;
         margin-right: 2vh;
+        border-radius: 2vh;
+        transform: rotate(-0.34vh);
+        cursor: pointer;
+
+        .leftBlockHotels{
+          position: relative;
+          width: 7vw;
+          background: url("./img/imgHotel.svg");
+          border-radius: 2vh;
+          transform: rotate(-0.34vh);
+          background-size: cover;
+
+        }
+        .rightBlockHotels{
+          position: relative;
+          width: 7vw;
+          .h3nameHotel{
+            font-weight: 700;
+            font-size: 2vh;
+            margin-left: 1vh;
+          }
+          .h4sityHotel{
+            margin-top: -2vh;
+            font-weight: 400;
+            font-size: 1.5vh;
+            margin-left: 1vh;
+
+          }
+        }
       }
     }
 
