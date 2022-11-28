@@ -1,0 +1,108 @@
+.hotelID{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+
+  .aboutHotel{
+    display: flex;
+    margin-top: 10vh;
+    width: 70vw;
+    height: 80vh;
+
+    .leftBlockAboutHotel{
+      width: 50%;
+      height: 80vh;
+
+      .imgHotelBlock{
+        position: absolute;
+        width: 20vw;
+        height: 20vh;
+        margin-left: 3vw;
+        margin-top: 5vh;
+        .imgHotel{
+          width: 30vw;
+          height: 40vh;
+        }
+      }
+      .backbtn{
+        /* Ellipse 18 */
+        margin-left: 2vh;
+        margin-top: 2vh;
+        position: absolute;
+        width: 2vw;
+        height: 4vh;
+        background: #ADADAD;
+        border: 0;
+        border-radius: 50%;
+        background-image: url("./img/Arrow.svg");
+        background-position: 1vh;
+        background-size: 2vh;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+      .HotelTxt{
+        margin-top: 50vh;
+        margin-left: 5vw;
+        font-weight: 450;
+        font-size: 2vh;
+      }
+      .buttonMapPosition{
+        position: relative;
+        margin-left: 25vw;
+        margin-top: -4vh;
+        .buttonMap{
+          /* Rectangle */
+          width: 6vw;
+          height: 5vh;
+          font-size: 1.8vh;
+          font-weight: 400;
+          position: absolute;
+          background: #FFAA00;
+          border-radius: 3vw;
+          border: 0;
+          cursor: pointer;
+        }
+      }
+      .btnOrderBlock{
+        /* Rectangle */
+
+        position: absolute;
+        margin-top: 10vh;
+        margin-left: 5vw;
+
+
+        .btnOrder{
+          /* Rectangle */
+
+          position: absolute;
+          width: 15vw;
+          height: 7vh;
+          font-weight: 300;
+          font-size: 2.5vh;
+          background: #FF5E00;
+          border-radius: 3vh;
+          border: 0;
+          color: #FFFFFF;
+          cursor: pointer;
+        }
+
+      }
+
+    }
+
+    .rightBlockAboutHotel{
+      width: 50%;
+      height: 80vh;
+      .AboutHotelText{
+        width: 30vw;
+        height: 70vh;
+        margin: 4vh auto;
+        word-break: break-all;
+        font-size: 1.7vh;
+        font-weight: 400;
+      }
+    }
+
+  }
+}

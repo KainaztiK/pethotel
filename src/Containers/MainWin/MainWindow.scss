@@ -1,0 +1,93 @@
+body {
+  margin: 0;
+  font-family: system-ui;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+.maincontent{
+  background: #FFAA00;
+  height: 30vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+
+  .maintxt{
+    text-align: center;
+    vertical-align: middle;
+    color: #7F4E1D;
+    margin-top: 3vh;
+    line-height: 5px;
+    width: 42vw;
+    height: 15vh;
+    font-size: 2vw;
+    white-space: nowrap;
+    position: relative;
+  }
+}
+.mainpic{
+  background: url("./img/backnd.svg");
+  display: flex;
+  background-size: cover;
+  height: 60vh;
+  width: 100vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.enter{
+  /* Rectangle */
+
+
+  width: 100px;
+  height: 35px;
+  background: #FF5E00;
+  border-radius: 35px;
+  border-width: 0;
+  transform: rotate(-0.34deg);
+}
+
+.enter:hover{
+  /* Rectangle */
+
+
+  width: 100px;
+  height: 35px;
+  background: #FFFFFF;
+  border: 1px solid #FF5E00;
+  border-radius: 35px;
+  transform: rotate(-0.34deg);
+}
+
+.registration{
+  /* Rectangle */
+
+
+  width: 150px;
+  height: 35px;
+  background: #FF5E00;
+  border-radius: 35px;
+  border-width: 0;
+  transform: rotate(-0.34deg);
+}
+.registration:hover{
+  /* Rectangle */
+
+
+  width: 150px;
+  height: 35px;
+  background: #FFFFFF;
+  border: 1px solid #FF5E00;
+  border-radius: 35px;
+  transform: rotate(-0.34deg);
+}

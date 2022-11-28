@@ -1,0 +1,94 @@
+.methodcontent{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: url("./img/fullbacknd.svg");
+  background-size: cover;
+  width: 100vw;
+  height: 80vh;
+  .conteinerreg{
+    display: flex;
+    margin-top: 10vh;
+    background-color: #FFE6C9;
+    width: 50vw;
+    height: 60vh;
+    position: center;
+    justify-content: center;
+    align-content: center;
+    .logocont{
+      display: flex;
+      position: absolute;
+      margin-top: 5vh;
+      .logotipreg{
+        width: 30vw;
+        height: 30vh;
+      }
+    }
+    .textmethod{
+      display: flex;
+      position: absolute;
+      margin-top: 37vh;
+      color: #FF5E00;
+      font-weight: 600;
+      font-size: 3vh;
+
+    }
+    .methreg{
+      display: flex;
+      position: absolute;
+      margin-top: 45vh;
+
+      .butmethreg1{
+        /* Rectangle */
+
+        margin-top: 3vh;
+        width: 15vw;
+        height: 5vh;
+        left: 0;
+        border-width: 0;
+        background: #FF5E00;
+        border-radius: 30px;
+        color: #FFFFFF;
+        font-size: 2vh;
+        margin-right: 5vw;
+      }
+      .butmethreg1:hover{
+        /* Rectangle */
+
+        margin-top: 3vh;
+        width: 15vw;
+        height: 5vh;
+        color: #000000;
+        background: #FFFFFF;
+        border: 1px solid #FF5E00;
+        border-radius: 35px;
+        font-size: 2vh;
+      }
+      .butmethreg2{
+        /* Rectangle */
+
+        margin-top: 3vh;
+        width: 15vw;
+        height: 5vh;
+        left: 0;
+        border-width: 0;
+        background: #FF5E00;
+        border-radius: 30px;
+        color: #FFFFFF;
+        font-size: 2vh;
+      }
+      .butmethreg2:hover{
+        /* Rectangle */
+
+        margin-top: 3vh;
+        width: 15vw;
+        height: 5vh;
+        color: #000000;
+        background: #FFFFFF;
+        border: 1px solid #FF5E00;
+        border-radius: 35px;
+        font-size: 2vh;
+      }
+    }
+  }
+}

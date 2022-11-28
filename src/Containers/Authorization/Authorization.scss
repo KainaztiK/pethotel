@@ -1,0 +1,214 @@
+.bodyenter {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: url("../Hotels/img/fullbacknd.svg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+
+  .mainenter {
+    /* Задний фон у регистрации */
+    margin: 20px auto;
+    background: #F2C28A;
+    width: 60%;
+    height: 80%;
+    display: flex;
+    align-content: center;
+
+    .rightblockenter{
+      display: flex;
+      position: relative;
+      background-color: #F37A20;
+      height: 100%;
+      width: 30%;
+      justify-content: center;
+      background-image: url("../MethodRegistration/img/Ellipse 14.svg");
+      background-repeat: no-repeat;
+      background-size: 20vw;
+      .blocklapkimg{
+        width: 20vw;
+        .lapkimg{
+          display: flex;
+          position: absolute;
+          width: 100%;
+          height: 33vh;
+          top: 15vh;
+        }
+      }
+      .textfieldrightblock{
+        display: flex;
+        position: absolute;
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 4vw;
+        margin-top: 50vh;
+        height: 40vh;
+        width: 10vw;
+        line-height: 10vh;
+        text-wrap: normal;
+        text-align: center;
+      }
+      .blocklinkandroid{
+        display: flex;
+        position: absolute;
+        color: #FFFFFF;
+        margin-top: 70vh;
+        .h5auth{
+          font-weight: 700;
+          font-size: 1vw;
+        }
+        .androidlink{
+          display: flex;
+          position: relative;
+          color: #FFFFFF;
+          margin-left: 1vh;
+        }
+      }
+    }
+
+    .leftblockenter{
+      display: flex;
+      position: relative;
+      width: 70%;
+      height: 100%;
+      background-color: #F2C28A;
+      justify-content: center;
+      text-align: center;
+      .picentertxt{
+        display: block;
+        width: 100%;
+        height: 35%;
+      }
+      .cssvanna1{
+        margin-left: -5vw;
+        margin-top: 5vh;
+        position: relative;
+        width: 30vw;
+        height: 30vh;
+      }
+      .entertxt {
+        /* Регистрация Текст */
+        margin-top: 0;
+        position: relative;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 4vh;
+        line-height: 4vh;
+        color: #FF5E00;
+      }
+
+      .form-enter {
+        display: block;
+        position: absolute;
+        margin-top: 0;
+        width: 20vw;
+        flex-direction: column;
+        .blocktextinput{
+          position: absolute;
+          display: block;
+          width: 100%;
+          height: 30vh;
+
+          .hrega{
+            font-size: 2vh;
+            color: #7F4E1D;
+            //opacity: 51%;
+          }
+        }
+
+        .padinput {
+          padding-bottom: 1vh;
+        }
+
+        .text-field__icon {
+          position: relative;
+        }
+
+        .text-field__icon .text-field__input {
+          padding-right: 10%;
+        }
+
+        .text-field__aicon3{
+          position: absolute;
+          display: flex;
+          top: 5vh;
+          bottom: 0;
+          right: 1vw;
+          width: 1vmax;
+          height: 3vmax;
+          cursor: pointer;
+        }
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+        }
+        .text-field__label {
+          display: block;
+          margin-bottom: 0.25rem;
+
+        }
+
+        .text-field__input {
+          display: block;
+          width: 100%;
+          height: 5vh;
+          font-weight: 500;
+          color: #AC8E71;
+          background-color: #F3F3F3;
+          background-clip: padding-box;
+          border: 0;
+          border-radius: 0.25rem;
+          padding-left: 1.5vw;
+          font-size: 2vh;
+        }
+
+        .text-field__input::placeholder {color: #AC8E71;}
+        .text-field__input:focus {
+          border-color: #F3F3F3;
+          outline: 0;
+        }
+        .icon2{
+          background-image: url("./img/visibility.svg");
+          background-repeat: no-repeat;
+          padding-right: 2vw;
+          background-position: 18vw;
+          background-size: 1.5vw 3vh;
+          cursor: pointer;
+        }
+
+        .butenter{
+          /* Rectangle */
+
+          margin-top: 3vh;
+          width: 20vw;
+          height: 7vh;
+          left: 0;
+          top: 2vh;
+          border-width: 0;
+          background: #FF5E00;
+          border-radius: 30px;
+          color: #FFFFFF;
+          font-size: 2vw;
+        }
+        .butenter:hover{
+          /* Rectangle */
+
+          margin-top: 3vh;
+          width: 20vw;
+          height: 7vh;
+          top: 2vh;
+          color: #000000;
+          background: #FFFFFF;
+          border: 1px solid #FF5E00;
+          font-size: 2vw;
+        }
+      }
+    }
+  }
+}
+.Errors{
+  color: red;
+  font-size: 2.2vh;
+}

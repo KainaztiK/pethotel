@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import {Routes, Route} from "react-router-dom";
+import MainWindow from "./Containers/MainWin/MainWindow";
+import Autorization from "./Containers/Authorization/Authorization";
+import MethodRegistration from "./Containers/MethodRegistration/MethodRegistration"
+import Registration from "./Containers/Registration/Registration";
+import Hotels from "./Containers/Hotels/Hotels";
+import Hotelid from "./Containers/Hotelid/Hotelid";
 
 function App() {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path={"/"} element={<MainWindow/>}/>
+        <Route path={"/Autorization"} element={<Autorization/>}/>
+        <Route path={"/MethodRegistration"} element={<MethodRegistration/>}/>
+        <Route path={"/Registration"} element={<Registration/>}/>
+        <Route exact path={"/Hotels"} element={<Hotels/>}/>
+        <Route exact path={`/Hotelid/:id`} element={<Hotelid/>}/>
+
+      </Routes>
+    </>
   );
 }
 
