@@ -5,6 +5,7 @@ import {Link, useParams} from "react-router-dom";
 import image from "./img/image.svg"
 import {useFetching} from "../Functions/hooks/useFetching";
 import Api from "../../API/api";
+import classes from "./Pets.module.scss"
 
 const Hotelid = () => {
 
@@ -18,15 +19,17 @@ const Hotelid = () => {
 
     useEffect(() => {
         fetchHotelById(params.id)
-    }, [])
+    },[])
 
-    const [pets, setPets] = useState({});
+
 
     return (
         <div>
             <Header2/>
             <div className="hotelID">
+
                 <div className="aboutHotel">
+
                     <div className="leftBlockAboutHotel">
                         <Link to={"/Hotels"}><button className="backbtn"></button></Link>
                         <div className="imgHotelBlock">
@@ -39,7 +42,10 @@ const Hotelid = () => {
                             Адрес: {hotel.address}
                         </div>
                         <div className="petsActive">
-
+                            {hotel.cat && <div className={classes.animal}>Кошки</div>}
+                            {hotel.dog && <div className={classes.animal}>Собаки</div>}
+                            {hotel.rodent && <div className={classes.animal}>Грызуны</div>}
+                            {hotel.other && <div className={classes.animal}>Другое</div>}
                         </div>
                         <div className="buttonMapPosition">
                             <button className="buttonMap">Карта ></button>

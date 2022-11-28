@@ -16,6 +16,11 @@ class Header2 extends Component {
                             </div>
                         </div>
                     </Link>
+                    <Link to="/Autorization">
+                        <button className="btnExit">
+                            Выйти
+                        </button>
+                    </Link>
                 </header>
             </div>
         );

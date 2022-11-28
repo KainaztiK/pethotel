@@ -64,6 +64,16 @@
           cursor: pointer;
         }
       }
+      .petsActive {
+        display: flex;
+        position: absolute;
+
+        width: 20vw;
+        height: 10vh;
+        margin-left: 5vw;
+        margin-top: 1.5vh;
+
+      }
       .btnOrderBlock{
         /* Rectangle */
 

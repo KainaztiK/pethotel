@@ -17,4 +17,30 @@
     text-align: center;
     vertical-align: middle;
   }
+  .btnExit{
+    /* Rectangle */
+    margin-top: 2vh;
+    margin-right: 2vw;
+    width: 10vw;
+    height: 5vh;
+    background: #FF5E00;
+    border-radius: 3vh;
+    border-width: 0;
+    transform: rotate(-0.34deg);
+    font-size: 2vh;
+    font-weight: 500;
+  }
+  .btnExit:hover{
+    /* Rectangle */
+
+
+    width: 10vw;
+    height: 5vh;
+    background: #FFFFFF;
+    border: 1px solid #FF5E00;
+    border-radius: 3vh;
+    transform: rotate(-0.34deg);
+    font-size: 2vh;
+    font-weight: 500;
+  }
 }

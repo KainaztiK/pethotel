@@ -15,14 +15,6 @@ function Hotels(){
         const response = await Api.getHotels();
         setHotels(response.data);
     })
-    // const token = localStorage.getItem('token')
-    // const getHotels = async (e) => {
-    //     const res = await axios.get('https://localhost:5001/api/hotels/advertisements/', {
-    //
-    //     })
-    //     console.log(res)
-    //     localStorage.setItem('token:', res.data.token)
-    // }
     const router = useNavigate()
     console.log(router)
 
