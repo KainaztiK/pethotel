@@ -34,9 +34,12 @@ function Autorizat() {
     const passwordHandler = (e) => {
         setPassword1(e.target.value)
         if (e.target.value.length < 10 || e.target.value.length > 30) {
-            setPassword1Error('Пароль должен быть длиннее 10 и меньше 30')
+            setPassword1Error('Пароль должен быть длиннее 10 и меньше 30');
             if (e.target.value) {
-                setPassword1Error('Пароль не должен быть пустым')
+                setPassword1Error('Пароль должен быть длиннее 10 и меньше 30');
+            }
+            else{
+                setPassword1Error('Пароль не должен быть пустым');
             }
         } else {
             setPassword1Error('')

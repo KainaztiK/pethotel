@@ -1,0 +1,116 @@
+header {
+    background: #E18D29;
+    display: flex;
+    .headerblock{
+      width: 90rem;
+      margin: 0 auto;
+    }  
+    .headerleftblock{
+        display: block;
+        justify-content: space-between;
+        float: left;
+        width: 50%;
+        h3{
+          line-height: 3px;
+          color: #FFFFFF;
+        }
+        .headerLeft{
+          display: flex;
+          max-width: 10vw;
+        }
+        .logotxt{
+          text-align: center;
+          vertical-align: middle;
+        }
+    }
+  }
+.buttons {
+    padding: 1rem;
+    width: 50%;
+    display: flex;
+    justify-content: right;
+    float: right;
+    button {
+      margin-left: 10px;
+      background: #FF5E00;
+      color: #FFFFFF;
+      border-radius: 30px;
+      border-width: 0;
+
+      @media screen and (max-width: 600px) {
+        font-size: 12px;
+      }
+    }
+    button:hover{
+      color: #000000;
+      background: #FFFFFF;
+      border: 2px solid #FF5E00;
+      border-radius: 30px;
+      border-width: 0;
+      @media screen and (max-width: 600px) {
+        font-size: 12px;
+      }
+    }
+  
+    a {
+      text-decoration: none;
+  
+      @media screen and (max-width: 600px) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .footerall{
+    bottom: 0;
+    display: flex;
+    background: #FFAA00;
+    width: 100%;
+    .iPetHotel{
+  
+      white-space: nowrap;
+      position: relative;
+      width: 8rem;
+      height: 8rem;
+      margin-top: 0.5rem;
+    }
+    .contentftr{
+      margin-right: 1rem;
+    }
+    .footercontent{
+      color: #FFFFFF;
+      line-height: 0.5rem;
+      white-space: nowrap;
+      position: relative;
+      font-size: 1rem;
+  
+    }
+    .footercontent1{
+      color: #FFFFFF;
+      margin-top: 2rem;
+      white-space: nowrap;
+      position: relative;
+      font-size: 1rem;
+    }
+      .footerright{
+      margin-top: 0;
+      vertical-align: top;
+  
+      .footercontent2{
+        text-align: center;
+        vertical-align: middle;
+        color: #FFFFFF;
+        position: relative;
+        font-size: 1rem;
+        margin-left: 1rem;
+      }
+      .iTelegram{
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+      .iVK{
+        width: 2.5rem;
+        height: 2.5rem;
+      }
+    }
+  }

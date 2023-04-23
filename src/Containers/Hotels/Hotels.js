@@ -1,20 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import Header2 from "../Components/Header2";
-import Footer from "../Components/Footer";
 import '../Common.scss';
 import logoHotels from "./img/logo.svg"
 import {useNavigate} from "react-router-dom";
-import Api from "../../API/api";
+
 import Loader from "../Components/Loader/Loader";
 import {useFetching} from "../Functions/hooks/useFetching";
-
+import axios from "axios";
 
 function Hotels(){
     const [hotels, setHotels] = useState([])
     const [fetchHotels, isHotelsLoading, hotelError] = useFetching( async () => {
-        const response = await Api.getHotels();
+        const response = await axios.get('https://localhost:5001/api/hotels/advertisements/');
         setHotels(response.data);
-    })
+    });
+
     // const token = localStorage.getItem('token')
     // const getHotels = async (e) => {
     //     const res = await axios.get('https://localhost:5001/api/hotels/advertisements/', {
@@ -25,9 +24,9 @@ function Hotels(){
     // }
     const router = useNavigate()
     console.log(router)
-
+    
     useEffect(() => {
-        fetchHotels()
+        fetchHotels();
     }, [])
 
 
@@ -35,7 +34,7 @@ function Hotels(){
 
     const arr = hotels.map((data) => {
         return(
-            <div onClick={() => router(`/Hotelid/${data.id}`)} className="hotels" key={data.id}>
+            <div onClick={() => router(`/hotel/${data.id}`)} className="hotels" key={data.id}>
 
                 <div className="leftBlockHotels">
 
@@ -49,7 +48,6 @@ function Hotels(){
     })
     return (
         <div>
-            <Header2/>
             <div className="blockBackBasicWindow">
                 <div className="blockBasicWindow">
                     {/*IMG LOGO*/}
@@ -75,7 +73,6 @@ function Hotels(){
 
                 </div>
             </div>
-            <Footer/>
         </div>
     );
 }

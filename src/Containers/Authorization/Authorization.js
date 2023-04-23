@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import Header from "../Components/Header";
 import '../Common.scss';
-import Footer from "../Components/Footer";
 import Autorizat from "../Functions/Autorize";
 import {Link} from "react-router-dom";
 import lapkimg from "../Authorization/img/lapkimg.svg"
@@ -9,7 +7,6 @@ class Authorization extends Component {
     render() {
         return (
             <div>
-                <Header/>
                 <div className="bodyenter">
                     <div className="mainenter">
                         <div className="leftblockenter">
@@ -28,7 +25,6 @@ class Authorization extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer/>
             </div>
         );
     }

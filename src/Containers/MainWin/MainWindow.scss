@@ -7,87 +7,43 @@ body {
 }
 .maincontent{
   background: #FFAA00;
-  height: 30vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-
+  height: 10rem;
+  .mcontainer{
+    display: flex;
+    width: 40rem;
+    margin: 0 auto;
+    .mgrp{
+      background: url("./img/mGrp.svg") no-repeat center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -ms-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      display: flex;
+      height: 9rem;
+      width: 10.25rem;
+    }
+  }
   .maintxt{
     text-align: center;
     vertical-align: middle;
     color: #7F4E1D;
-    margin-top: 3vh;
-    line-height: 5px;
-    width: 42vw;
-    height: 15vh;
-    font-size: 2vw;
+    margin-top: 1rem;
+    line-height: 0.5rem;
+    width: 30rem;
+    height: 10rem;
+    font-size: 1.5rem;
     white-space: nowrap;
-    position: relative;
   }
 }
 .mainpic{
-  background: url("./img/backnd.svg");
-  display: flex;
+  background: url("./img/backnd.svg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  height: 60vh;
-  width: 100vw;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-.enter{
-  /* Rectangle */
-
-
-  width: 100px;
-  height: 35px;
-  background: #FF5E00;
-  border-radius: 35px;
-  border-width: 0;
-  transform: rotate(-0.34deg);
-}
-
-.enter:hover{
-  /* Rectangle */
-
-
-  width: 100px;
-  height: 35px;
-  background: #FFFFFF;
-  border: 1px solid #FF5E00;
-  border-radius: 35px;
-  transform: rotate(-0.34deg);
-}
-
-.registration{
-  /* Rectangle */
-
-
-  width: 150px;
-  height: 35px;
-  background: #FF5E00;
-  border-radius: 35px;
-  border-width: 0;
-  transform: rotate(-0.34deg);
-}
-.registration:hover{
-  /* Rectangle */
-
-
-  width: 150px;
-  height: 35px;
-  background: #FFFFFF;
-  border: 1px solid #FF5E00;
-  border-radius: 35px;
-  transform: rotate(-0.34deg);
+  background-position-y: 10rem;
+  width: 100%;
+  height: 100vh;
 }

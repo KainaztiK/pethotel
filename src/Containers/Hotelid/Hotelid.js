@@ -1,21 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import Header2 from "../Components/Header2";
-import Footer from "../Components/Footer";
+import axios from "axios";
 import {Link, useParams} from "react-router-dom";
 import image from "./img/image.svg"
 import {useFetching} from "../Functions/hooks/useFetching";
-import Api from "../../API/api";
 
 const Hotelid = () => {
 
     const params = useParams();
     const [hotel, setHotel] = useState({});
-// , isLoading, error
-    const [fetchHotelById] = useFetching(async (id) => {
-        const response = await Api.getHotel(params.id)
-        setHotel(response.data)
-    })
 
+    const [fetchHotelById] = useFetching(async (id) => {
+        const response = await axios.get(`https://localhost:5001/api/hotels/advertisements/${id}`);
+        setHotel(response.data);
+    })
+    
     useEffect(() => {
         fetchHotelById(params.id)
     }, [])
@@ -24,7 +22,6 @@ const Hotelid = () => {
 
     return (
         <div>
-            <Header2/>
             <div className="hotelID">
                 <div className="aboutHotel">
                     <div className="leftBlockAboutHotel">
@@ -35,6 +32,7 @@ const Hotelid = () => {
                         <div>
                             {/* Кнопки просмотра фото*/}
                         </div>
+                        
                         <div className="HotelTxt">
                             Адрес: {hotel.address}
                         </div>
@@ -42,7 +40,7 @@ const Hotelid = () => {
 
                         </div>
                         <div className="buttonMapPosition">
-                            <button className="buttonMap">Карта ></button>
+                            <button className="buttonMap">Карта</button>
                         </div>
                         <div className="btnOrderBlock">
                             <button className="btnOrder">Заказать</button>
@@ -56,7 +54,6 @@ const Hotelid = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
         </div>
     );
 }

@@ -1,0 +1,115 @@
+.Window{
+    justify-content: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../MainWin/img/backnd.svg");
+    background-size: cover;
+}
+.Button2{
+    color: white;
+    background-color: #FF5E00;
+    border-radius: 45px;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #FF5E00;
+    margin-right: 30px;
+    font-size: 16px;
+    float: right;
+    margin-top: 30px;
+}
+.ContentBg{
+    width: 100%;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+.Content{
+    width: 1920px;
+    height: 670px;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+
+}
+.Container{
+    margin-top: 9px;
+    display: flex;
+    width: 1300px;
+    height: 620px;
+    background-color: #FFE6C9;
+    position: fixed;
+}
+.ContentPosts{
+    width: 100%;
+    margin-right: 0;
+    justify-content: center;
+    display: inline-block;
+    align-content: center;
+    height: 100%;
+    text-align: center;
+}
+.ContainerForPosts{
+
+}
+.Title{
+    color: #ffaa00;
+    font-size: 30px;
+}
+.BlockForPosts{
+    width: 90%;
+    height: 70%;
+    margin-left: 5%;
+    padding-top: 5px;
+    flex-direction: column-reverse;
+    overflow: auto;
+}
+.Post{
+    width: 90%;
+    height: 18%;
+    background: white;
+    border-radius: 25px;
+    margin-top: 5px;
+    display: flex;
+}
+.PostImg{
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.AddButton{
+     border: 0;
+     outline: 0;
+     background: none;
+    cursor: pointer;
+ }
+.PostData{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.PostButton{
+    width: 30%;
+    float: right;
+    margin-top: 10px;
+    margin-right: 0;
+}
+.PostTitle{
+    margin-top: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    float: left;
+    cursor: pointer;
+    text-align: left;
+    margin-left: 50px;
+}
+.PostAddress{
+    float: left;
+    text-align: left;
+    margin-left: 50px;
+}

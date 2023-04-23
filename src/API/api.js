@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export default class Api{
-    static async getHotels(){
-        const response = await axios.get('https://localhost:5001/api/hotels/advertisements/')
-        return response;
-    }
-    static async getHotel(id){
-        const response = await axios.get(`https://localhost:5001/api/hotels/advertisements/${id}`)
-        return response;
-    }
-}
+const instance = axios.create({
+  baseURL: 'http://localhost:5001',
+});
+
+instance.interceptors.request.use((config) => {
+  config.headers.Authorization = window.localStorage.getItem("token");
+  return config;
+});
+
+export default instance;
