@@ -1,0 +1,130 @@
+.Window{
+    justify-content: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../MainWin/img/backnd.svg");
+    background-size: cover;
+}
+.Button2{
+    color: white;
+    background-color: #FF5E00;
+    border-radius: 45px;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #FF5E00;
+    margin-right: 30px;
+    font-size: 16px;
+    float: right;
+    margin-top: 30px;
+}
+.ContentBg{
+    width: 100%;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+.Content{
+    width: 1920px;
+    height: 670px;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+
+}
+.Container{
+    margin-top: 9px;
+    display: flex;
+    width: 1300px;
+    height: 620px;
+    background-color: #FFE6C9;
+    position: fixed;
+    justify-content: center;
+}
+.Form{
+    width: 80%;
+    margin-right: 0;
+    display: inline-block;
+    height: 500px;
+}
+.p{
+    color: #FF5E00;
+    font-size: 30px;
+    text-align: center;
+}
+.FormInputs{
+
+}
+.textBox{
+    width: 380px;
+    height: 35px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: white;
+    color: #86520a;
+    padding-left: 30px;
+    margin-top: 5px;
+}
+.textBoxError{
+    width: 380px;
+    height: 35px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: red;
+    color: #86520a;
+    padding-left: 30px;
+}
+.DescriptionBox{
+    width: 580px;
+    height: 100px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: white;
+    color: #86520a;
+    padding-left: 30px;
+    margin-top: 5px;
+    resize: none;
+
+}
+.inputBox{
+
+}
+.checkBoxBlock{
+    display: flex;
+}
+.checkBoxPlace{
+    width: 150px;
+    display: flex;
+    font-size: 20px;
+}
+.CheckBox{
+    position: relative;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #808080;
+    content: "";
+    background: #FFF;
+    color: black;
+}
+.CreatePostButton{
+    color: white;
+    background-color: #FF5E00;
+    border-radius: 45px;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #FF5E00;
+    margin-right: 30px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.errorMessage{
+    font-size: 10px;
+    color: red;
+    z-index: 1000;
+}
