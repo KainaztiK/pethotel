@@ -94,9 +94,9 @@ function Autorizat() {
                            placeholder="Введите пароль"/>
                 </div>
 
-                <Link to="/Hotels"><button disabled={!formValid} onClick={signIN} className="butenter" name="signbutton">Войти</button></Link>
+                <Link to="/hotels"><button disabled={!formValid} onClick={signIN} className="butenter" name="signbutton">Войти</button></Link>
                 <div>
-                    <h5 className="hrega d-flex clear">У вас нет аккаунта? <Link to="/MethodRegistration">
+                    <h5 className="hrega d-flex clear">У вас нет аккаунта? <Link to="/methodregistration">
                         <div className="d-flex justify-center align-center ml-5 h5regalink">Зарегистрируйтесь</div>
                     </Link></h5>
                 </div>

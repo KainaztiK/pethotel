@@ -25,7 +25,7 @@ const Hotelid = () => {
             <div className="hotelID">
                 <div className="aboutHotel">
                     <div className="leftBlockAboutHotel">
-                        <Link to={"/Hotels"}><button className="backbtn"></button></Link>
+                        <Link to={"/hotels"}><button className="backbtn"></button></Link>
                         <div className="imgHotelBlock">
                             <img src={image} className="imgHotel" alt="photoHotel"/>
                         </div>

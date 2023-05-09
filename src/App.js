@@ -5,6 +5,13 @@ import MethodRegistration from "./Containers/MethodRegistration/MethodRegistrati
 import Registration from "./Containers/Registration/Registration";
 import Hotels from "./Containers/Hotels/Hotels";
 import Hotelid from "./Containers/Hotelid/Hotelid";
+import RegistrationCompany from "./Containers/RegistrationCompany/Registration";
+import Profile from "./Containers/Profile/Profile";
+import Posts from "./Containers/Posts/Posts";
+import AddPost from "./Containers/Posts/AddPost/AddPost";
+import CheckPost from "./Containers/CheckPost/Checkpost";
+import {Layout} from "./Containers/Layout";
+
 
 function App() {
   
@@ -13,13 +20,19 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path={"/"} element={<MainWindow/>}/>
-        <Route path={"/Autorization"} element={<Autorization/>}/>
-        <Route path={"/MethodRegistration"} element={<MethodRegistration/>}/>
-        <Route path={"/Registration"} element={<Registration/>}/>
-        <Route exact path={"/Hotels"} element={<Hotels/>}/>
-        <Route exact path={`/Hotelid/:id`} element={<Hotelid/>}/>
-
+        <Route path={"/"} element={<Layout/>}>
+          <Route index element={<MainWindow/>}/>
+          <Route path={"autorization"} element={<Autorization/>}/>
+          <Route path={"methodregistration"} element={<MethodRegistration/>}/>
+          <Route path={"registration"} element={<Registration/>}/>
+          <Route exact path={"hotels"} element={<Hotels/>}/>
+          <Route exact path={"hotel/:id"} element={<Hotelid/>}/>
+          <Route path={"registrationcompany"} element={<RegistrationCompany/>}/>
+          <Route path={"profile"} element={<Profile/>}/>
+          <Route path={"posts"} element={<Posts/>}/>
+          <Route path={"posts/add-post"} element={<AddPost/>}/>
+          <Route path={"posts/post"} element={<CheckPost/>}/>
+        </Route>
       </Routes>
     </>
   );

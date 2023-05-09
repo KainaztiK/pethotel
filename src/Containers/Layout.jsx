@@ -51,12 +51,12 @@ const Layout = () => {
                             </Button>
                             </Link>
                         </>)} */}
-                        <NavLink to="Autorization">
+                        <NavLink to="autorization">
                             <Button aria-label="Войти">
                                 Войти
                             </Button>
                         </NavLink>
-                        <NavLink to="MethodRegistration">
+                        <NavLink to="methodregistration">
                             <Button aria-label="Зарегистрироваться">
                                     Зарегистрироваться
                             </Button>

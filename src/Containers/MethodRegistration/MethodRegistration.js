@@ -13,8 +13,8 @@ class MethodRegistration extends Component {
                         </div>
                         <div className="textmethod">Выберите способ регистрации</div>
                         <div className="methreg">
-                            <Link  to={"/Registration"}><button className="butmethreg1">Пользователь</button></Link>
-                            <Link  to={"/RegistrationCompany"}><button className="butmethreg2">Компания</button></Link>
+                            <Link  to={"/registration"}><button className="butmethreg1">Пользователь</button></Link>
+                            <Link  to={"/registrationcompany"}><button className="butmethreg2">Компания</button></Link>
                         </div>
                     </div>
                 </div>

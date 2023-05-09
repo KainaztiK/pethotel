@@ -120,9 +120,9 @@ function Registr() {
                 <input value={doublePassword} onChange={e => doublePasswordHandler(e)} onBlur={e => blurHandler(e)} className="icon text-field__input" type="password" name="doublePassword" id="password"
                        placeholder="Повторите пароль"/>
             </div>
-            <Link to="/Autorization"><button disabled={!formValid} onClick={signUP} className="butrega">Зарегистрироваться</button></Link>
+            <Link to="/autorization"><button disabled={!formValid} onClick={signUP} className="butrega">Зарегистрироваться</button></Link>
             <div>
-                <h5 className="d-flex justify-center clear h5rega">У вас уже есть аккаунт? <Link to="/Autorization"><div className="d-flex justify-center align-center ml-5 h5regalink">Войти</div></Link></h5>
+                <h5 className="d-flex justify-center clear h5rega">У вас уже есть аккаунт? <Link to="/autorization"><div className="d-flex justify-center align-center ml-5 h5regalink">Войти</div></Link></h5>
             </div>
         </div>
     );
