@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import classes from "./Posts.module.css"
 import axios from "axios";
 import addButton from "../../images/addPost.png";
-import changePost from "../../images/change.png";
+// import changePost from "../../images/change.png";
 import deletePost from "../../images/delete.png";
 
 

@@ -10,6 +10,8 @@ import Profile from "./Containers/Profile/Profile";
 import Posts from "./Containers/Posts/Posts";
 import AddPost from "./Containers/Posts/AddPost/AddPost";
 import CheckPost from "./Containers/CheckPost/Checkpost";
+import Edit from "./Containers/EditProfileUser/Edit";
+import Search from "./Containers/Search Hotel/Search";
 import {Layout} from "./Containers/Layout";
 
 
@@ -32,6 +34,8 @@ function App() {
           <Route path={"posts"} element={<Posts/>}/>
           <Route path={"posts/add-post"} element={<AddPost/>}/>
           <Route path={"posts/post"} element={<CheckPost/>}/>
+          <Route path={"edit-user"} element={<Edit/>}/>
+          <Route path={"search"} element={<Search/>}/>
         </Route>
       </Routes>
     </>

@@ -3,6 +3,7 @@ import axios from "axios";
 import {Link, useParams} from "react-router-dom";
 import image from "./img/image.svg"
 import {useFetching} from "../Functions/hooks/useFetching";
+import ReactMarkdown from "react-markdown";
 
 const Hotelid = () => {
 
@@ -49,7 +50,7 @@ const Hotelid = () => {
 
                     <div className="rightBlockAboutHotel">
                         <div className="AboutHotelText">
-                            {hotel.description}
+                            <ReactMarkdown children={hotel.description} />
                         </div>
                     </div>
                 </div>

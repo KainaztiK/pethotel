@@ -5,8 +5,11 @@ import MyImage from "./MainWin/img/logo.svg";
 import ipethotel from "./Registration/img/ic_pet_hotel_1.svg";
 import telegram from "./Registration/img/telegram.svg";
 import vk from "./Registration/img/vk.svg";
+import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineUser } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
+
 // import { useSelector } from "react-redux";
-import Button from "@mui/material/Button";
 
 
 const Layout = () => {
@@ -52,14 +55,34 @@ const Layout = () => {
                             </Link>
                         </>)} */}
                         <NavLink to="autorization">
-                            <Button aria-label="Войти">
+                            <button className="btnhead" aria-label="Войти">
                                 Войти
-                            </Button>
+                            </button>
                         </NavLink>
                         <NavLink to="methodregistration">
-                            <Button aria-label="Зарегистрироваться">
+                            <button className="btnhead" aria-label="Зарегистрироваться">
                                     Зарегистрироваться
-                            </Button>
+                            </button>
+                        </NavLink>
+                        <NavLink to="search">
+                            <button className="authbutton" aria-label="Избранное">
+                                <AiOutlineSearch size={'2rem'}/>
+                                Поиск
+                            </button>
+                        </NavLink>
+                        <NavLink to="/">
+                            <button className="authbutton" aria-label="Избранное">
+                                <AiFillHeart size={'2rem'}/>
+                                Избранное
+                            </button>
+                        </NavLink>
+                        <NavLink to="/hotels">
+                            <button className="authbutton" aria-label="Аккаунт">
+                                <AiOutlineUser size={'2rem'}/>
+                                <span>
+                                    Аккаунт
+                                </span>
+                            </button>
                         </NavLink>
                     </div>
                 </div>

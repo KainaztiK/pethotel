@@ -29,9 +29,12 @@ function Registr() {
     const usernameHandler = (e) => {
         setUsername(e.target.value)
         if (e.target.value.length < 3 || e.target.value.length > 30) {
-            setUsernameError('Пароль должен быть длиннее 3 и меньше 30')
+            setUsernameError('Имя пользователя должно быть больше 3 символов');
             if (e.target.value) {
-                setUsernameError('Пароль не должен быть пустым')
+                setUsernameError('Имя пользователя должно быть больше 3 символов');
+            }
+            else{
+                setUsernameError('Имя пользователя не должно быть пустым')
             }
         } else {
             setUsernameError('')
@@ -49,9 +52,12 @@ function Registr() {
     const passwordHandler = (e) => {
         setPassword(e.target.value)
         if (e.target.value.length < 10 || e.target.value.length > 30) {
-            setPasswordError('Пароль должен быть длиннее 10 и меньше 30')
+            setPasswordError('Пароль должен быть длиннее 10 и меньше 30');
             if (e.target.value) {
-                setPasswordError('Пароль не должен быть пустым')
+                setPasswordError('Пароль должен быть длиннее 10 и меньше 30');
+            }
+            else{
+                setPasswordError('Пароль не должен быть пустым');
             }
         } else {
             setPasswordError('')
@@ -101,22 +107,22 @@ function Registr() {
     return(
         <div className="form-rega text-field">
             <div className="padinput">
-                {(usernameDirty && usernameError) && <div className="Errors">{usernameError}</div> }
-                <input onChange={e => usernameHandler(e)} value={username} onBlur={e => blurHandler(e)} className="text-field__input" type="text" name="username" id="username"
+                {(usernameDirty && usernameError) && <div className="Errors1">{usernameError}</div> }
+                <input onChange={e => usernameHandler(e)} value={username} onBlur={e => blurHandler(e)} className="text-field__input" type="login" name="username" id="username"
                        placeholder="Введите ваше имя"/>
             </div>
             <div className="padinput">
-                {(emailDirty && emailError) && <div className="Errors">{emailError}</div> }
+                {(emailDirty && emailError) && <div className="Errors1">{emailError}</div> }
                 <input onChange={e => emailHandler(e)} value={email} onBlur={e => blurHandler(e)} className="text-field__input" type="text" name="email" id="email"
                        placeholder="Введите вашу почту"/>
             </div>
-            <div className="padinput">
-                {(passwordDirty && passwordError) && <div className="Errors">{passwordError}</div> }
+            <div className="padinput"> 
+                {(passwordDirty && passwordError) && <div className="Errors1">{passwordError}</div> }
                 <input value={password} onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} className="text-field__input icon" type="password" name="password" id="password"
                        placeholder="Введите пароль" />
             </div>
             <div className="padinput">
-                {(doublePasswordDirty && doublePasswordError) && <div className="Errors">{doublePasswordError}</div> }
+                {(doublePasswordDirty && doublePasswordError) && <div className="Errors1">{doublePasswordError}</div> }
                 <input value={doublePassword} onChange={e => doublePasswordHandler(e)} onBlur={e => blurHandler(e)} className="icon text-field__input" type="password" name="doublePassword" id="password"
                        placeholder="Повторите пароль"/>
             </div>

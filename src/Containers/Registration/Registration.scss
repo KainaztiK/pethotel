@@ -4,42 +4,40 @@
   align-content: center;
   background: url("../MethodRegistration/img/fullbacknd.svg");
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: calc(100vh);
   .mainrega{
     /* Задний фон у регистрации */
     margin: 20px auto;
-    position: center;
     background: #FFE6C9;
-    width: 60vw;
-    height: 80vh;
+    width: 45rem;
+    height: 40rem;
     display: flex;
     justify-content: center;
     align-content: center;
     .cssvanna{
-      margin-top: 1vh;
-      width: 40vw;
-      height: 20vh;
+      margin-top: 1rem;
+      height: 9rem;
     }
     .regatxt{
       /* Регистрация Текст */
 
       position: absolute;
-      margin-top: 22vh;
+      margin-top: 10.5rem;
       font-style: normal;
       font-weight: 600;
-      font-size: 2vw;
+      font-size: 2rem;
       letter-spacing: 0.41px;
       color: #FF5E00;
     }
     .form-rega{
       display: flex;
       position: absolute;
-      margin-top: 30vh;
-      width: 25vw;
+      margin-top: 14rem;
+      width: 25rem;
       flex-direction: column;
       .padinput{
-        padding-bottom: 1vh;
+        padding-bottom: 0.5rem;
       }
 
       .text-field__icon2 {
@@ -47,7 +45,7 @@
       }
 
       .text-field__icon2 .text-field__input {
-        padding-right: 2.5rem;
+        padding-right: 2rem;
       }
     }
   }
@@ -69,17 +67,17 @@
   display: flex;
   position: relative;
   width: 100%;
-  height: 5vh;
+  height: 2.5rem;
   font-family: inherit;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.5px;
   color: #AC8E71;
   background-color: #F3F3F3;
   background-clip: padding-box;
   border: 0;
   border-radius: 0.25rem;
-  padding-left: 2vw;
-  font-size: 2vh;
+  padding-left: 2rem;
+  font-size: 1rem;
 
 }
 .text-field__input::placeholder {color: #AC8E71;}
@@ -90,38 +88,37 @@
 .icon{
   background-image: url("./img/visibility.svg");
   background-repeat: no-repeat;
-  padding-right: 2vw;
-  background-position: 23vw;
-  background-size: 1.5vw 3vh;
+  padding-right: 1rem;
+  background-position: 23rem;
+  background-size: 1.5rem;
   cursor: pointer;
 }
 .butrega{
   /* Rectangle */
 
-  margin-top: 3vh;
-  width: 25vw;
-  height: 5vh;
-  left: 0;
+  margin-top: 1.5rem;
+  width: 25rem;
+  height: 2.5rem;
   border-width: 0;
   background: #FF5E00;
   border-radius: 30px;
   color: #FFFFFF;
-  font-size: 2vh;
+  font-size: 1rem;
 }
 .butrega:hover{
   /* Rectangle */
 
-  margin-top: 3vh;
-  width: 25vw;
-  height: 5vh;
+  margin-top: 1.5rem;
+  width: 25rem;
+  height: 2.5rem;
   color: #000000;
   background: #FFFFFF;
   border: 1px solid #FF5E00;
   border-radius: 35px;
-  font-size: 2vh;
+  font-size: 1rem;
 }
 h5{
-  font-size: 2vh;
+  font-size: 1rem;
 }
 .h5rega{
   color: #7F4E1D;
@@ -129,9 +126,9 @@ h5{
 .h5regalink {
   color: #FF5E00;
 }
-.Errors{
+.Errors1{
   color: red;
-  font-size: 2.2vh;
+  font-size: 1rem;
 }
 
 
