@@ -2,17 +2,19 @@ import React, {useEffect, useState} from 'react';
 import '../Common.scss';
 import logoHotels from "./img/logo.svg"
 import {useNavigate} from "react-router-dom";
-
+import { Categories } from '../Components/Categories/Categories';
 import Loader from "../Components/Loader/Loader";
 import {useFetching} from "../Functions/hooks/useFetching";
 import axios from "axios";
 
 function Hotels(){
-    const [hotels, setHotels] = useState([])
+    const [hotels, setHotels] = useState([]);
+    const [categoryId, setCategoryId] = useState('');
     const [fetchHotels, isHotelsLoading, hotelError] = useFetching( async () => {
         const response = await axios.get('https://localhost:5001/api/hotels/advertisements/');
         setHotels(response.data);
     });
+    
 
     // const token = localStorage.getItem('token')
     // const getHotels = async (e) => {
@@ -28,6 +30,7 @@ function Hotels(){
     useEffect(() => {
         fetchHotels();
     }, [])
+    
 
 
 
@@ -56,7 +59,7 @@ function Hotels(){
                     </div >
                     {/*Pet Choose*/}
                     <div className="petChoose">
-
+                        <Categories value={categoryId} onChangeCategory={(i)=>setCategoryId(i)}/>
                     </div>
                     {/*Text Hotelid*/}
                     <div className="textPopularHotel">

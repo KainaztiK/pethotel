@@ -13,13 +13,20 @@ const Hotelid = () => {
     const [fetchHotelById] = useFetching(async (id) => {
         const response = await axios.get(`https://localhost:5001/api/hotels/advertisements/${id}`);
         setHotel(response.data);
+        setCat(response.data.cat);
+        setDog(response.data.dog);
+        setRodent(response.data.rodent);
+        setOther(response.data.other);
     })
-    
+    const[Cat, setCat]=useState(false)
+    const[Dog, setDog]=useState(false)
+    const[Rodent, setRodent]=useState(false)
+    const[Other, setOther]=useState(false)
     useEffect(() => {
         fetchHotelById(params.id)
     }, [])
-
-    const [pets, setPets] = useState({});
+    
+    
 
     return (
         <div>
@@ -38,7 +45,10 @@ const Hotelid = () => {
                             Адрес: {hotel.address}
                         </div>
                         <div className="petsActive">
-
+                            {Cat && <div className="pet">Кошки</div>}
+                            {Dog && <div className="pet">Собаки</div>}
+                            {Rodent && <div className="pet">Грызуны</div>}
+                            {Other && <div className="pet">Другое</div>}
                         </div>
                         <div className="buttonMapPosition">
                             <button className="buttonMap">Карта</button>
