@@ -9,18 +9,18 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { AiFillHeart } from "react-icons/ai";
 
-// import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { logout, isAuth } from "../store/slices/authSlice";
 
 const Layout = () => {
-    // const isUserAuth = useSelector(true);
-    //const dispatch = useDispatch();
-    // const onClickLogout = () => {
-    //     if (window.confirm("Вы действительно хотите выйти?")) {
-    //     //dispatch(logout());
-    //     window.localStorage.removeItem("token");
-    //     }
-    // };
+    const isUserAuth = useSelector(isAuth);
+    const dispatch = useDispatch();
+    const onClickLogout = () => {
+        if (window.confirm("Вы действительно хотите выйти?")) {
+        dispatch(logout());
+        window.localStorage.removeItem("token");
+        }
+    };
 
     return (
         <>
@@ -38,52 +38,43 @@ const Layout = () => {
                         </NavLink>
                     </div>
                     <div className="buttons">
-                        {/* {isUserAuth ? (<>
-                            <Button onClick={onClickLogout} color="error" variant="contained" aria-label="Выйти">
+                        {isUserAuth ? (<>
+                            <NavLink to="search">
+                                <button className="authbutton" aria-label="Поиск">
+                                    <AiOutlineSearch size={'2rem'}/>
+                                    Поиск
+                                </button>
+                            </NavLink>
+                            <NavLink to="/">
+                                <button className="authbutton" aria-label="Избранное">
+                                    <AiFillHeart size={'2rem'}/>
+                                    Избранное
+                                </button>
+                            </NavLink>
+                            <NavLink to="/hotels">
+                                <button className="authbutton" aria-label="Аккаунт">
+                                    <AiOutlineUser size={'2rem'}/>
+                                    <span>
+                                        Аккаунт
+                                    </span>
+                                </button>
+                            </NavLink>
+                            <button onClick={onClickLogout} color="error" variant="contained" aria-label="Выйти">
                                 Выйти
-                            </Button>
+                            </button>
                         </>) : (<>
-                            <Link to="/login">
-                            <Button color="primary" component="button" variant="contained" aria-label="Войти">
-                                Войти
-                            </Button>
-                            </Link>
-                            <Link to="/login">
-                            <Button color="primary" component="button" variant="contained" aria-label="Зарегистрироваться">
-                                Зарегистрироваться
-                            </Button>
-                            </Link>
-                        </>)} */}
-                        <NavLink to="autorization">
-                            <button className="btnhead" aria-label="Войти">
-                                Войти
-                            </button>
-                        </NavLink>
-                        <NavLink to="methodregistration">
-                            <button className="btnhead" aria-label="Зарегистрироваться">
-                                    Зарегистрироваться
-                            </button>
-                        </NavLink>
-                        <NavLink to="search">
-                            <button className="authbutton" aria-label="Избранное">
-                                <AiOutlineSearch size={'2rem'}/>
-                                Поиск
-                            </button>
-                        </NavLink>
-                        <NavLink to="/">
-                            <button className="authbutton" aria-label="Избранное">
-                                <AiFillHeart size={'2rem'}/>
-                                Избранное
-                            </button>
-                        </NavLink>
-                        <NavLink to="/hotels">
-                            <button className="authbutton" aria-label="Аккаунт">
-                                <AiOutlineUser size={'2rem'}/>
-                                <span>
-                                    Аккаунт
-                                </span>
-                            </button>
-                        </NavLink>
+                            <NavLink to="autorization">
+                                <button className="btnhead" aria-label="Войти">
+                                    Войти
+                                </button>
+                            </NavLink>
+                            <NavLink to="methodregistration">
+                                <button className="btnhead" aria-label="Зарегистрироваться">
+                                        Зарегистрироваться
+                                </button>
+                            </NavLink>
+                        </>)}
+                        
                     </div>
                 </div>
             </header>
