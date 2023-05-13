@@ -1,0 +1,28 @@
+.root {
+  max-width: 600px;
+  width: 100%;
+  padding: 5px;
+}
+.rootcolor{
+  background-color: #F2C28A;
+}
+.rootcolor1{
+  background-color: #FFE6C9;
+}
+.field {
+  margin-bottom: 10px !important;
+  background-color: #F3F3F3;
+  border-radius: 4px;
+  
+}
+
+.title {
+  text-align: center !important;
+  font-weight: bold !important;
+  margin-bottom: 30px !important;
+
+  @media screen and (max-width: 500px) {
+    font-size: 10px !important;
+  }
+}
+

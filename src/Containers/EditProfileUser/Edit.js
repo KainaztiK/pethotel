@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
+import { Link, Navigate} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { isAuth } from "../../redux/slices/authSlice";
 
 import "./Edit.scss";
 
@@ -48,6 +49,12 @@ function Edit() {
             default:
         }
     }
+
+    const isUserAuth = useSelector(isAuth);
+    if (!window.localStorage.getItem("token") && !isUserAuth) {
+        return <Navigate to={"/"} />;
+    }
+
     return(
         <>
             <div>

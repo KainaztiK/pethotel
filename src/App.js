@@ -13,10 +13,17 @@ import CheckPost from "./Containers/CheckPost/Checkpost";
 import Edit from "./Containers/EditProfileUser/Edit";
 import Search from "./Containers/Search Hotel/Search";
 import {Layout} from "./Containers/Layout";
-
+import { useDispatch, useSelector  } from "react-redux";
+import { useEffect } from "react";
+import { fetchAuthMe } from "../src/redux/actions/auth";
+import { isAuth } from "../src/redux/slices/authSlice";
 
 function App() {
-  
+  const dispatch = useDispatch();
+  const isUserAuth = useSelector(isAuth);
+  useEffect(() => {
+    dispatch(fetchAuthMe());
+  }, [dispatch]);
 
 
   return (

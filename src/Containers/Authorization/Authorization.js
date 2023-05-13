@@ -1,11 +1,19 @@
 import React, {Component} from 'react';
 import '../Common.scss';
 import Autorizat from "../Functions/Autorize";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import lapkimg from "../Authorization/img/lapkimg.svg"
-class Authorization extends Component {
-    render() {
-        return (
+import { useSelector } from "react-redux";
+import { isAuth } from "../../redux/slices/authSlice";
+
+
+function Authorization(){
+    
+    const isUserAuth = useSelector(isAuth);
+    if (window.localStorage.getItem("token") && isUserAuth) {
+        return <Navigate to={"/hotels"} />;
+    }
+    return (
             <div>
                 <div className="bodyenter">
                     <div className="mainenter">
@@ -26,8 +34,7 @@ class Authorization extends Component {
                     </div>
                 </div>
             </div>
-        );
-    }
+    );
 }
 
 export default Authorization;

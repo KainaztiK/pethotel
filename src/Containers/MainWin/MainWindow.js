@@ -1,8 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {Navigate} from "react-router-dom";
 import '../Common.scss';
+import { useSelector } from "react-redux";
+import { isAuth } from "../../redux/slices/authSlice";
 
-class MainWindow extends Component {
-    render() {
+function MainWindow() {
+    const isUserAuth = useSelector(isAuth);
+    if (window.localStorage.getItem("token") && isUserAuth) {
+        return <Navigate to={"/hotels"} />;
+    }
+
         return (
             <div className="mainpic">
                 <div className="maincontent">
@@ -18,7 +25,6 @@ class MainWindow extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 

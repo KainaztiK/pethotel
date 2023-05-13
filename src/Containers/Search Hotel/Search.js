@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Navigate} from "react-router-dom";
 import Loader from "../Components/Loader/Loader";
 import {useFetching} from "../Functions/hooks/useFetching";
+import { useSelector } from "react-redux";
+import { isAuth } from "../../redux/slices/authSlice";
 import axios from "axios";
 import './Search.scss';
 function Search() {
@@ -23,6 +25,10 @@ function Search() {
         return hotel.name.toLowerCase().includes(searchHotel.toLowerCase());
     })
 
+    const isUserAuth = useSelector(isAuth);
+    if (!window.localStorage.getItem("token") && !isUserAuth) {
+        return <Navigate to={"/"} />;
+    }
 
 
     const arr = filteredHotel.map((data) => {

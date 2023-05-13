@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {Link, useParams} from "react-router-dom";
+import {Link, useParams, Navigate} from "react-router-dom";
 import image from "./img/image.svg"
 import {useFetching} from "../Functions/hooks/useFetching";
 import ReactMarkdown from "react-markdown";
+import { useSelector } from "react-redux";
+import { isAuth } from "../../redux/slices/authSlice";
 
 const Hotelid = () => {
 
@@ -25,7 +27,11 @@ const Hotelid = () => {
     useEffect(() => {
         fetchHotelById(params.id)
     }, [])
-    
+    const isUserAuth = useSelector(isAuth);
+    if (!window.localStorage.getItem("token") && !isUserAuth) {
+        return <Navigate to={"/"} />;
+    }
+
     
 
     return (

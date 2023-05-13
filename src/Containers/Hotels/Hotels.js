@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import '../Common.scss';
 import logoHotels from "./img/logo.svg"
-import {useNavigate} from "react-router-dom";
+import {useNavigate, Navigate} from "react-router-dom";
 import { Categories } from '../Components/Categories/Categories';
 import Loader from "../Components/Loader/Loader";
 import {useFetching} from "../Functions/hooks/useFetching";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { isAuth } from "../../redux/slices/authSlice";
 
 function Hotels(){
     const [hotels, setHotels] = useState([]);
@@ -29,10 +31,12 @@ function Hotels(){
     
     useEffect(() => {
         fetchHotels();
-    }, [])
-    
+    }, []);
 
-
+    const isUserAuth = useSelector(isAuth);
+    if (!window.localStorage.getItem("token") && !isUserAuth) {
+        return <Navigate to={"/"} />;
+    }
 
 
     const arr = hotels.map((data) => {
