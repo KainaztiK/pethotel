@@ -8,6 +8,7 @@ import Hotelid from "./Containers/Hotelid/Hotelid";
 import RegistrationCompany from "./Containers/RegistrationCompany/Registration";
 import Profile from "./Containers/Profile/Profile";
 import Posts from "./Containers/Posts/Posts";
+import EditPost from "./Containers/Posts/EditPost/EditPost"
 import AddPost from "./Containers/Posts/AddPost/AddPost";
 import CheckPost from "./Containers/CheckPost/Checkpost";
 import Edit from "./Containers/EditProfileUser/Edit";
@@ -33,6 +34,7 @@ function App() {
           <Route path={"profile"} element={<Profile/>}/>
           <Route path={"posts"} element={<Posts/>}/>
           <Route path={"posts/add-post"} element={<AddPost/>}/>
+          <Route path={"posts/edit-post/:id"} element={<EditPost/>}/>
           <Route path={"posts/post"} element={<CheckPost/>}/>
           <Route path={"edit-user"} element={<Edit/>}/>
           <Route path={"search"} element={<Search/>}/>

@@ -234,7 +234,7 @@ function Registration(){
                                  <input onChange={e => passwordCopyHandler(e)} onBlur={e => blurHandler(e)} value={CopyPassword} id={'PasswordCopy'} className={classes.textBox} type={'password'} placeholder={'Повторите пароль'} name={'copyPassword'}/>
                                  <button id={'pass2_img'} className={classes.passwordImg} onClick={passwordCheck}/>
                             </div>
-                            <button onClick={e => createAccount(e)} disabled={!formValid} className={classes.sigIn}>Войти</button>
+                            <button onClick={e => createAccount(e)} disabled={!formValid} className={classes.sigIn}>Зарегистрироваться</button>
                             <div className={classes.Text}>
                                 У вас уже есть аккаунт? <Link to={"/autorization"} className={classes.Link}>Войти</Link>
                             </div>

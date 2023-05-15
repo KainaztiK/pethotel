@@ -4,11 +4,13 @@ import {Link, useParams} from "react-router-dom";
 import image from "./img/image.svg"
 import {useFetching} from "../Functions/hooks/useFetching";
 import ReactMarkdown from "react-markdown";
+import MapBlock from "../Components/Maps/Maps"
 
 const Hotelid = () => {
 
     const params = useParams();
     const [hotel, setHotel] = useState({});
+    const [ModalActive, setModalActive] = useState(true);
 
     const [fetchHotelById] = useFetching(async (id) => {
         const response = await axios.get(`https://localhost:5001/api/hotels/advertisements/${id}`);
@@ -25,7 +27,6 @@ const Hotelid = () => {
     useEffect(() => {
         fetchHotelById(params.id)
     }, [])
-    
     
 
     return (
@@ -51,7 +52,10 @@ const Hotelid = () => {
                             {Other && <div className="pet">Другое</div>}
                         </div>
                         <div className="buttonMapPosition">
-                            <button className="buttonMap">Карта</button>
+                            <button className="buttonMap" onClick={() => setModalActive(true)}>Карта</button>
+                            <MapBlock active={ModalActive} setActive={setModalActive}>
+                                <p>sdfdsfsdafsdfdad</p>
+                            </MapBlock>
                         </div>
                         <div className="btnOrderBlock">
                             <button className="btnOrder">Заказать</button>

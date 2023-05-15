@@ -2,11 +2,12 @@ import React, {useEffect, useState} from 'react';
 import classes from "./Posts.module.css"
 import axios from "axios";
 import addButton from "../../images/addPost.png";
-// import changePost from "../../images/change.png";
+import changePost from "../../images/change.png";
 import deletePost from "../../images/delete.png";
-
+import {useNavigate} from "react-router-dom";
 
 function Posts() {
+
     const [posts,setPosts] = useState([])
     useEffect(() => {
         axios.get('https://localhost:5001/api/hotels/advertisements/')
@@ -22,21 +23,22 @@ function Posts() {
     const addPost=()=>{
         window.location.href = '/posts/add-post';
     }
-
+    const router = useNavigate()
     const Post = posts.map((post) => {
-
+        
         const deletePostClick=()=>{
             try{
                 let url = 'https://localhost:5001/api/hotels/advertisements/';
                 url += post.id;
                 const res = axios.delete(url)
                 console.log(res);
+                document.location.reload();
             }
             catch {
                 alert("что-то пошло не так")
             }
         }
-
+        const editPostClick = () => router(`/posts/edit-post/${post.id}`)
         const checkPost=()=>{
             let params={
                 name:post.name,
@@ -60,6 +62,9 @@ function Posts() {
                     <div className={classes.PostAddress}>{post.city}</div>
                 </div>
                 <div className={classes.PostButton}>
+                
+                    <img onClick={editPostClick}  src={changePost} className={classes.PostImg} alt={'Картинка'}/>
+
                     <img onClick={deletePostClick} src={deletePost} className={classes.PostImg} alt={'Картинка'}/>
                 </div>
             </div>

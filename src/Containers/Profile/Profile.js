@@ -1,13 +1,15 @@
-import React, {PureComponent} from 'react';
+import React, { useState } from 'react';
+import MapBlock from '../Components/Maps/Maps';
 
-class Profile extends PureComponent {
-    render() {
-        return (
-            <div>
-                Profile
-            </div>
-        );
-    }
+const Profile = () => {
+    const [modalActive, setModalActive] = useState(true);
+    return (
+        <div>
+            <button>Открыть окно</button>
+            <MapBlock active={modalActive} setActive={setModalActive}/>
+        </div>
+    );
+    
 }
 
 export default Profile;
