@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect, useRef} from "react";
 import { Outlet, NavLink } from 'react-router-dom';
 import "./Layout.scss";
 import MyImage from "./MainWin/img/logo.svg";
@@ -7,61 +7,116 @@ import telegram from "./Registration/img/telegram.svg";
 import vk from "./Registration/img/vk.svg";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
-import { AiFillHeart } from "react-icons/ai";
-import { Button } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
-import { logout, isAuth } from "../redux/slices/authSlice";
+// import { AiFillHeart } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/slices/authSlice";
+import Axios from "../API/api";
 
 const Layout = () => {
-    const isUserAuth = useSelector(isAuth);
     const dispatch = useDispatch();
     const onClickLogout = () => {
         if (window.confirm("Вы действительно хотите выйти?")) {
             dispatch(logout());
             window.localStorage.removeItem("token");
+            window.localStorage.removeItem("role");
+            setOpen(false);
+            window.location.href="/"
         }
     };
+    const [open, setOpen] = useState(false);
 
+    let menuRef = useRef();
+    
+    const [userInfo, setUserInfo] = useState('');
+    
+    useEffect(() => {
+        
+        let handler = (e)=>{
+        if(menuRef.current && !menuRef.current.contains(e.target)){
+            setOpen(false);
+        }};
+            document.addEventListener("mousedown", handler)
+        return() =>{
+            document.removeEventListener("mousedown", handler);
+        }
+    });
+    const fetchUserInfo = async () => {
+        const response = await Axios.get('api/authentication/CheckAuthorization');
+        setUserInfo(response.data);
+    };
+    useEffect(() => {
+        const role = window.localStorage.getItem("role");
+        const token = window.localStorage.getItem("token");
+        if (role && token) {
+            fetchUserInfo();
+        }
+    }, []);
+    
+    
+    
+    
     return (
         <>
             <header>
-            {isUserAuth ? (<>
+            {(window.localStorage.getItem("role")==="User") 
+            ? (<>
                 <div className="headerblock">
                     <div className="headerleftblock clear">
                         <NavLink to="/hotels">
                             <div className="headerLeft">
                                 <img width={50} height={50} src={MyImage} className="logo mt-5" alt="logotip"/>
                                 <div className="logotxt">
-                                    <h3 className="">Pet</h3>
-                                    <h3 className="">Hotel</h3>
+                                    <h4 className="">Pet</h4>
+                                    <h4 className="">Hotel</h4>
                                 </div>
                             </div>
                         </NavLink>
                     </div>
                     <div className="buttons">
                         <NavLink to="search">
-                            <button className="authbutton" aria-label="Поиск">
+                            <button onClick={()=>{setOpen(false)}} className="authbutton" aria-label="Поиск">
                                 <AiOutlineSearch size={'2rem'}/>
                                 Поиск
                             </button>
                         </NavLink>
-                        <NavLink to="/">
+                        {/* <NavLink to="/">
                             <button className="authbutton" aria-label="Избранное">
                                 <AiFillHeart size={'2rem'}/>
                                 Избранное
                             </button>
-                        </NavLink>
-                        <NavLink to="/hotels">
-                            <button className="authbutton" aria-label="Аккаунт">
+                        </NavLink> */}
+                            <button onClick={()=>{setOpen(!open)}} className="authbutton" aria-label="Аккаунт">
                                 <AiOutlineUser size={'2rem'}/>
                                 <span>
                                     Аккаунт
                                 </span>
                             </button>
-                        </NavLink>
-                        <Button onClick={onClickLogout} aria-label="Выйти">
-                                Выйти
-                        </Button>
+                        <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
+                        <ul>
+                            <li className = 'dropdownItem'>
+                                <h5>{userInfo.userName}</h5>
+                            </li>
+                            <li className = 'dropdownItem'>
+                                <h5>{userInfo.email}</h5>
+                            </li>
+                        
+                            <NavLink to="/">
+                            <li className = 'dropdownItem'>
+                                <h5>Редактировать профиль</h5>
+                            </li>
+                            </NavLink>
+                            <NavLink to="/edit-user">
+                            <li className = 'dropdownItem'>
+                                <h5>Изменить пароль</h5>
+                            </li>
+                            </NavLink>
+                            <li className = 'dropdownItem' onClick={onClickLogout}>
+                                <h5>Выйти</h5>
+                            </li>
+                            
+                        </ul>
+                        </div>
+
                     </div>
                 </div>
             </>) : (<>
@@ -71,8 +126,8 @@ const Layout = () => {
                             <div className="headerLeft">
                                 <img width={50} height={50} src={MyImage} className="logo mt-5" alt="logotip"/>
                                 <div className="logotxt">
-                                    <h3 className="">Pet</h3>
-                                    <h3 className="">Hotel</h3>
+                                    <h4 className="">Pet</h4>
+                                    <h4 className="">Hotel</h4>
                                 </div>
                             </div>
                         </NavLink>
@@ -94,7 +149,7 @@ const Layout = () => {
             </header>
             
 
-            <main className="container">
+            <main className="container" onClick={()=>{setOpen(false)}}>
                 <Outlet />
             </main>
 

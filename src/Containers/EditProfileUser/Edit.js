@@ -1,59 +1,59 @@
-import React, { useState } from "react";
-import { Link, Navigate} from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
-
+import TextField from "@mui/material/TextField";
 import "./Edit.scss";
-
+import { useDispatch } from "react-redux";
+import { useForm } from "react-hook-form";
+import { fetchAuth } from "../../redux/actions/auth";
+import styles from "./Edit.module.scss";
 function Edit() {
-    const [username, setUsername] = useState();
-    const [usernameDirty, setUsernameDirty] = useState(false);
-    const [usernameError, setUsernameError] = useState('Имя не должно быть пустым');
-    const [email, setEmail] = useState('');
-    const [emailDirty, setEmailDirty] = useState(false);
-    const [emailError, setEmailError] = useState('Email не должен быть пустым');
-    
-    const usernameHandler = (e) => {
-        setUsername(e.target.value)
-        if (e.target.value.length < 3 || e.target.value.length > 30) {
-            setUsernameError('Имя пользователя должно быть больше 3 символов');
-            if (e.target.value) {
-                setUsernameError('Имя пользователя должно быть больше 3 символов');
-            }
-            else{
-                setUsernameError('Имя пользователя не должно быть пустым')
-            }
-        } else {
-            setUsernameError('')
-        }
-    }
 
-    const emailHandler = (e) => {
-        setEmail(e.target.value)
-        const re = /\S+@\S+\.\S+/;
-        if (!re.test(String(e.target.value).toLowerCase())) {
-            setEmailError('Некорректный Email')
-        } else {
-            setEmailError('')
-        }
-    }
-
-    const blurHandler = (e) => {
-        switch (e.target.name) {
-            case 'username':
-                setUsernameDirty(true)
-                break
-            case 'email':
-                setEmailDirty(true)
-                break
-            default:
-        }
-    }
-
+    const router = useNavigate()
     const isUserAuth = useSelector(isAuth);
-    if (!window.localStorage.getItem("token") && !isUserAuth) {
-        return <Navigate to={"/"} />;
+    useEffect(()=>{
+        if(window.localStorage.getItem("role")==="User")
+        {
+            router("/edit-user");
+        }
+        if(window.localStorage.getItem("role")==="Companyy")
+        {
+            router("/posts");
+        }
+        if(!window.localStorage.getItem("token"))
+        {
+            router("/");
+        }
+    }, [router, isUserAuth])
+    const dispatch = useDispatch();
+
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({
+    defaultValues: {
+      password: "",
+      repeatpassword: "",
+    },
+    mode: "onChange",
+  });
+
+  const onSubmit = async (values) => {
+    const data  = await dispatch(fetchAuth(values));
+
+    if (`error` in data) {
+      return alert(data.payload);
     }
+
+    if ('token' in data.payload) {
+      window.localStorage.setItem('token', data.payload.token);
+      window.localStorage.setItem('role', data.payload.role);
+      window.location.href="/hotels"
+    }
+  };
 
     return(
         <>
@@ -66,19 +66,33 @@ function Edit() {
                         <div className="rightblock">
                             <div>
                                 <div className="textedit">
-                                    <h5>Редактировать профиль</h5>
+                                    <h5>Изменить пароль</h5>
                                 </div>
-                                {(usernameDirty && usernameError) && <div className="ErrorsEdit">{usernameError}</div> }
-                                <div className="padinput">
-                                    <input onChange={e => usernameHandler(e)} value={username} onBlur={e => blurHandler(e)} className="text-field__inputedit" type="username" name="username" id="username"
-                                        placeholder="Введите ваше имя"/>
+                                <div>
+                                <form className={styles.rootcolor} classes={{ root: styles.root }} onSubmit={handleSubmit(onSubmit)}>
+                                    <TextField
+                                    className={styles.field}
+                                    label="Старый пароль"
+                                    error={Boolean(errors.email?.message)}
+                                    helperText={errors.email?.message}
+                                    fullWidth
+                                    {...register("email", { required: "Укажите пароль" })}
+                                    type="password"
+                                    />
+                                    <TextField
+                                    className={styles.field}
+                                    label="Новый пароль"
+                                    type="password"
+                                    error={Boolean(errors.password?.message)}
+                                    helperText={errors.password?.message}
+                                    fullWidth
+                                    {...register("repeatpassword", { required: "Укажите пароль" })}
+                                    />
+                                    <div className="rootedit">
+                                        <Link to="/hotels"><button disabled={!isValid} className="butsave" type="submit" size="large" variant="contained" fullWidth>Сохранить</button></Link>
+                                    </div>
+                                </form>
                                 </div>
-                                {(emailDirty && emailError) && <div className="ErrorsEdit">{emailError}</div> }
-                                <div className="padinput">
-                                <input onChange={e => emailHandler(e)} value={email} onBlur={e => blurHandler(e)} className="text-field__inputedit" type="email" name="email" id="email"
-                       placeholder="Введите вашу почту"/>
-                                </div>
-                                <Link to="/hotels"><button className="butsave" name="savebutton">Сохранить</button></Link>
                             </div>
                         </div>
                     </div>

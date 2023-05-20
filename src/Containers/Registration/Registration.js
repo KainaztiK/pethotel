@@ -1,10 +1,29 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import Registr from "../Functions/Register";
 import imgvanna from "../Registration/img/vanna.svg";
 import '../Common.scss';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import { isAuth } from "../../redux/slices/authSlice";
 
-class Registration extends Component {
-    render() {
+function Registration() {
+    const router = useNavigate()
+    const isUserAuth = useSelector(isAuth);
+    useEffect(()=>{
+        if(window.localStorage.getItem("role")==="User")
+        {
+            router("/hotels");
+        }
+        if(window.localStorage.getItem("role")==="Companyy")
+        {
+            router("/posts");
+        }
+        if(!window.localStorage.getItem("token"))
+        {
+            router("/registration");
+        }
+    }, [router, isUserAuth])
+    
         return (
             <div>
 
@@ -17,7 +36,6 @@ class Registration extends Component {
                 </div>
             </div>
         );
-    }
 }
 
 export default Registration;

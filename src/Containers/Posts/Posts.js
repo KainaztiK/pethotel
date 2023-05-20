@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import classes from "./Posts.module.css"
 import axios from "axios";
 import addButton from "../../images/addPost.png";
@@ -6,7 +7,10 @@ import addButton from "../../images/addPost.png";
 import deletePost from "../../images/delete.png";
 
 
+
+
 function Posts() {
+    const router = useNavigate();
     const [posts,setPosts] = useState([])
     useEffect(() => {
         axios.get('https://localhost:5001/api/hotels/advertisements/')
@@ -17,7 +21,19 @@ function Posts() {
             .catch(err=>{
                 console.log(err);
             });
-    }, []);
+        if(window.localStorage.getItem("role")==="User")
+        {
+            router("/hotels");
+        }
+        if(window.localStorage.getItem("role")==="Companyy")
+        {
+            router("/posts");
+        }
+        if(!window.localStorage.getItem("token"))
+        {
+            router("/");
+        }
+    }, [router]);
 
     const addPost=()=>{
         window.location.href = '/posts/add-post';
@@ -52,6 +68,7 @@ function Posts() {
             let w = window.open('/posts/post')
             w.window.parameters = params;
         }
+
 
         return(
             <div key={post.id} className={classes.Post}>

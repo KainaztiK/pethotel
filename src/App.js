@@ -11,21 +11,20 @@ import Posts from "./Containers/Posts/Posts";
 import AddPost from "./Containers/Posts/AddPost/AddPost";
 import CheckPost from "./Containers/CheckPost/Checkpost";
 import Edit from "./Containers/EditProfileUser/Edit";
-import Search from "./Containers/Search Hotel/Search";
+import Search from "./Containers/SearchHotel/Search";
 import {Layout} from "./Containers/Layout";
-import { useDispatch, useSelector  } from "react-redux";
-import { useEffect } from "react";
-import { fetchAuthMe } from "../src/redux/actions/auth";
-import { isAuth } from "../src/redux/slices/authSlice";
+// import { useDispatch  } from "react-redux";
+// import { useEffect } from "react";
+// import { fetchAuthMe } from "../src/redux/actions/auth";
+
 
 function App() {
-  const dispatch = useDispatch();
-  const isUserAuth = useSelector(isAuth);
-  useEffect(() => {
-    dispatch(fetchAuthMe());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(fetchAuthMe());
+  // }, [dispatch]);
 
-
+  
   return (
     <>
       <Routes>
@@ -34,15 +33,17 @@ function App() {
           <Route path={"autorization"} element={<Autorization/>}/>
           <Route path={"methodregistration"} element={<MethodRegistration/>}/>
           <Route path={"registration"} element={<Registration/>}/>
+          <Route path={"registrationcompany"} element={<RegistrationCompany/>}/>
+            
           <Route exact path={"hotels"} element={<Hotels/>}/>
           <Route exact path={"hotel/:id"} element={<Hotelid/>}/>
-          <Route path={"registrationcompany"} element={<RegistrationCompany/>}/>
+          <Route path={"edit-user"} element={<Edit/>}/>
+          <Route path={"search"} element={<Search/>}/>
+
           <Route path={"profile"} element={<Profile/>}/>
           <Route path={"posts"} element={<Posts/>}/>
           <Route path={"posts/add-post"} element={<AddPost/>}/>
           <Route path={"posts/post"} element={<CheckPost/>}/>
-          <Route path={"edit-user"} element={<Edit/>}/>
-          <Route path={"search"} element={<Search/>}/>
         </Route>
       </Routes>
     </>

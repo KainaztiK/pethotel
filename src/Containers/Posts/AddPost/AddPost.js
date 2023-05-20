@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./AddPost.module.css"
-import axios from "axios";
+import Axios from "../../../API/api";
 
 
 let cats =false;
@@ -180,26 +180,18 @@ function Posts() {
 
     const createPost= async () => {
         try{
-            console.log(HotelName,
-                City,
-                Address,
-                Description,
-                Number,
-                Cat,
-                Dog,
-                Rodent,
-                Other)
-            const res = await axios.post('https://localhost:5001/api/hotels/advertisements', {
-                name:HotelName,
-                city:City,
-                address:Address,
-                description:Description,
-                number:Number,
-                cat:Cat,
-                dog:Dog,
-                rodent:Rodent,
-                other:Other
-            })
+            const fields = {
+                name: HotelName,
+                city: City,
+                address: Address,
+                description: Description,
+                number: Number,
+                cat: Cat,
+                dog: Dog,
+                rodent: Rodent,
+                other: Other
+              };
+            const res = await Axios.post('api/hotels/advertisements', fields)
             console.log(res)
             window.location.href = '/posts';
         }

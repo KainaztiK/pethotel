@@ -3,16 +3,13 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import styles from "./Login.module.scss";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
-
 import { fetchAuth } from "../../redux/actions/auth";
-import { isAuth } from "../../redux/slices/authSlice";
 
 export const Login = () => {
   const dispatch = useDispatch();
-  const isUserAuth = useSelector(isAuth);
+
 
   const {
     register,
@@ -20,7 +17,7 @@ export const Login = () => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      email: "falileev.sergey2003@yandex.ru",
+      email: "github@rambler.com",
       password: "qwerty12345",
     },
     mode: "onChange",
@@ -34,13 +31,12 @@ export const Login = () => {
     }
 
     if ('token' in data.payload) {
-      window.localStorage.setItem('token', data.payload.token)
+      window.localStorage.setItem('token', 'Bearer ' + data.payload.token);
+      window.localStorage.setItem('role', data.payload.role);
+      window.location.href="/hotels"
     }
   };
 
-  if (isUserAuth) {
-    return <Navigate to={'/hotels'} />
-  }
 
   return (
       <form className={styles.rootcolor} classes={{ root: styles.root }} onSubmit={handleSubmit(onSubmit)}>

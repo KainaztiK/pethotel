@@ -1,34 +1,43 @@
 import React, {useEffect, useState} from "react";
-import {useNavigate, Navigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Loader from "../Components/Loader/Loader";
-import {useFetching} from "../Functions/hooks/useFetching";
-import { useSelector } from "react-redux";
-import { isAuth } from "../../redux/slices/authSlice";
 import axios from "axios";
 import './Search.scss';
+import { useSelector } from "react-redux";
+import { isAuth } from "../../redux/slices/authSlice";
+
 function Search() {
     const [hotels, setHotels] = useState([]);
     const [searchHotel, setSearchHotel] = useState('');
-    const [fetchHotels, isHotelsLoading] = useFetching( async () => {
-        const response = await axios.get('https://localhost:5001/api/hotels/advertisements/');
-        setHotels(response.data);
-    });
-    
+    const [isLoading, setIsLoading] = useState(false);
     const router = useNavigate()
-    console.log(router)
-    
+    const isUserAuth = useSelector(isAuth);
     useEffect(() => {
+        setIsLoading(true);
+        async function fetchHotels(){
+            const response = await axios.get('https://localhost:5001/api/hotels/advertisements/');
+            setHotels(response.data);
+            setIsLoading(false);
+        } 
         fetchHotels();
-    }, [])
+        if(window.localStorage.getItem("role")==="User")
+        {
+            router("/search");
+        }
+        if(window.localStorage.getItem("role")==="Companyy")
+        {
+            router("/posts");
+        }
+        if(!window.localStorage.getItem("token"))
+        {
+            router("/");
+        }
+    }, [router, isUserAuth])
 
     const filteredHotel = hotels.filter(hotel => {
         return hotel.name.toLowerCase().includes(searchHotel.toLowerCase());
     })
 
-    const isUserAuth = useSelector(isAuth);
-    if (!window.localStorage.getItem("token") && !isUserAuth) {
-        return <Navigate to={"/"} />;
-    }
 
 
     const arr = filteredHotel.map((data) => {
@@ -54,7 +63,7 @@ function Search() {
                         <input onChange={(e)=>setSearchHotel(e.target.value)} className="inputSearch" type="search" placeholder="Search..."/>
                     </div >
                     {/*Main Hotels*/}
-                    {isHotelsLoading
+                    {isLoading
                         ? <Loader/>
                         : <div className="BlockFilteredHotels">{arr}</div>
                     }

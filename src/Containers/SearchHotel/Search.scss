@@ -41,9 +41,9 @@
                 transform: rotate(-0.34rem);
                 cursor: pointer;
                 .leftSearchedHotel{
+                    background: url('../Hotels/img/imgHotel.svg');
                     position: relative;
                     width: 7rem;
-                    background-color: aqua;
                     border-radius: 1rem;
                 }
                 .rightSearchedHotel{
