@@ -7,7 +7,6 @@ import Loader from "../Components/Loader/Loader";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
-import Axios from "../../API/api";
 
 function Hotels(){
     const [hotels, setHotels] = useState([]);
@@ -38,27 +37,6 @@ function Hotels(){
         fetchHotels();
     }, [isUserAuth, router]);
     
-    const [userInfo, setUserInfo] = useState('');
-    useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-                const response = await Axios.get('api/authentication/CheckAuthorization');
-                if (response.data && response.data.userId) {
-                    setUserInfo(response.data);
-                } else {
-                    throw new Error("Invalid user ID format");
-                }
-            } catch (error) {
-                console.error("Error fetching user info:", error);
-            }
-        };
-    
-        const role = window.localStorage.getItem("role");
-        const token = window.localStorage.getItem("token");
-        if (role && token) {
-            fetchUserInfo();
-        }
-    }, []);
 
     const arr = hotels.map((data) => {
         return(
@@ -88,7 +66,7 @@ function Hotels(){
                     </div>
                     {/*Text Hotelid*/}
                     <div className="textPopularHotel">
-                        Популярные отели {userInfo.email}
+                        Популярные отели
                     </div>
                     {/*Main Hotels*/}
                     {isLoading
