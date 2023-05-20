@@ -1,16 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
 import classes from "./Posts.module.css"
 import axios from "axios";
 import addButton from "../../images/addPost.png";
-// import changePost from "../../images/change.png";
+import changePost from "../../images/change.png";
 import deletePost from "../../images/delete.png";
-
-
-
+import {useNavigate} from "react-router-dom";
 
 function Posts() {
-    const router = useNavigate();
+
     const [posts,setPosts] = useState([])
     useEffect(() => {
         axios.get('https://localhost:5001/api/hotels/advertisements/')
@@ -21,38 +18,32 @@ function Posts() {
             .catch(err=>{
                 console.log(err);
             });
-        if(window.localStorage.getItem("role")==="User")
-        {
-            router("/hotels");
-        }
-        if(window.localStorage.getItem("role")==="Companyy")
-        {
-            router("/posts");
-        }
-        if(!window.localStorage.getItem("token"))
-        {
-            router("/");
-        }
-    }, [router]);
+    }, []);
 
     const addPost=()=>{
         window.location.href = '/posts/add-post';
     }
-
+    let token = window.localStorage.getItem('token');
+    const headers= {
+        'Authorization': `Bearer ${token}`
+    };
+    const router = useNavigate()
     const Post = posts.map((post) => {
-
+        
         const deletePostClick=()=>{
             try{
                 let url = 'https://localhost:5001/api/hotels/advertisements/';
                 url += post.id;
-                const res = axios.delete(url)
+                console.log(window.localStorage.getItem("token"));
+                const res = axios.delete(url,{headers} )
                 console.log(res);
+                document.location.reload();
             }
             catch {
                 alert("что-то пошло не так")
             }
         }
-
+        const editPostClick = () => router(`/posts/edit-post/${post.id}`)
         const checkPost=()=>{
             let params={
                 name:post.name,
@@ -69,7 +60,6 @@ function Posts() {
             w.window.parameters = params;
         }
 
-
         return(
             <div key={post.id} className={classes.Post}>
                 <div className={classes.PostData}>
@@ -77,6 +67,9 @@ function Posts() {
                     <div className={classes.PostAddress}>{post.city}</div>
                 </div>
                 <div className={classes.PostButton}>
+                
+                    <img onClick={editPostClick}  src={changePost} className={classes.PostImg} alt={'Картинка'}/>
+
                     <img onClick={deletePostClick} src={deletePost} className={classes.PostImg} alt={'Картинка'}/>
                 </div>
             </div>

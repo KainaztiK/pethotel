@@ -32,7 +32,7 @@ const Hotelid = () => {
         }
         if(window.localStorage.getItem("role")==="Companyy")
         {
-            router("/posts");
+            router(`/hotel/${params.id}`);
         }
         if(!window.localStorage.getItem("token"))
         {

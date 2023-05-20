@@ -9,9 +9,9 @@ import RegistrationCompany from "./Containers/RegistrationCompany/Registration";
 import Profile from "./Containers/Profile/Profile";
 import Posts from "./Containers/Posts/Posts";
 import AddPost from "./Containers/Posts/AddPost/AddPost";
-import CheckPost from "./Containers/CheckPost/Checkpost";
 import Edit from "./Containers/EditProfileUser/Edit";
 import Search from "./Containers/SearchHotel/Search";
+import EditPost from "./Containers/Posts/EditPost/EditPost"
 import {Layout} from "./Containers/Layout";
 // import { useDispatch  } from "react-redux";
 // import { useEffect } from "react";
@@ -43,7 +43,7 @@ function App() {
           <Route path={"profile"} element={<Profile/>}/>
           <Route path={"posts"} element={<Posts/>}/>
           <Route path={"posts/add-post"} element={<AddPost/>}/>
-          <Route path={"posts/post"} element={<CheckPost/>}/>
+          <Route path={"posts/edit-post/:id"} element={<EditPost/>}/>
         </Route>
       </Routes>
     </>

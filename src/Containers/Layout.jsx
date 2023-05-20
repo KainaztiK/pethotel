@@ -58,7 +58,7 @@ const Layout = () => {
     return (
         <>
             <header>
-            {(window.localStorage.getItem("role")==="User") 
+            {(window.localStorage.getItem("role")==="User") || (window.localStorage.getItem("role")==="Companyy")
             ? (<>
                 <div className="headerblock">
                     <div className="headerleftblock clear">
