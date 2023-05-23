@@ -56,7 +56,7 @@ function Posts() {
                 rodent:post.rodent,
                 other:post.other
             }
-            let w = window.open('/posts/post')
+            let w = window.open(`/hotel/${params.id}`)
             w.window.parameters = params;
         }
 

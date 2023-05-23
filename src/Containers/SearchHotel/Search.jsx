@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import Loader from "../Components/Loader/Loader";
-import axios from "axios";
 import './Search.scss';
 import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
+import Grid from '@mui/material/Grid';
+import { Post } from "../Components/Post/index";
+// import { fetchHotels } from '../../redux/actions/hotels';
+import Axios from "../../API/api";
 
 function Search() {
     const [hotels, setHotels] = useState([]);
@@ -12,10 +14,11 @@ function Search() {
     const [isLoading, setIsLoading] = useState(false);
     const router = useNavigate()
     const isUserAuth = useSelector(isAuth);
+    
     useEffect(() => {
         setIsLoading(true);
         async function fetchHotels(){
-            const response = await axios.get('https://localhost:5001/api/hotels/advertisements/');
+            const response = await Axios.get('/api/hotels/advertisements/');
             setHotels(response.data);
             setIsLoading(false);
         } 
@@ -34,26 +37,22 @@ function Search() {
         }
     }, [router, isUserAuth])
 
-    const filteredHotel = hotels.filter(hotel => {
-        return hotel.name.toLowerCase().includes(searchHotel.toLowerCase());
-    })
+    const skeletons = [...Array(5)].map((_, index) => <Post key={index} isLoading={true} />);
 
+    const filteredHotel = hotels.filter(hotel =>{
+        if(hotel.name.toLowerCase().includes(searchHotel.toLowerCase())){
+            return true;
+        }
+        return false;
+    }).map((hotels, index)=><Post xs={12}
+    id={hotels.id}
+    title={hotels.name}
+    city={hotels.city}
+    address={hotels.address}
+    imageUrl={hotels.address ? `https://p1.zoon.ru/preview/8SSjYBbol7wGNRw4c4_62w/2400x1500x85/1/f/2/original_58e2572f40c08875708d8a0a_5e1749aee7cf0.jpg` : ''}
+    key={`homePost-${index}`}
+/>);
 
-
-    const arr = filteredHotel.map((data) => {
-        return(
-            <div onClick={() => router(`/hotel/${data.id}`)} className="searchedHotel" key={data.id}>
-
-                <div className="leftSearchedHotel">
-
-                </div>
-                <div className="rightSearchedHotel">
-                    <h3 className="h3Searched">{data.name}</h3>
-                    <h4 className="h4Searched">{data.city}</h4>
-                </div>
-            </div>
-        )
-    })
     return (
         <div>
             <div className="SearchHotel">
@@ -63,10 +62,16 @@ function Search() {
                         <input onChange={(e)=>setSearchHotel(e.target.value)} className="inputSearch" type="search" placeholder="Search..."/>
                     </div >
                     {/*Main Hotels*/}
-                    {isLoading
-                        ? <Loader/>
-                        : <div className="BlockFilteredHotels">{arr}</div>
-                    }
+                    <div className="BlockHotels">
+                        <Grid container>
+                            <Grid item className="hotels">
+                                {isLoading 
+                                    ? skeletons
+                                    : filteredHotel
+                                }
+                            </Grid>
+                        </Grid>
+                    </div>
 
                 </div>
             </div>
