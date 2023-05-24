@@ -93,16 +93,14 @@ const Layout = () => {
                             </button>
                         <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
                         <ul>
+                            <NavLink to="/edit-name">
                             <li className = 'dropdownItem'>
                                 <h5>{userInfo.userName}</h5>
                             </li>
+                            </NavLink>
+                            <NavLink to="/edit-email">
                             <li className = 'dropdownItem'>
                                 <h5>{userInfo.email}</h5>
-                            </li>
-                        
-                            <NavLink to="/">
-                            <li className = 'dropdownItem'>
-                                <h5>Редактировать профиль</h5>
                             </li>
                             </NavLink>
                             <NavLink to="/edit-user">

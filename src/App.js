@@ -10,8 +10,10 @@ import Profile from "./Containers/Profile/Profile";
 import Posts from "./Containers/Posts/Posts";
 import AddPost from "./Containers/Posts/AddPost/AddPost";
 import Edit from "./Containers/EditProfileUser/Edit";
+import EditName from "./Containers/EditUserName/Edit";
+import EditEmail from "./Containers/EditUserEmail/Edit";
 import Search from "./Containers/SearchHotel/Search";
-import EditPost from "./Containers/Posts/EditPost/EditPost"
+import EditPost from "./Containers/Posts/EditPost/EditPost";
 import {Layout} from "./Containers/Layout";
 // import { useDispatch  } from "react-redux";
 // import { useEffect } from "react";
@@ -38,6 +40,8 @@ function App() {
           <Route exact path={"hotels"} element={<Hotels/>}/>
           <Route exact path={"hotel/:id"} element={<Hotelid/>}/>
           <Route path={"edit-user"} element={<Edit/>}/>
+          <Route path={"edit-name"} element={<EditName/>}/>
+          <Route path={"edit-email"} element={<EditEmail/>}/>
           <Route path={"search"} element={<Search/>}/>
 
           <Route path={"profile"} element={<Profile/>}/>
