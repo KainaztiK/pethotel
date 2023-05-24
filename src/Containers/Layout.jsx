@@ -57,7 +57,7 @@ const Layout = () => {
     
     return (
         <>
-            <header>
+            <div id="header">
             {(window.localStorage.getItem("role")==="User") || (window.localStorage.getItem("role")==="Companyy")
             ? (<>
                 <div className="headerblock">
@@ -146,15 +146,15 @@ const Layout = () => {
                     </div>
                 </div>
             </>)}         
-            </header>
+            </div>
             
 
             <main className="container" onClick={()=>{setOpen(false)}}>
                 <Outlet />
             </main>
 
-            <footer>
-                <div className="footerall d-flex justify-center clear">
+            <div id="footer">
+                <div className="footerall clear">
                     <img src={ipethotel} className="iPetHotel" alt="IconPetHotel"/>
                     <div className="contentftr">
                         <div className="footercontent text-center align-center">
@@ -180,7 +180,7 @@ const Layout = () => {
                         </li>
                     </ul>
                 </div>
-            </footer>
+            </div>
         </>
     )
 }

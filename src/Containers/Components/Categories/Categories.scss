@@ -5,6 +5,7 @@
       margin-left: -2.5rem;
       margin-top: 0.2rem;
       li {
+        font-size: 20px;
         background-color: #FFAA00;
         padding: 5px 5px;
         border-radius: 30px;
@@ -25,6 +26,40 @@
           background-color: #FF5E00;
           color: #fff;
         }
+        @media screen and (max-width: 1921px) {
+          font-size: 20px;
+        }
+        @media screen and (max-width: 1496px) {
+          font-size: 20px;
+        }
+        @media screen and (max-width: 1199px) {
+          font-size: 16px;
+        }
+        @media screen and (max-width: 1145px) {
+          font-size: 16px;
+        }
+        @media screen and (max-width: 1095px) {
+          font-size: 16px;
+        }
+        @media screen and (max-width: 1023px) {
+          font-size: 16px;
+        }
+        @media screen and (max-width: 842px) {
+          font-size: 16px;
+        }
+        @media screen and (max-width: 767px) {
+          font-size: 12px;
+        }
+        @media screen and (max-width: 579px) {
+          font-size: 10px;
+        }
+        @media screen and (max-width: 479px) {
+          font-size: 10px;
+        }
+        @media screen and (max-width: 339px) {
+          font-size: 10px;
+        }
+      
       }
     }
   }

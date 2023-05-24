@@ -247,7 +247,7 @@ function Posts() {
       );
       let token = window.localStorage.getItem('token');
       const headers= {
-          'Authorization': `Bearer ${token}`
+          'Authorization': token
       };
     return (
         <div className={classes.Window}>

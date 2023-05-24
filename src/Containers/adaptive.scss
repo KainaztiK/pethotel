@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+  }
+  @media screen and (max-width: 1921px) {
+    .BlockHotels{
+        width: 60rem;
+    }
+  }
+  @media screen and (max-width: 1496px) {
+    .BlockHotels{
+        width: 50rem;
+    }
+  }
+  @media screen and (max-width: 1199px) {
+
+    .BlockHotels{
+        width: 45rem;
+    }
+  }
+  @media screen and (max-width: 1145px) {
+    #header, main, #footer{
+        width: 100% !important;
+        padding-left: 20px;
+        padding-right: 20px;
+        
+    }
+    .BlockHotels{
+        width: 50rem;
+    }
+  }
+  @media screen and (max-width: 1095px) {
+    .BlockHotels{
+        width: 45rem;
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    .BlockHotels{
+      width: 40rem;
+    }
+  }
+  @media screen and (max-width: 842px) {
+    .BlockHotels{
+      width: 35rem;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .BlockHotels{
+        width: 30rem;
+      }
+  }
+  @media screen and (max-width: 579px) {
+    .BlockHotels{
+        width: 25rem;
+    }
+
+  }
+  @media screen and (max-width: 479px) {
+    .BlockHotels{
+        width: 20rem;
+    }
+  }
+  @media screen and (max-width: 339px) {
+    .BlockHotels{
+        width: 15rem;
+    }
+  }
+
+
+  
+  main a {
+    text-decoration: none;
+    color: var(--color-bg);
+  }
+  
+  

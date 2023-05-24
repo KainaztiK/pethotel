@@ -44,7 +44,7 @@ function Search() {
             return true;
         }
         return false;
-    }).map((hotels, index)=><Post xs={12}
+    }).slice(0).reverse().map((hotels, index)=><Post xs={12}
     id={hotels.id}
     title={hotels.name}
     city={hotels.city}
@@ -58,7 +58,7 @@ function Search() {
             <div className="SearchHotel">
                 <div className="blockSearchHotel">
                     {/*IMG LOGO*/}
-                    <div>
+                    <div class="SearchHotelInput">
                         <input onChange={(e)=>setSearchHotel(e.target.value)} className="inputSearch" type="search" placeholder="Search..."/>
                     </div >
                     {/*Main Hotels*/}

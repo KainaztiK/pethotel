@@ -1,11 +1,7 @@
 * {
     box-sizing: border-box;
   }
-  
-  main {
-    min-height: calc(100vh - 85px - 25px);
-  }
-  
+
   main a {
     text-decoration: none;
     color: var(--color-bg);
