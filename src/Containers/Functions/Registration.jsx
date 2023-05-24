@@ -2,17 +2,12 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import styles from "./Login.module.scss";
-
 import { useForm } from "react-hook-form";
-import { Navigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { isAuth } from "../../redux/slices/authSlice";
+import { useDispatch } from "react-redux";
 import { fetchRegister } from "../../redux/actions/auth";
 
 export const Registration = () => {
   const dispatch = useDispatch();
-  const isUserAuth = useSelector(isAuth);
-
   const {
     register,
     handleSubmit,
@@ -41,11 +36,6 @@ export const Registration = () => {
       window.localStorage.setItem("token", data.payload.token);
     }
   };
-
-  if (isUserAuth) {
-    return <Navigate to={"/autorization"} />;
-  }
-
   return (
       <form className={styles.rootcolor1} classes={{ root: styles.root }} onSubmit={handleSubmit(onSubmit)}>
         <TextField
@@ -76,6 +66,7 @@ export const Registration = () => {
         <Button
           type="submit"
           disabled={!isValid}
+          onClick={()=> window.location.href="/autorization"}
           size="large"
           variant="contained"
           fullWidth

@@ -1,15 +1,26 @@
-import React from 'react';
-import {Navigate} from "react-router-dom";
+import React, { useEffect } from 'react';
 import '../Common.scss';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
 
 function MainWindow() {
+    const router = useNavigate()
     const isUserAuth = useSelector(isAuth);
-    if (window.localStorage.getItem("token") && isUserAuth) {
-        return <Navigate to={"/hotels"} />;
-    }
-
+    useEffect(()=>{
+        if(window.localStorage.getItem("role")==="User")
+        {
+            router("/hotels");
+        }
+        if(window.localStorage.getItem("role")==="Companyy")
+        {
+            router("/posts");
+        }
+        if(!window.localStorage.getItem("token"))
+        {
+            router("/");
+        }
+    }, [router, isUserAuth])
         return (
             <div className="mainpic">
                 <div className="maincontent">

@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import '../Common.scss';
 import logoHotels from "./img/logo.svg"
-import {useNavigate, Navigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { Categories } from '../Components/Categories/Categories';
 import Loader from "../Components/Loader/Loader";
-import {useFetching} from "../Functions/hooks/useFetching";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
@@ -12,32 +11,32 @@ import { isAuth } from "../../redux/slices/authSlice";
 function Hotels(){
     const [hotels, setHotels] = useState([]);
     const [categoryId, setCategoryId] = useState('');
-    const [fetchHotels, isHotelsLoading, hotelError] = useFetching( async () => {
-        const response = await axios.get('https://localhost:5001/api/hotels/advertisements/');
-        setHotels(response.data);
-    });
+    const [isLoading, setIsLoading] = useState(false);
     
-
-    // const token = localStorage.getItem('token')
-    // const getHotels = async (e) => {
-    //     const res = await axios.get('https://localhost:5001/api/hotels/advertisements/', {
-    //
-    //     })
-    //     console.log(res)
-    //     localStorage.setItem('token:', res.data.token)
-    // }
     const router = useNavigate()
-    console.log(router)
-    
-    useEffect(() => {
-        fetchHotels();
-    }, []);
-
     const isUserAuth = useSelector(isAuth);
-    if (!window.localStorage.getItem("token") && !isUserAuth) {
-        return <Navigate to={"/"} />;
-    }
-
+    useEffect( () => {
+        setIsLoading(true);
+        async function fetchHotels(){
+            const response = await axios.get('https://localhost:5001/api/hotels/advertisements/');
+            setHotels(response.data);
+            setIsLoading(false);
+        } 
+        if(window.localStorage.getItem("role")==="User")
+        {
+            router("/hotels");
+        }
+        if(window.localStorage.getItem("role")==="Companyy")
+        {
+            router("/hotels");
+        }
+        if(!window.localStorage.getItem("token"))
+        {
+            router("/");
+        }
+        fetchHotels();
+    }, [isUserAuth, router]);
+    
 
     const arr = hotels.map((data) => {
         return(
@@ -69,11 +68,8 @@ function Hotels(){
                     <div className="textPopularHotel">
                         Популярные отели
                     </div>
-                    {hotelError &&
-                        <h1>Произошла ошибка ${hotelError}</h1>
-                    }
                     {/*Main Hotels*/}
-                    {isHotelsLoading
+                    {isLoading
                         ? <Loader/>
                         : <div className="BlockHotels">{arr}</div>
                     }

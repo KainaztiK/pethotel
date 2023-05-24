@@ -1,9 +1,27 @@
-import React, {Component} from 'react';
+import React, {useEffect} from 'react';
 import '../Common.scss';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { isAuth } from "../../redux/slices/authSlice";
 import logotipreg from "../MethodRegistration/img/logotipreg.svg"
-class MethodRegistration extends Component {
-    render() {
+
+function MethodRegistration() {
+    const router = useNavigate()
+    const isUserAuth = useSelector(isAuth);
+    useEffect(()=>{
+        if(window.localStorage.getItem("role")==="User")
+        {
+            router("/hotels");
+        }
+        if(window.localStorage.getItem("role")==="Companyy")
+        {
+            router("/posts");
+        }
+        if(!window.localStorage.getItem("token"))
+        {
+            router("/methodregistration");
+        }
+    }, [isUserAuth, router])
         return (
             <div>
                 <div className="methodcontent">
@@ -20,7 +38,6 @@ class MethodRegistration extends Component {
                 </div>
             </div>
         )
-    }
 }
 
 export default MethodRegistration;

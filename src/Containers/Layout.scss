@@ -10,13 +10,14 @@ header {
         justify-content: space-between;
         float: left;
         width: 50%;
-        h3{
+        h4{
+          margin-top: 15px;
           line-height: 3px;
           color: #FFFFFF;
         }
         .headerLeft{
           display: flex;
-          max-width: 10vw;
+          max-width: 1rem;
         }
         .logotxt{
           text-align: center;
@@ -141,3 +142,51 @@ header {
       }
     }
   }
+
+ul{
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.dropdown-menu{
+  position: absolute;
+  top: 70px;
+  background-color: #fff;
+  width: 210px;
+}
+
+.dropdown-menu.active{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: var(--speed) ease;
+  z-index: 100;
+  border-radius: 30px;
+}
+
+.dropdown-menu.inactive{
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: var(--speed) ease;
+}
+
+
+.dropdown-menu ul li:hover h5{
+  color: rgb(212, 33, 9);
+  cursor: pointer;
+}
+
+.dropdownItem h5{
+  max-width: 180px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 0;
+  display: flex;
+  color: #000000;
+  text-decoration: none;
+}
