@@ -45,19 +45,7 @@ function Posts() {
         }
         const editPostClick = () => router(`/posts/edit-post/${post.id}`)
         const checkPost=()=>{
-            let params={
-                name:post.name,
-                city:post.city,
-                address:post.address,
-                description:post.description,
-                number1:post.number,
-                cats:post.cat,
-                dogs:post.dog,
-                rodent:post.rodent,
-                other:post.other
-            }
-            let w = window.open('/posts/post')
-            w.window.parameters = params;
+            router(`/hotel/${post.id}`)
         }
 
         return(
