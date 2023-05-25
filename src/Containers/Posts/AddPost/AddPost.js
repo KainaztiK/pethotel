@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./AddPost.module.css"
-import Axios from "../../../API/api";
+import axios from "axios";
 import addImg from "../../../images/addImage.svg"
 import alert_Img from "../../../images/alert.png"
 import  SimpleMDE from "react-simplemde-editor";
@@ -13,8 +13,7 @@ let dogs = false;
 let rats = false;
 let other = false;
 function Posts() {
-    const [userInfo, setUserInfo] = useState('');
-    let userid= userInfo.id;
+
     const[HotelName, setHotelName]=useState('')
     const[City, setCity]=useState('')
     const[Address, setAddress]=useState('')
@@ -28,7 +27,7 @@ function Posts() {
     const[CityNull, setCityNull]=useState(false)
     const[AddressNull, setAddressNull]=useState(false)
     const[NumberNull, setNumberNull]=useState(false)
-
+    const[DescriptionNull, setDescriptionNull]=useState(false)
     const[HotelNameError, setHotelNameError]=useState('Название не может быть пустым!')
     const[CityError, setCityError]=useState('Город не может быть пустым!')
     const[AddressError, setAddressError]=useState('Адрес не может быть пустой!')
@@ -36,7 +35,6 @@ function Posts() {
     const[DescriptionError, setDescriptionError]=useState('Описание не может быть пустым!')
     const [formValid, setFormValid] = useState(false)
     useEffect(()=>{
-        fetchUserInfo();
             if(HotelNameError || CityError || AddressError || NumberError || DescriptionError){
                 setFormValid(false)
                 document.getElementById('buttonAdd').className = classes.ButtonInvalid;
@@ -202,7 +200,6 @@ function Posts() {
     }
 
     const createPost= async () => {
-        fetchUserInfo();
         console.log(1);
         try{
             console.log(HotelName,
@@ -214,7 +211,7 @@ function Posts() {
                 Dog,
                 Rodent,
                 Other)
-            const res = await Axios.post(`api/hotel/advertisements/${userid}`, {
+            const res = await axios.post('https://localhost:5001/api/hotels/advertisements', {
                 name:HotelName,
                 city:City,
                 address:Address,
@@ -233,18 +230,6 @@ function Posts() {
         }
     }
 
-    let token = window.localStorage.getItem('token');
-    const headers= {
-        'Authorization': `${token}`
-    };
-
-
-
-    const fetchUserInfo = async () => {
-        const response = await Axios.get('api/authentication/CheckAuthorization');
-        setUserInfo(response.data);
-    };
-
     const options = React.useMemo(
         () => ({
           spellChecker: false,
@@ -260,7 +245,10 @@ function Posts() {
         }),
         []
       );
-
+      let token = window.localStorage.getItem('token');
+      const headers= {
+          'Authorization': `${token}`
+      };
     return (
         <div className={classes.Window}>
             <div className={classes.ContentBg}>
