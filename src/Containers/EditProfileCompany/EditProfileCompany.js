@@ -127,9 +127,7 @@ function EditProfileCompany() {
     const saveName = () => {
         console.log(UserName)
         try{
-            const res = Axios.put(`api/authentication/ChangeUserName/${userInfo.id}`, {
-                userName: UserName
-            }, {headers} )
+            const res = Axios.put(`api/authentication/ChangeUserName/${userInfo.id}?userName=${UserName}`, {headers} )
             console.log(res)
             document.location.reload();
         }
@@ -141,10 +139,9 @@ function EditProfileCompany() {
     const saveEmail = () => {
         console.log(Email)
         try{
-            const res = Axios.put(`api/authentication/ChangeEmail/${userInfo.id}`, {
-                email: Email
-            }, {headers} )
+            const res = Axios.put(`api/authentication/ChangeEmail/${userInfo.id}?email=${Email}`, {headers} )
             console.log(res)
+            document.location.reload();
         }
         catch {
             alert("что-то пошло не так")
