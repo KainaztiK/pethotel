@@ -3,7 +3,6 @@ import reg from '../../images/regComp.svg';
 import classes from "./Registration.module.css"
 import {Link} from "react-router-dom";
 import lock from "../../images/lock.png";
-import axios from "axios";
 import Axios from "../../API/api";
 
 let check =false;

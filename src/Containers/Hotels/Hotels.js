@@ -7,6 +7,7 @@ import Loader from "../Components/Loader/Loader";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
+import Axios from "../../API/api";
 
 function Hotels(){
     const [hotels, setHotels] = useState([]);
@@ -18,7 +19,7 @@ function Hotels(){
     useEffect( () => {
         setIsLoading(true);
         async function fetchHotels(){
-            const response = await axios.get('https://localhost:5001/api/hotels/advertisements/');
+            const response = await Axios.get('api/hotels/advertisements/');
             setHotels(response.data);
             setIsLoading(false);
         } 
@@ -40,7 +41,7 @@ function Hotels(){
 
     const arr = hotels.map((data) => {
         return(
-            <div onClick={() => router(`/hotel/${data.id}`)} className="hotels" key={data.id}>
+            <div onClick={() => router(`/hotel/${data.advertisementId}`)} className="hotels" key={data.advertisementId}>
 
                 <div className="leftBlockHotels">
 

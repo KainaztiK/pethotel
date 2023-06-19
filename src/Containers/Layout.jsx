@@ -40,10 +40,6 @@ const Layout = () => {
             document.removeEventListener("mousedown", handler);
         }
     });
-    const fetchUserInfo = async () => {
-        const response = await Axios.get('api/authentication/CheckAuthorization');
-        setUserInfo(response.data);
-    };
     useEffect(() => {
         const role = window.localStorage.getItem("role");
         const token = window.localStorage.getItem("token");
@@ -51,6 +47,11 @@ const Layout = () => {
             fetchUserInfo();
         }
     }, []);
+    const fetchUserInfo = async () => {
+        const response = await Axios.get('api/authentication/CheckAuthorization');
+        setUserInfo(response.data);
+    };
+    
     
     
     

@@ -17,7 +17,7 @@ const Hotelid = () => {
     const[Other, setOther]=useState(false)
     useEffect(() => {
         async function fetchHotelById() {
-            const response = await axios.get(`https://localhost:5001/api/hotels/advertisements/${params.id}`);
+            const response = await axios.get(`http://185.139.69.220/api/hotels/advertisements/${params.id}`);
             setHotel(response.data);
             setCat(response.data.cat);
             setDog(response.data.dog);

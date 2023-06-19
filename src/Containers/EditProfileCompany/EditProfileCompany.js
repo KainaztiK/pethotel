@@ -18,10 +18,12 @@ function EditProfileCompany() {
 
     const[Email, setEmail]=useState('')
     const[ValidEmail, setValidEmail] = useState('false')
-    const[EmailP, setEmailP]=useState('')
 
     const[OldPassword, setOldPassword]=useState('')
     const[NewPassword, setNewPassword]=useState('')
+    const[ValidPassword, setValidPassword] = useState('false')
+    const[OldPasswordError, setOldPasswordError]=useState('Пароль не может быть пустым!')
+    const[NewPasswordError, setNewPasswordError]=useState('Повторение пароля не может быть пустым!')
 
     const router = useNavigate()
     const isUserAuth = useSelector(isAuth);
@@ -41,9 +43,21 @@ function EditProfileCompany() {
         }
     }, [router, isUserAuth])
 
+    useEffect(()=>{
+        if(OldPasswordError || NewPasswordError){
+            setValidPassword(false)
+            console.log(2)
+        }
+        else{
+            console.log(3)
+            setValidPassword(true)
+        }
+    }, [OldPasswordError, NewPasswordError])
+
     const fetchUserInfo = async () => {
         const response = await Axios.get('api/authentication/CheckAuthorization');
         setUserInfo(response.data);
+        console.log(response.data.id);
     };
 
     const loginHandler = (e) => {
@@ -80,19 +94,6 @@ function EditProfileCompany() {
             setValidEmail(true);
         }
     }
-    const emailPHandler = (e) => {
-        const alert = document.querySelector('#EPalert')
-        setEmailP(e.target.value)
-        const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if(!regex.test(e.target.value)){
-            console.log('Ошибка в Почте')
-            alert.className = classes.alertOn;
-        }
-        else {
-            console.log('Ошибка в Почте нет')
-            alert.className = classes.alertOff;
-        }
-    }
 
     const OldPasswordHandler = (e) =>{
         const alert = document.querySelector('#OPalert')
@@ -101,9 +102,11 @@ function EditProfileCompany() {
         if(!regex.test(e.target.value))
         {
             console.log('Ошибка в пароле')
+            setOldPasswordError('Ошибка в пароле')
             alert.className = classes.alertOn;
         }
         else {
+            setOldPasswordError('')
             console.log('Ошибка в пароле нет')
             alert.className = classes.alertOff;
         }
@@ -115,10 +118,12 @@ function EditProfileCompany() {
         const regex =/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{10,20})/;
         if(!regex.test(e.target.value))
         {
+            setNewPasswordError('Ошибка в пароле')
             console.log('Ошибка в пароле')
             alert.className = classes.alertOn;
         }
         else {
+            setNewPasswordError('')
             console.log('Ошибка в пароле нет')
             alert.className = classes.alertOff;
         }
@@ -129,7 +134,7 @@ function EditProfileCompany() {
         try{
             const res = Axios.put(`api/authentication/ChangeUserName/${userInfo.id}?userName=${UserName}`, {headers} )
             console.log(res)
-            document.location.reload();
+            //document.location.reload();
         }
         catch {
             alert("что-то пошло не так")
@@ -141,16 +146,17 @@ function EditProfileCompany() {
         try{
             const res = Axios.put(`api/authentication/ChangeEmail/${userInfo.id}?email=${Email}`, {headers} )
             console.log(res)
-            document.location.reload();
+           // document.location.reload();
         }
         catch {
             alert("что-то пошло не так")
         }
     }
     const savePassword =() => {
+        console.log(1);
         try{
             const res = Axios.post(`api/authentication/ChangePassword`, {
-                email: EmailP,
+                email: userInfo.email,
                 currentPassword: OldPassword,
                 newPassword: NewPassword
             }, {headers} )
@@ -203,16 +209,12 @@ function EditProfileCompany() {
                                 Название : <div className={classes.UserInf}>{userInfo.hotelName}</div>
                             </div>
                             <div className={classes.Text}>
-                                Электронная почта: <div className={classes.UserInf}>{userInfo.inn}</div>
+                                ИНН: <div className={classes.UserInf}>{userInfo.inn}</div>
                             </div>
                             <div className={classes.Text}>
                                 <button onClick={()=> setModalActivw3(true)} className={classes.CreatePostButton2}>Изменить пароль</button>
                                 <MapBlock setActive={setModalActivw3} active={modalActive3}>
                                     <p className={classes.ModuleTitle}>Смена пароля</p>
-                                    <div className={classes.inputBox}>
-                                        <input value={EmailP} onChange={e => emailPHandler(e)} className={classes.textBox} type={'text'} placeholder={'Введите новую почту'} name={'email'}/>
-                                        <img src={alert_Img} className={classes.alertOff} id={'EPalert'} title="Почта введена некоректно" alt='Ошибка!'/>
-                                    </div>
                                     <div className={classes.inputBox}>
                                         <input value={OldPassword} onChange={e => OldPasswordHandler(e)} className={classes.textBox} type={'text'} placeholder={'Введите старый пароль'} name={'email'}/>
                                         <img src={alert_Img} className={classes.alertOff} id={'OPalert'} title="Почта введена некоректно" alt='Ошибка!'/>
@@ -221,7 +223,7 @@ function EditProfileCompany() {
                                         <input value={NewPassword} onChange={e => passwordHandler(e)} className={classes.textBox} type={'text'} placeholder={'Введите новый пароль'} name={'email'}/>
                                         <img src={alert_Img} className={classes.alertOff} id={'NPalert'} title="Почта введена некоректно" alt='Ошибка!'/>
                                     </div>
-                                    <button id={'buttonPassword'} onClick={savePassword} className={classes.InCreatePostModule}>Сохранить новый пароль</button>
+                                    <button disabled={!ValidPassword} id={'buttonPassword'} onClick={savePassword} className={classes.InCreatePostModule}>Сохранить новый пароль</button>
                                 </MapBlock>
                             </div>
                         </div>

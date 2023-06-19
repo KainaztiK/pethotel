@@ -7,6 +7,7 @@ import "easymde/dist/easymde.min.css";
 import { useCallback } from 'react';
 import {useParams} from "react-router-dom";
 import Axios from "../../../API/api";
+import "./InputFile.css"
 
 let cats =false;
 let dogs = false;
@@ -15,6 +16,7 @@ let other = false;
 function Posts() {
     const {id} = useParams();
     const [post, setPost] = useState({});
+    const [Image, setImage] = useState('');
     const[HotelName, setHotelName]=useState('')
     const[City, setCity]=useState('')
     const[Address, setAddress]=useState('')
@@ -55,6 +57,7 @@ function Posts() {
         }, [post.name,post.city, post.address, post.number, post.description,
             post.cat, post.dog, post.rodent, post.other, id,]
     )
+    
     const HotelNameHandler = (e) => {
         const hotelName = document.querySelector('#HotelName')
         const alert = document.querySelector('#HNalert')
@@ -212,6 +215,27 @@ function Posts() {
         }
     }
 
+    function handleImage(e){
+        console.log(e.target.files[0])
+        setImage(e.target.files[0])
+        const alert = document.querySelector('#image_input');
+        console.log(alert.value);
+        console.log(window.localStorage.getItem('token'));
+    }
+
+    function handleAPI(){
+        let formData = new FormData();
+        formData.append('uploadedFile', Image);
+        
+        Axios.post(`api/hotels/advertisements/${id}`,formData)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err=>{
+                console.log(err);
+            });
+    }
+
     const options = React.useMemo(
         () => ({
           spellChecker: false,
@@ -236,7 +260,15 @@ function Posts() {
                         <div className={classes.Form}>
                             <p className={classes.p}>Редактирование объявления</p>
                             <div className={classes.AddImgForm}>
-                                <img src={addImg} className={classes.AddImg} alt='Добавление изображение'></img>
+                                <div id={'display_image'} className={classes.displayImage}>
+                                                                            
+                                </div>
+                                <img src={addImg} className={classes.AddImg} id={'img_back'} alt='Добавление изображение'></img>
+                                <label className="input-file">
+	   	                            <input id={'image_input'} type="file" name="file" onChange={handleImage} accept="image/*"/>		
+	   	                            <span>Выберите файл</span>
+ 	                            </label>
+                                 <button id={'send_img'} onClick={handleAPI} className={classes.sendImg}>Сохранить изображение</button>
                             </div>
                             <div className={classes.FormInputs}>
                                 <div className={classes.inputBox}>
