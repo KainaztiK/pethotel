@@ -39,40 +39,54 @@ function Search() {
 
     const skeletons = [...Array(5)].map((_, index) => <Post key={index} isLoading={true} />);
 
-    const filteredHotel = hotels.filter(hotel =>{
+    function filterHotelv2(){
+        try {
+            if(filteredHotel.length !== 0){
+                return filteredHotel;
+            }
+            else{
+                return <div>Ничего не найдено в выбранной области поиска</div>
+            }
+        } catch (err) {
+            return alert("При загрузке постов произошла ошибка.");
+        }
+    }
+
+    var filteredHotel = hotels.filter(hotel =>{
         if(hotel.name.toLowerCase().includes(searchHotel.toLowerCase())){
             return true;
         }
-        return false;
-    }).slice(0).reverse().map((hotels, index)=><Post xs={12}
-    id={hotels.id}
-    title={hotels.name}
-    city={hotels.city}
-    address={hotels.address}
-    imageUrl={hotels.address ? `https://p1.zoon.ru/preview/8SSjYBbol7wGNRw4c4_62w/2400x1500x85/1/f/2/original_58e2572f40c08875708d8a0a_5e1749aee7cf0.jpg` : ''}
-    key={`homePost-${index}`}
-/>);
+        else{
+            return false;
+        }
+        }).slice(0).reverse().map((hotels, index)=><Post xs={12}
+        advertisementId={hotels.advertisementId}
+        title={hotels.name}
+        city={hotels.city}
+        address={hotels.address}
+        imageUrl={(hotels.photos.length === 0) ? '' : `http://185.139.69.220/photo/${hotels.photos[hotels.photos.length-1]}`}
+        key={`homePost-${index}`}
+    />);
 
     return (
         <div>
             <div className="SearchHotel">
                 <div className="blockSearchHotel">
-                    {/*IMG LOGO*/}
-                    <div class="SearchHotelInput">
-                        <input onChange={(e)=>setSearchHotel(e.target.value)} className="inputSearch" type="search" placeholder="Search..."/>
-                    </div >
-                    {/*Main Hotels*/}
-                    <div className="BlockHotels">
-                        <Grid container>
-                            <Grid item className="hotels">
-                                {isLoading 
-                                    ? skeletons
-                                    : filteredHotel
-                                }
+                        {/*IMG LOGO*/}
+                        {/*Main Hotels*/}
+                        <div className="BlockHotels">
+                            <Grid container>
+                                <div className="SearchHotelInput">
+                                    <input onChange={(e)=>setSearchHotel(e.target.value)} className="inputSearch" type="search" placeholder="Search..."/>
+                                </div >
+                                <Grid item className="hotels">
+                                    {isLoading 
+                                        ? skeletons
+                                        : filterHotelv2(filteredHotel)
+                                    }
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </div>
-
+                        </div>
                 </div>
             </div>
         </div>

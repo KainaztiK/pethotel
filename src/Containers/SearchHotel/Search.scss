@@ -1,14 +1,16 @@
 .SearchHotel{
     display: flex;
     width: 100%;
-    min-height: calc(100vh);
+    min-height: 100vh;
     justify-content: center;
     .blockSearchHotel{
-        
-        height: 5rem;
         margin-top: 1rem;
         display: block;
         justify-content: center;
+        .SearchHotelInput{
+          width: 100%;
+          margin-bottom: 10px;
+        }
         .inputSearch {
             width: 100%;
             display: flex;
@@ -32,91 +34,3 @@
         }
     }
 }
-@media screen and (max-width: 1921px) {
-    .blockSearchHotel{
-        width: 60rem;
-    }
-    .SearchHotelInput{
-        width: 58rem;
-    }
-  }
-  @media screen and (max-width: 1496px) {
-    .blockSearchHotel{
-        width: 50rem;
-    }
-    .SearchHotelInput{
-        width: 48rem;
-    }
-  }
-  @media screen and (max-width: 1199px) {
-    .blockSearchHotel{
-        width: 50rem;
-    }
-    .SearchHotelInput{
-        width: 46rem;
-    }
-  }
-  @media screen and (max-width: 1145px) {
-    .blockSearchHotel{
-        width: 50rem;
-    }
-    .SearchHotelInput{
-        width: 52rem;
-    }
-  }
-  @media screen and (max-width: 1095px) {
-    .blockSearchHotel{
-        width: 45rem;
-    }
-    .SearchHotelInput{
-        width: 48rem;
-    }
-  }
-  @media screen and (max-width: 1023px) {
-    .blockSearchHotel{
-      width: 40rem;
-    }
-    .SearchHotelInput{
-        width: 42rem;
-    }
-  }
-  @media screen and (max-width: 842px) {
-    .blockSearchHotel{
-      width: 35rem;
-    }
-    .SearchHotelInput{
-        width: 38rem;
-    }
-  }
-  @media screen and (max-width: 767px) {
-    .blockSearchHotel{
-        width: 30rem;
-    }
-    .SearchHotelInput{
-        width: 32rem;
-    }
-  }
-  @media screen and (max-width: 579px) {
-    .blockSearchHotel{
-        width: 25rem;
-    }
-    .SearchHotelInput{
-        width: 27rem;
-    }
-  }
-  @media screen and (max-width: 479px) {
-    .blockSearchHotel{
-        width: 20rem;
-    }
-    .SearchHotelInput{
-        width: 20rem;
-    }
-  }
-  @media screen and (max-width: 339px) {
-    .blockSearchHotel{
-        width: 15rem;
-    }
-    .SearchHotelInput{
-        width: 15rem;
-    }
-  }

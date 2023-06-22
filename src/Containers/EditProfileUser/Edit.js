@@ -1,17 +1,21 @@
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
 import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 import "./Edit.scss";
-import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { fetchAuth } from "../../redux/actions/auth";
+import Axios from "../../API/api";
 import styles from "./Edit.module.scss";
 function Edit() {
-
     const router = useNavigate()
     const isUserAuth = useSelector(isAuth);
+    const [userInfo, setUserInfo] = useState({});
+    const fetchUserInfo = async () => {
+        const response = await Axios.get('api/authentication/CheckAuthorization');
+        setUserInfo(response.data);
+    }; 
     useEffect(()=>{
         if(window.localStorage.getItem("role")==="User")
         {
@@ -19,39 +23,32 @@ function Edit() {
         }
         if(window.localStorage.getItem("role")==="Companyy")
         {
-            router("/posts");
+            router("/edit-user");
         }
         if(!window.localStorage.getItem("token"))
         {
             router("/");
         }
+        fetchUserInfo();
     }, [router, isUserAuth])
-    const dispatch = useDispatch();
-
-
+    
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      password: "",
-      repeatpassword: "",
+      currentPassword: "",
+      newPassword: ""
     },
     mode: "onChange",
   });
 
   const onSubmit = async (values) => {
-    const data  = await dispatch(fetchAuth(values));
+    const data  = await Axios.post('api/authentication/ChangePassword', {email: userInfo.email, currentPassword: values.currentPassword, newPassword: values.newPassword});
 
-    if (`error` in data) {
+    if (`error` in data ) {
       return alert(data.payload);
-    }
-
-    if ('token' in data.payload) {
-      window.localStorage.setItem('token', data.payload.token);
-      window.localStorage.setItem('role', data.payload.role);
-      window.location.href="/hotels"
     }
   };
 
@@ -61,7 +58,7 @@ function Edit() {
                 <div className="containeredit">
                     <div className="formedit">
                         <div className="leftblock">
-                            <Link to={"/hotels"}><button className="backbtn"></button></Link>
+                            <button className="backbtn" onClick={() => router(-2)}></button>
                         </div>
                         <div className="rightblock">
                             <div>
@@ -73,24 +70,24 @@ function Edit() {
                                     <TextField
                                     className={styles.field}
                                     label="Старый пароль"
-                                    error={Boolean(errors.email?.message)}
-                                    helperText={errors.email?.message}
+                                    error={Boolean(errors.currentPassword?.message)}
+                                    helperText={errors.currentPassword?.message}
                                     fullWidth
-                                    {...register("email", { required: "Укажите пароль" })}
+                                    {...register("currentPassword", { required: "Укажите старый пароль" })}
                                     type="password"
                                     />
                                     <TextField
                                     className={styles.field}
                                     label="Новый пароль"
                                     type="password"
-                                    error={Boolean(errors.password?.message)}
-                                    helperText={errors.password?.message}
+                                    error={Boolean(errors.newPassword?.message)}
+                                    helperText={errors.newPassword?.message}
                                     fullWidth
-                                    {...register("repeatpassword", { required: "Укажите пароль" })}
+                                    {...register("newPassword", { required: "Укажите новый пароль" })}
                                     />
-                                    <div className="rootedit">
-                                        <Link to="/hotels"><button disabled={!isValid} className="butsave" type="submit" size="large" variant="contained" fullWidth>Сохранить</button></Link>
-                                    </div>
+                                    <Button disabled={!isValid} type="submit" size="large" variant="contained" fullWidth>
+                                        Сохранить
+                                    </Button>
                                 </form>
                                 </div>
                             </div>

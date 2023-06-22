@@ -43,6 +43,14 @@
     background-color: #FFE6C9;
 
 }
+.ContainerEmpty{
+    margin-top: 9px;
+    display: flex;
+    width: 1300px;
+    height: 620px;
+    background-color: white;
+
+}
 .ContentPosts{
     width: 100%;
     margin-right: 0;
@@ -110,3 +118,29 @@
     margin-left: 50px;
 }
 
+.PostsThere{
+    visibility: hidden;
+    position: absolute;
+}
+
+.PostsEmpty{
+    visibility: visible;
+    position: absolute;
+    margin-top: 100px;
+
+}
+.imgTitleThere{
+    color: gray;
+    font-size: 30px;
+    visibility: hidden;
+    position: absolute;
+
+}
+.imgTitleEmpty{
+    color: gray;
+    font-size: 30px;
+    visibility: visible;
+    position: absolute;
+    margin-left: 250px;
+    margin-top: -20px;
+}

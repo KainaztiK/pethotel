@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Common.scss';
 import Autorizat from "../Functions/Autorize";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import lapkimg from "../Authorization/img/lapkimg.svg"
 import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
@@ -38,9 +38,6 @@ function Authorization(){
                             </div>
                             <div className="textfieldrightblock">
                                 Pet Hotel
-                            </div>
-                            <div className="blocklinkandroid">
-                                <h5 className="h5auth d-flex">скачать для <Link to="/"><div className="d-flex justify-center align-center androidlink">Android</div></Link></h5>
                             </div>
                         </div>
                     </div>

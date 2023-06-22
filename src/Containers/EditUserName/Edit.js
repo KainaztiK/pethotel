@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
 import TextField from "@mui/material/TextField";
@@ -19,7 +19,7 @@ function EditName() {
         }
         if(window.localStorage.getItem("role")==="Companyy")
         {
-            router("/posts");
+            router("/edit-name");
         }
         if(!window.localStorage.getItem("token"))
         {
@@ -49,12 +49,6 @@ function EditName() {
     if (`error` in data) {
       return alert(data.payload);
     }
-
-    if ('token' in data.payload) {
-      window.localStorage.setItem('token', data.payload.token);
-      window.localStorage.setItem('role', data.payload.role);
-      window.location.href="/hotels"
-    }
   };
 
     return(
@@ -63,7 +57,7 @@ function EditName() {
                 <div className="containeredit">
                     <div className="formedit">
                         <div className="leftblock">
-                            <Link to={"/hotels"}><button className="backbtn"></button></Link>
+                            <button className="backbtn" onClick={() => router(-2)}></button>
                         </div>
                         <div className="rightblock">
                             <div>

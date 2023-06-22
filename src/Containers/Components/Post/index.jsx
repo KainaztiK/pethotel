@@ -2,11 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import styles from "./Post.module.scss";
+import { Button } from "@mui/material";
 import { PostSkeleton } from "./Skeleton";
 
 
 export const Post = ({
-                       id,
+                       advertisementId,
                        title,
                        imageUrl,
                        city,
@@ -19,8 +20,6 @@ export const Post = ({
   if (isLoading) {
     return <PostSkeleton />;
   }
-
-
 
   return (
     <div className={clsx(styles.root, { [styles.rootFull]: isFullPost })}>
@@ -35,13 +34,23 @@ export const Post = ({
         )} 
         <div className={styles.indention}>
           <h2 className={clsx(styles.titleFull, { [styles.titleFull]: isFullPost })}>
-            {isFullPost ? title : <Link to={`/hotel/${id}`}>{title}</Link>}
+            {isFullPost ? title : <div>{title}</div>}
           </h2>
         
           {children && <div className={styles.content}>{children}</div>}
           <h3 className={clsx(styles.cityFull, { [styles.cityFull]: isFullPost })}>
             {city}, {address}
           </h3>
+          <div className={styles.buttonNext}>
+            <Link to={`${advertisementId}`}><Button
+            style={{
+              backgroundColor: "#FF5E00",
+              fontSize: "14px"
+            }} 
+            variant="contained">
+              Подробнее
+            </Button></Link>
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import reg from '../../images/regComp.svg';
 import classes from "./Registration.module.css"
 import {Link} from "react-router-dom";
 import lock from "../../images/lock.png";
-import axios from "axios";
+import Axios from "../../API/api";
 
 let check =false;
 function Registration(){
@@ -179,7 +179,7 @@ function Registration(){
         const password = document.querySelector('#Password').value;
         console.log(inn, hotel, email, password, login)
         try{
-            const res = await axios.post('https://localhost:5001/api/authentication/registrationCompanyy', {
+            const res = await Axios.post('api/authentication/registrationCompanyy', {
                 INN,
                 HotelName,
                 Email,

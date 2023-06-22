@@ -66,7 +66,6 @@ export const Registration = () => {
         <Button
           type="submit"
           disabled={!isValid}
-          onClick={()=> window.location.href="/autorization"}
           size="large"
           variant="contained"
           fullWidth

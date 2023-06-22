@@ -6,6 +6,7 @@ import alert_Img from "../../../images/alert.png"
 import  SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { useCallback } from 'react';
+import Axios from "../../../API/api";
 
 
 let cats =false;
@@ -200,7 +201,6 @@ function Posts() {
     }
 
     const createPost= async () => {
-        console.log(1);
         try{
             console.log(HotelName,
                 City,
@@ -211,7 +211,7 @@ function Posts() {
                 Dog,
                 Rodent,
                 Other)
-            const res = await axios.post('https://localhost:5001/api/hotels/advertisements', {
+            const res = await axios.post('http://185.139.69.220/api/hotels/advertisements/create-advertisement', {
                 name:HotelName,
                 city:City,
                 address:Address,
@@ -247,7 +247,8 @@ function Posts() {
       );
       let token = window.localStorage.getItem('token');
       const headers= {
-          'Authorization': token
+          'Authorization': `${token}`,
+          'Content-Type': 'application/json'
       };
     return (
         <div className={classes.Window}>
@@ -256,9 +257,6 @@ function Posts() {
                     <div className={classes.Container}>
                         <div className={classes.Form}>
                             <p className={classes.p}>Добавление объявления</p>
-                            <div className={classes.AddImgForm}>
-                                <img src={addImg} className={classes.AddImg} alt='Добавление изображение'></img>
-                            </div>
                             <div className={classes.FormInputs}>
                                 <div className={classes.inputBox}>
                                     <input className={classes.textBox} id={'HotelName'} type={'text'} placeholder={'Введите название отеля'} name={'hotel'}

@@ -16,9 +16,9 @@ export const fetchHotels = createAsyncThunk(
 
 export const fetchHotelById = createAsyncThunk(
     'posts/fetchHotelById',
-    async (id, thunkAPI) => {
+    async (advertisementId, thunkAPI) => {
         try {
-            const { data } = await Axios.get(`/api/hotels/advertisements/${id}`);
+            const { data } = await Axios.get(`/api/hotels/advertisements/${advertisementId}`);
             return data;
         } catch (err) {
             return thunkAPI.rejectWithValue("При загрузке статьи произошла ошибка.")

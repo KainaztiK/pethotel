@@ -1,5 +1,6 @@
 import "./Categories.scss"
 const categories = ['Кошки', 'Собаки', 'Грызуны', 'Другие'];
+
 export function Categories({value, onChangeCategory}){
     
     return(

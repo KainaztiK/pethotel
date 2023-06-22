@@ -2,12 +2,8 @@ import React, {useState, useEffect, useRef} from "react";
 import { Outlet, NavLink } from 'react-router-dom';
 import "./Layout.scss";
 import MyImage from "./MainWin/img/logo.svg";
-import ipethotel from "./Registration/img/ic_pet_hotel_1.svg";
-import telegram from "./Registration/img/telegram.svg";
-import vk from "./Registration/img/vk.svg";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
-// import { AiFillHeart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/slices/authSlice";
 import Axios from "../API/api";
@@ -57,67 +53,10 @@ const Layout = () => {
     
     return (
         <>
-            <div id="header">
-            {(window.localStorage.getItem("role")==="User") || (window.localStorage.getItem("role")==="Companyy")
-            ? (<>
-                <div className="headerblock">
-                    <div className="headerleftblock clear">
-                        <NavLink to="/hotels">
-                            <div className="headerLeft">
-                                <img width={50} height={50} src={MyImage} className="logo mt-5" alt="logotip"/>
-                                <div className="logotxt">
-                                    <h4 className="">Pet</h4>
-                                    <h4 className="">Hotel</h4>
-                                </div>
-                            </div>
-                        </NavLink>
-                    </div>
-                    <div className="buttons">
-                        <NavLink to="search">
-                            <button onClick={()=>{setOpen(false)}} className="authbutton" aria-label="Поиск">
-                                <AiOutlineSearch size={'2rem'}/>
-                                Поиск
-                            </button>
-                        </NavLink>
-                        {/* <NavLink to="/">
-                            <button className="authbutton" aria-label="Избранное">
-                                <AiFillHeart size={'2rem'}/>
-                                Избранное
-                            </button>
-                        </NavLink> */}
-                            <button onClick={()=>{setOpen(!open)}} className="authbutton" aria-label="Аккаунт">
-                                <AiOutlineUser size={'2rem'}/>
-                                <span>
-                                    Аккаунт
-                                </span>
-                            </button>
-                        <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
-                        <ul>
-                            <NavLink to="/edit-name">
-                            <li className = 'dropdownItem'>
-                                <h5>{userInfo.userName}</h5>
-                            </li>
-                            </NavLink>
-                            <NavLink to="/edit-email">
-                            <li className = 'dropdownItem'>
-                                <h5>{userInfo.email}</h5>
-                            </li>
-                            </NavLink>
-                            <NavLink to="/edit-user">
-                            <li className = 'dropdownItem'>
-                                <h5>Изменить пароль</h5>
-                            </li>
-                            </NavLink>
-                            <li className = 'dropdownItem' onClick={onClickLogout}>
-                                <h5>Выйти</h5>
-                            </li>
-                            
-                        </ul>
-                        </div>
-
-                    </div>
-                </div>
-            </>) : (<>
+            <header>
+            {(window.localStorage.getItem("role")!=="User") && (window.localStorage.getItem("role")!=="Companyy")
+            ? (
+                <div id="header">
                 <div className="headerblock">
                     <div className="headerleftblock clear">
                         <NavLink to="/">
@@ -143,8 +82,129 @@ const Layout = () => {
                             </NavLink>
                     </div>
                 </div>
-            </>)}         
             </div>
+            ):(
+                (window.localStorage.getItem("role")==="User")
+                ? (
+                    <>
+                        <div id="header">
+                            <div className="headerleftblock clear">
+                                <NavLink to="/hotels">
+                                    <div className="headerLeft">
+                                        <img width={50} height={50} src={MyImage} className="logo mt-5" alt="logotip"/>
+                                        <div className="logotxt">
+                                            <h4 className="">Pet</h4>
+                                            <h4 className="">Hotel</h4>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                            </div>
+                            <div className="buttons">
+                                <NavLink to="search">
+                                <button onClick={()=>{setOpen(false)}} className="authbutton" aria-label="Поиск">
+                                    <AiOutlineSearch size={'2rem'}/>
+                                    Поиск
+                                </button>
+                                </NavLink>
+
+                                <button onClick={()=>{setOpen(!open)}} className="authbutton" aria-label="Аккаунт">
+                                    <AiOutlineUser size={'2rem'}/>
+                                    <span>
+                                        Аккаунт
+                                    </span>
+                                </button>
+                                <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
+                                    <ul>
+                                        <NavLink to="/edit-name">
+                                        <li className = 'dropdownItem'>
+                                            <h5>{userInfo.userName}</h5>
+                                        </li>
+                                        </NavLink>
+                                        <NavLink to="/edit-email">
+                                        <li className = 'dropdownItem'>
+                                            <h5>{userInfo.email}</h5>
+                                        </li>
+                                        </NavLink>
+                                        {/* <NavLink to="/hotels">
+                                        <li className = 'dropdownItem'>
+                                            <h5>Отели</h5>
+                                        </li>
+                                        </NavLink> */}
+                                        <NavLink to="/edit-user">
+                                        <li className = 'dropdownItem'>
+                                            <h5>Изменить пароль</h5>
+                                        </li>
+                                        </NavLink>
+                                        <li className = 'dropdownItem' onClick={onClickLogout}>
+                                            <h5>Выйти</h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                ) : (
+                    <div id="header">
+                        <div className="headerblock">
+                            <div className="headerleftblock clear">
+                                <NavLink to="/hotels">
+                                    <div className="headerLeft">
+                                        <img width={50} height={50} src={MyImage} className="logo mt-5" alt="logotip"/>
+                                        <div className="logotxt">
+                                            <h4 className="">Pet</h4>
+                                            <h4 className="">Hotel</h4>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                            </div>
+                            <div className="buttons">
+                                <NavLink to="search">
+                                <button onClick={()=>{setOpen(false)}} className="authbutton" aria-label="Поиск">
+                                    <AiOutlineSearch size={'2rem'}/>
+                                    Поиск
+                                </button>
+                                </NavLink>
+                                {/* <NavLink to="/">
+                                        <button className="authbutton" aria-label="Избранное">
+                                        <AiFillHeart size={'2rem'}/>
+                                        Избранное
+                                        </button>
+                                    </NavLink> */}
+                                <button onClick={()=>{setOpen(!open)}} className="authbutton" aria-label="Аккаунт">
+                                    <AiOutlineUser size={'2rem'}/>
+                                    <span>
+                                        Аккаунт
+                                    </span>
+                                </button>
+                                <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
+                                    <ul>
+                                        <li className = 'dropdownItem'>
+                                            <h5>{userInfo.userName}</h5>
+                                        </li>
+                                        <li className = 'dropdownItem'>
+                                            <h5>{userInfo.email}</h5>
+                                        </li>
+                                        <NavLink to="/posts">
+                                            <li className = 'dropdownItem'>
+                                                <h5>Ваши посты</h5>
+                                            </li>
+                                        </NavLink>
+                                        <NavLink to="/edit-company">
+                                            <li className = 'dropdownItem'>
+                                                <h5>Профиль</h5>
+                                            </li>
+                                        </NavLink>
+                                        <li className = 'dropdownItem' onClick={onClickLogout}>
+                                            <h5>Выйти</h5>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ) 
+            ) }         
+            </header>
             
 
             <main className="container" onClick={()=>{setOpen(false)}}>
@@ -153,7 +213,6 @@ const Layout = () => {
 
             <div id="footer">
                 <div className="footerall clear">
-                    <img src={ipethotel} className="iPetHotel" alt="IconPetHotel"/>
                     <div className="contentftr">
                         <div className="footercontent text-center align-center">
                             <p>Контакты</p>
@@ -166,17 +225,6 @@ const Layout = () => {
                             </p>
                         </div>
                     </div>
-                    <ul className="footerright">
-                        <li>
-                            <h4 className="footercontent2">
-                                Мы в соцсетях
-                            </h4>
-                        </li>
-                        <li className="footercontent2">
-                            <img src={telegram} className="iTelegram" alt="IconTelegram"/>
-                            <img src={vk} className="iVK" alt="IconVK"/>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </>
