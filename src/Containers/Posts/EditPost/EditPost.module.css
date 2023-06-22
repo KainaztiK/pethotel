@@ -191,8 +191,51 @@
     border-color: #FF5E00;
     font-size: 16px;
     margin-top: 100px;
-    margin-left: -535px;
+    margin-left: -235px;
     cursor: pointer;
+}
+
+.sendImgDisabled{
+    color: white;
+    background-color: #5c5754;;
+    border-radius: 45px;
+    position: absolute;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #312f2e;
+    font-size: 16px;
+    margin-top: 100px;
+    margin-left: -535px;
+}
+
+.deleteImg{
+    color: white;
+    background-color: #FF5E00;
+    border-radius: 45px;
+    position: absolute;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #FF5E00;
+    font-size: 16px;
+    margin-top: 150px;
+    margin-left: -215px;
+    cursor: pointer;
+}
+
+.deleteImgDisabled{
+    color: white;
+    background-color: #5c5754;
+    border-radius: 45px;
+    position: absolute;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #312f2e;
+    font-size: 16px;
+    margin-top: 150px;
+    margin-left: -515px;
 }
 
 .FileInput{
@@ -205,8 +248,13 @@
 .displayImage{
     width: 300px;
     height: 240px;
-    border: 1px solid black;
+    border: 1px solid #FF5E00;
     background-position: center;
     background-size: cover; 
     position: absolute;
+    background-color: white;
+}
+.imgSize{
+    width: 299px;
+    height: 239px;
 }

@@ -35,8 +35,8 @@ function Posts() {
 
     useEffect(() => {
         if(userInfo.id !== undefined)
-        {axios.get(`https://localhost:5001/api/hotels/advertisements/${userInfo.id}/advertisements`)
-        //axios.get(`http://185.139.69.220/api/hotels/advertisements/${userInfo.id}/advertisements`)
+        {//axios.get(`https://localhost:5001/api/hotels/advertisements/${userInfo.id}/advertisements`)
+        axios.get(`http://185.139.69.220/api/hotels/advertisements/${userInfo.id}/advertisements`)
             .then(res => {
                 setPosts(res.data)
                 console.log(res) 
@@ -81,6 +81,7 @@ function Posts() {
         const deletePostClick = async()=>{
             try{
                 const res = await axios.delete(
+                    //`http://185.139.69.220/api/hotels/advertisements/advertisement/${post.advertisementId}`
                     `http://185.139.69.220/api/hotels/advertisements/advertisement/${post.advertisementId}`
                     ,{headers} )
                 console.log(res);

@@ -4,6 +4,8 @@ import classes from "./Registration.module.css"
 import {Link} from "react-router-dom";
 import lock from "../../images/lock.png";
 import Axios from "../../API/api";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 let check =false;
 function Registration(){
