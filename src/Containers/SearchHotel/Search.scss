@@ -1,67 +1,35 @@
 .SearchHotel{
     display: flex;
     width: 100%;
-    min-height: calc(100vh);
+    min-height: 100vh;
     justify-content: center;
     .blockSearchHotel{
-        width: 60rem;
-        height: 5rem;
         margin-top: 1rem;
-        display: inline;
+        display: block;
         justify-content: center;
+        .SearchHotelInput{
+          width: 100%;
+          margin-bottom: 10px;
+        }
         .inputSearch {
-            padding-left: 2rem;
-            padding-right: 2rem;
-            margin: 0 auto;
+            width: 100%;
             display: flex;
             position: relative;
-            width: 700px;
             height: 47px;
             border-radius: 20px;
             padding: 9px 4px 9px 40px; 
         }
-        .BlockFilteredHotels{
-            margin-top: 2rem;
-            display: flex;
+        
+        .BlockHotels{
+            margin-top: 1rem;
             position: relative;
-            flex-wrap: wrap;
-            width: 60rem;
-            height: 10rem;
-            .searchedHotel{
-                margin-top: 1rem;
-                flex: 31%;
-                max-width: 31%;
-                background-color: #EBEBEB;
-                position: relative;
-                display: flex;
-                height: 5rem;
-                width: 5rem;
-                margin-right: 1rem;
-                border-radius: 1rem;
-                transform: rotate(-0.34rem);
-                cursor: pointer;
-                .leftSearchedHotel{
-                    background: url('../Hotels/img/imgHotel.svg');
-                    position: relative;
-                    width: 7rem;
-                    border-radius: 1rem;
-                }
-                .rightSearchedHotel{
-                    position: relative;
-                    margin-left: 0.5rem;
-                    width: 10rem;
-                    .h3Searched{
-                        font-weight: 700;
-                        font-size: 0.8rem;
-                    }
-                    .h4Searched{
-
-                        margin-top: -0.5rem;
-                        font-weight: 400;
-                        font-size: 0.7rem;
-
-                    }
-                }
+            .hotels{
+              justify-content: space-evenly;
+              display: flex;
+              flex-wrap: wrap;
+              flex: 100%;
+              position: relative; 
+              text-decoration: none;   
             }
         }
     }

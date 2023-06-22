@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
 import postImg from "../../images/posts.png";
 
+
 function Posts() {
     const [userInfo, setUserInfo] = useState('');
     const [posts,setPosts] = useState([])
@@ -93,11 +94,18 @@ function Posts() {
         }
         const editPostClick = () => router(`/posts/edit-post/${post.advertisementId}`)
         const checkPost=()=>{
-            router(`/hotel/${post.advertisementId}`)
+            router(`/hotels/${post.advertisementId}`)
         }
 
         return(
             <div key={post.advertisementId} className={classes.Post}>
+                {(post.photos ? post.photos.length : 0) ? 
+                    (<>
+                        <img alt={'Изображение объявления'} className={classes.PostImage} src={(post.photos ? post.photos.length : 0) ? `http://185.139.69.220/photo/${post.photos[0]}` : ''}/>
+                    </>
+                    )
+                    :(<></>)
+                }
                 <div className={classes.PostData}>
                     <div onClick={checkPost} className={classes.PostTitle}>{post.name} </div>
                     <div className={classes.PostAddress}>{post.city}</div>

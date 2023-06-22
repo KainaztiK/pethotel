@@ -1,6 +1,7 @@
-header {
+#header {
     background: #E18D29;
     display: flex;
+    width: 100%;
     .headerblock{
       width: 90rem;
       margin: 0 auto;
@@ -88,14 +89,16 @@ header {
       font-size: 0.55rem;
     }
   }
-
+#footer {
+  background: #FFAA00;
+  display: flex;
+  text-align: center;
+  justify-content: center;
   .footerall{
     bottom: 0;
     display: flex;
-    background: #FFAA00;
-    width: 100%;
     .iPetHotel{
-  
+      box-sizing: border-box;
       white-space: nowrap;
       position: relative;
       width: 8rem;
@@ -106,6 +109,7 @@ header {
       margin-right: 1rem;
     }
     .footercontent{
+      box-sizing: border-box;
       color: #FFFFFF;
       line-height: 0.5rem;
       white-space: nowrap;
@@ -120,17 +124,15 @@ header {
       position: relative;
       font-size: 1rem;
     }
-      .footerright{
+    .footerright{
       margin-top: 0;
       vertical-align: top;
-  
+      box-sizing: border-box;
       .footercontent2{
         text-align: center;
-        vertical-align: middle;
         color: #FFFFFF;
         position: relative;
         font-size: 1rem;
-        margin-left: 1rem;
       }
       .iTelegram{
         width: 2.5rem;
@@ -142,6 +144,7 @@ header {
       }
     }
   }
+}
 
 ul{
   list-style: none;
@@ -166,6 +169,7 @@ a {
   transition: var(--speed) ease;
   z-index: 100;
   border-radius: 30px;
+  border: 1px solid black;
 }
 
 .dropdown-menu.inactive{
@@ -175,7 +179,9 @@ a {
   transition: var(--speed) ease;
 }
 
-
+.dropdown-menu ul li h5{
+  margin-left: -30px;
+}
 .dropdown-menu ul li:hover h5{
   color: rgb(212, 33, 9);
   cursor: pointer;

@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+  }
+  @media screen and (min-width: 1921px) {
+    .BlockHotels{
+        width: 50rem;
+    }
+    .maintxt{
+      font-size: 24px;
+    }
+  }
+  @media screen and (max-width: 1921px)  {
+    .BlockHotels{
+        width: 50rem;
+    }
+    .maintxt{
+      font-size: 24px;
+    }
+  }
+  @media screen and (max-width: 1496px) {
+    .BlockHotels{
+        width: 50rem;
+    }
+    .maintxt{
+      font-size: 24px;
+    }
+  }
+  @media screen and (max-width: 1199px) {
+
+    .BlockHotels{
+        width: 50rem;
+    }
+    .maintxt{
+      font-size: 24px;
+    }
+  }
+  @media screen and (max-width: 1145px) {
+    .BlockHotels{
+        width: 50rem;
+    }
+    .maintxt{
+      font-size: 22px;
+    }
+  }
+  @media screen and (max-width: 1095px) {
+    .BlockHotels{
+        width: 45rem;
+    }
+    .maintxt{
+      font-size: 22px;
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    .BlockHotels{
+      width: 40rem;
+    }
+    .maintxt{
+      font-size: 22px;
+    }
+  }
+  @media screen and (max-width: 842px) {
+    .BlockHotels{
+      width: 35rem;
+    }
+    .maintxt{
+      font-size: 20px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .BlockHotels{
+        width: 30rem;
+      }
+    .maintxt{
+      font-size: 18px;
+    }
+  }
+  @media screen and (max-width: 579px) {
+    .BlockHotels{
+        width: 25rem;
+    }
+    .maintxt{
+      font-size: 18px;
+    }
+  }
+  @media screen and (max-width: 479px) {
+    .BlockHotels{
+        width: 20rem;
+    }
+    .maintxt{
+      font-size: 16px;
+    }
+  }
+  @media screen and (max-width: 339px) {
+    .BlockHotels{
+        width: 15rem;
+    }
+    .maintxt{
+      font-size: 14px;
+    }
+  }
+
+
+  
+  main a {
+    text-decoration: none;
+    color: var(--color-bg);
+  }
+  
+  

@@ -4,8 +4,6 @@ import classes from "./Registration.module.css"
 import {Link} from "react-router-dom";
 import lock from "../../images/lock.png";
 import Axios from "../../API/api";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 
 let check =false;
 function Registration(){
@@ -53,9 +51,11 @@ function Registration(){
     useEffect(()=>{
         if(UserNameError || HotelNameError || EmailError || INNError || PasswordError || CopyPasswordError){
             setFormValid(false)
+            document.getElementById('sinInButton').className = classes.BadSignIn;
         }
         else{
             setFormValid(true)
+            document.getElementById('sinInButton').className = classes.sigIn;
         }
     }, [UserNameError, HotelNameError, EmailError, INNError, PasswordError, CopyPasswordError]
     )
@@ -208,35 +208,35 @@ function Registration(){
                         <div className={classes.Inputs}>
                             <img className={classes.RegImg} src={reg} alt={'Картинка'}/>
                             <p className={classes.p}>Регистрация</p>
-                            <div className={classes.inputBox}>
+                            <div className={classes.inputBox}>                               
+                                <input onChange={e => INNHandler(e)} onBlur={e => blurHandler(e)} value={INN} id={'INN'} className={classes.textBox} type={'text'} placeholder={'Введите ИНН Вашего отеля'} name={'inn'}  maxLength={12}/>
                                 {(INNNull && INNError) && <div className={classes.errorMessage}>{INNError}</div> }
-                                <input onChange={e => INNHandler(e)} onBlur={e => blurHandler(e)} value={INN} id={'INN'} className={classes.textBox} type={'text'} placeholder={'Введите ИНН Вашего отеля'} name={'inn'}/>
                             </div>
                             <div className={classes.inputBox}>
-                                {(UserNameNull && UserNameError) && <div className={classes.errorMessage}>{UserNameError}</div>}
                                 <input onChange={e => loginHandler(e)} onBlur={e => blurHandler(e)} value={UserName} id={'Login'} className={classes.textBox} type={'text'} placeholder={'Введите Ваше имя'} name={'login'}/>
+                                {(UserNameNull && UserNameError) && <div className={classes.errorMessage}>{UserNameError}</div>}
                             </div>
                             <div className={classes.inputBox}>
-                                {(HotelNameNull && HotelNameError) && <div className={classes.errorMessage}>{HotelNameError}</div>}
                                 <input onChange={e => hotelHandler(e)} onBlur={e => blurHandler(e)} value={HotelName} id={'Hotel'} className={classes.textBox} type={'text'} placeholder={'Введите название Вашего отеля'} name={'hotel'}/>
+                                {(HotelNameNull && HotelNameError) && <div className={classes.errorMessage}>{HotelNameError}</div>}
                             </div>
                             <div className={classes.inputBox}>
-                                {(EmailNull && EmailError) && <div className={classes.errorMessage}>{EmailError}</div>}
                                 <input onChange={e => emailHandler(e)} onBlur={e => blurHandler(e)} value={Email} id={'Email'} className={classes.textBox} type={'text'} placeholder={'Введите Вашу почту'} name={'email'}/>
+                                {(EmailNull && EmailError) && <div className={classes.errorMessage}>{EmailError}</div>}
                             </div>
                             <div className={classes.inputBox}>
-                                 {(PasswordNull && PasswordError) && <div className={classes.errorMessage}>{PasswordError}</div>}
                                 <img alt={'Картинка'} src={lock} className={classes.lockImg}/>
                                 <input onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} value={Password} id={'Password'} className={classes.textBox} type={'password'} placeholder={'Введите пароль'} name={'password'}/>
                                 <button id={'pass1_img'} className={classes.passwordImg} onClick={passwordCheck}/>
+                                {(PasswordNull && PasswordError) && <div className={classes.errorMessage}>{PasswordError}</div>}
                             </div>
                             <div className={classes.inputBox}>
-                                 {(CopyPasswordNull && CopyPasswordError) && <div className={classes.errorMessage}>{CopyPasswordError}</div>}
                                  <img alt={'Картинка'} src={lock} className={classes.lockImg}/>
                                  <input onChange={e => passwordCopyHandler(e)} onBlur={e => blurHandler(e)} value={CopyPassword} id={'PasswordCopy'} className={classes.textBox} type={'password'} placeholder={'Повторите пароль'} name={'copyPassword'}/>
                                  <button id={'pass2_img'} className={classes.passwordImg} onClick={passwordCheck}/>
+                                 {(CopyPasswordNull && CopyPasswordError) && <div className={classes.errorMessage}>{CopyPasswordError}</div>}
                             </div>
-                            <button onClick={e => createAccount(e)} disabled={!formValid} className={classes.sigIn}>Зарегистрироваться</button>
+                            <button id={'sinInButton'} onClick={e => createAccount(e)} disabled={!formValid} className={classes.BadSignIn}>ЗАРЕГИСТРИРОВАТЬСЯ</button>
                             <div className={classes.Text}>
                                 У вас уже есть аккаунт? <Link to={"/autorization"} className={classes.Link}>Войти</Link>
                             </div>

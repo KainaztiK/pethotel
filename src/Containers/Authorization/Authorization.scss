@@ -9,6 +9,7 @@
   -o-background-size: cover;
   background-size: cover;
   min-height: calc(100vh);
+  width: 100%;
 
   .mainenter {
     /* Задний фон у регистрации */
@@ -46,22 +47,6 @@
         width: 10rem;
         line-height: 3rem;
         text-align: center;
-      }
-      .blocklinkandroid{
-        display: flex;
-        position: relative;
-        color: #FFFFFF;
-        margin: 0 auto;
-        .h5auth{
-          font-weight: 700;
-          font-size: 1rem;
-        }
-        .androidlink{
-          display: flex;
-          position: relative;
-          color: #FFFFFF;
-          margin-left: 0.5rem;
-        }
       }
     }
 

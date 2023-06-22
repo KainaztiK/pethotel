@@ -7,11 +7,12 @@ body {
 }
 .maincontent{
   background: #FFAA00;
-  height: 10rem;
+  width: 100%;
+  justify-content: center;
+  display: flex;
   .mcontainer{
     display: flex;
-    width: 40rem;
-    margin: 0 auto;
+    width: 100%;
     .mgrp{
       background: url("./img/mGrp.svg") no-repeat center center;
       -webkit-background-size: cover;
@@ -20,19 +21,17 @@ body {
       -o-background-size: cover;
       background-size: cover;
       display: flex;
-      height: 9rem;
-      width: 10.25rem;
+      height: 160px;
     }
   }
   .maintxt{
+    
     text-align: center;
     vertical-align: middle;
     color: #7F4E1D;
     margin-top: 1rem;
     line-height: 0.5rem;
-    width: 30rem;
-    height: 10rem;
-    font-size: 1.5rem;
+    width: 100%;
     white-space: nowrap;
   }
 }

@@ -6,24 +6,20 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import "./Edit.scss";
 import { useForm } from "react-hook-form";
-import Axios from "../../API/api";
 import styles from "./Edit.module.scss";
-function Edit() {
+import Axios from "../../API/api";
+function EditEmail() {
+    const [userInfo, setUserInfo] = useState('');
     const router = useNavigate()
     const isUserAuth = useSelector(isAuth);
-    const [userInfo, setUserInfo] = useState({});
-    const fetchUserInfo = async () => {
-        const response = await Axios.get('api/authentication/CheckAuthorization');
-        setUserInfo(response.data);
-    }; 
     useEffect(()=>{
         if(window.localStorage.getItem("role")==="User")
         {
-            router("/edit-user");
+            router("/edit-email");
         }
         if(window.localStorage.getItem("role")==="Companyy")
         {
-            router("/edit-user");
+            router("/edit-email");
         }
         if(!window.localStorage.getItem("token"))
         {
@@ -31,23 +27,26 @@ function Edit() {
         }
         fetchUserInfo();
     }, [router, isUserAuth])
-    
+
+    const fetchUserInfo = async () => {
+        const response = await Axios.get('api/authentication/CheckAuthorization');
+        setUserInfo(response.data);
+    };
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      currentPassword: "",
-      newPassword: ""
+      email: "",
     },
     mode: "onChange",
   });
 
   const onSubmit = async (values) => {
-    const data  = await Axios.post('api/authentication/ChangePassword', {email: userInfo.email, currentPassword: values.currentPassword, newPassword: values.newPassword});
+    const data  = await Axios.put(`/api/authentication/ChangeEmail/${userInfo.id}?email=${values.email}`);
 
-    if (`error` in data ) {
+    if (`error` in data) {
       return alert(data.payload);
     }
   };
@@ -63,27 +62,18 @@ function Edit() {
                         <div className="rightblock">
                             <div>
                                 <div className="textedit">
-                                    <h5>Изменить пароль</h5>
+                                    <h5>Редактировать профиль</h5>
                                 </div>
                                 <div>
                                 <form className={styles.rootcolor} classes={{ root: styles.root }} onSubmit={handleSubmit(onSubmit)}>
                                     <TextField
                                     className={styles.field}
-                                    label="Старый пароль"
-                                    error={Boolean(errors.currentPassword?.message)}
-                                    helperText={errors.currentPassword?.message}
+                                    label="Новая почта"
+                                    error={Boolean(errors.email?.message)}
+                                    helperText={errors.email?.message}
                                     fullWidth
-                                    {...register("currentPassword", { required: "Укажите старый пароль" })}
-                                    type="password"
-                                    />
-                                    <TextField
-                                    className={styles.field}
-                                    label="Новый пароль"
-                                    type="password"
-                                    error={Boolean(errors.newPassword?.message)}
-                                    helperText={errors.newPassword?.message}
-                                    fullWidth
-                                    {...register("newPassword", { required: "Укажите новый пароль" })}
+                                    {...register("email", { required: "Укажите почту" })}
+                                    type="email"
                                     />
                                     <Button disabled={!isValid} type="submit" size="large" variant="contained" fullWidth>
                                         Сохранить
@@ -98,4 +88,4 @@ function Edit() {
         </>
     );
 }
-export default Edit;
+export default EditEmail;

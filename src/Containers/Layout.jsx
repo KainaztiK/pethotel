@@ -2,12 +2,8 @@ import React, {useState, useEffect, useRef} from "react";
 import { Outlet, NavLink } from 'react-router-dom';
 import "./Layout.scss";
 import MyImage from "./MainWin/img/logo.svg";
-import ipethotel from "./Registration/img/ic_pet_hotel_1.svg";
-import telegram from "./Registration/img/telegram.svg";
-import vk from "./Registration/img/vk.svg";
 import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
-// import { AiFillHeart } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { logout } from "../redux/slices/authSlice";
 import Axios from "../API/api";
@@ -40,6 +36,10 @@ const Layout = () => {
             document.removeEventListener("mousedown", handler);
         }
     });
+    const fetchUserInfo = async () => {
+        const response = await Axios.get('api/authentication/CheckAuthorization');
+        setUserInfo(response.data);
+    };
     useEffect(() => {
         const role = window.localStorage.getItem("role");
         const token = window.localStorage.getItem("token");
@@ -47,11 +47,6 @@ const Layout = () => {
             fetchUserInfo();
         }
     }, []);
-    const fetchUserInfo = async () => {
-        const response = await Axios.get('api/authentication/CheckAuthorization');
-        setUserInfo(response.data);
-    };
-    
     
     
     
@@ -59,12 +54,40 @@ const Layout = () => {
     return (
         <>
             <header>
-            {(window.localStorage.getItem("role")==="User") || (window.localStorage.getItem("role")==="Companyy")
-            ? ( 
+            {(window.localStorage.getItem("role")!=="User") && (window.localStorage.getItem("role")!=="Companyy")
+            ? (
+                <div id="header">
+                <div className="headerblock">
+                    <div className="headerleftblock clear">
+                        <NavLink to="/">
+                            <div className="headerLeft">
+                                <img width={50} height={50} src={MyImage} className="logo mt-5" alt="logotip"/>
+                                <div className="logotxt">
+                                    <h4 className="">Pet</h4>
+                                    <h4 className="">Hotel</h4>
+                                </div>
+                            </div>
+                        </NavLink>
+                    </div>
+                    <div className="buttons">
+                            <NavLink to="autorization">
+                                <button className="btnhead" aria-label="Войти">
+                                    Войти
+                                </button>
+                            </NavLink>
+                            <NavLink to="methodregistration">
+                                <button className="btnhead" aria-label="Зарегистрироваться">
+                                        Зарегистрироваться
+                                </button>
+                            </NavLink>
+                    </div>
+                </div>
+            </div>
+            ):(
                 (window.localStorage.getItem("role")==="User")
-                ?(
+                ? (
                     <>
-                        <div className="headerblock">
+                        <div id="header">
                             <div className="headerleftblock clear">
                                 <NavLink to="/hotels">
                                     <div className="headerLeft">
@@ -83,12 +106,7 @@ const Layout = () => {
                                     Поиск
                                 </button>
                                 </NavLink>
-                                {/* <NavLink to="/">
-                                        <button className="authbutton" aria-label="Избранное">
-                                        <AiFillHeart size={'2rem'}/>
-                                        Избранное
-                                        </button>
-                                    </NavLink> */}
+
                                 <button onClick={()=>{setOpen(!open)}} className="authbutton" aria-label="Аккаунт">
                                     <AiOutlineUser size={'2rem'}/>
                                     <span>
@@ -97,21 +115,25 @@ const Layout = () => {
                                 </button>
                                 <div className={`dropdown-menu ${open? 'active' : 'inactive'}`} >
                                     <ul>
+                                        <NavLink to="/edit-name">
                                         <li className = 'dropdownItem'>
                                             <h5>{userInfo.userName}</h5>
                                         </li>
+                                        </NavLink>
+                                        <NavLink to="/edit-email">
                                         <li className = 'dropdownItem'>
                                             <h5>{userInfo.email}</h5>
                                         </li>
-                                        <NavLink to="/">
-                                            <li className = 'dropdownItem'>
-                                                <h5>Редактировать профиль</h5>
-                                            </li>
                                         </NavLink>
+                                        {/* <NavLink to="/hotels">
+                                        <li className = 'dropdownItem'>
+                                            <h5>Отели</h5>
+                                        </li>
+                                        </NavLink> */}
                                         <NavLink to="/edit-user">
-                                            <li className = 'dropdownItem'>
-                                                <h5>Изменить пароль</h5>
-                                            </li>
+                                        <li className = 'dropdownItem'>
+                                            <h5>Изменить пароль</h5>
+                                        </li>
                                         </NavLink>
                                         <li className = 'dropdownItem' onClick={onClickLogout}>
                                             <h5>Выйти</h5>
@@ -121,9 +143,8 @@ const Layout = () => {
                             </div>
                         </div>
                     </>
-                )
-                : (
-                    <>
+                ) : (
+                    <div id="header">
                         <div className="headerblock">
                             <div className="headerleftblock clear">
                                 <NavLink to="/hotels">
@@ -165,12 +186,7 @@ const Layout = () => {
                                         </li>
                                         <NavLink to="/posts">
                                             <li className = 'dropdownItem'>
-                                                <h5>Выши посты</h5>
-                                            </li>
-                                        </NavLink>
-                                        <NavLink to="/hotels">
-                                            <li className = 'dropdownItem'>
-                                                <h5>Объявления</h5>
+                                                <h5>Ваши посты</h5>
                                             </li>
                                         </NavLink>
                                         <NavLink to="/edit-company">
@@ -185,35 +201,9 @@ const Layout = () => {
                                 </div>
                             </div>
                         </div>
-                    </>
-                ) )
-            : (<>
-                <div className="headerblock">
-                    <div className="headerleftblock clear">
-                        <NavLink to="/">
-                            <div className="headerLeft">
-                                <img width={50} height={50} src={MyImage} className="logo mt-5" alt="logotip"/>
-                                <div className="logotxt">
-                                    <h4 className="">Pet</h4>
-                                    <h4 className="">Hotel</h4>
-                                </div>
-                            </div>
-                        </NavLink>
                     </div>
-                    <div className="buttons">
-                            <NavLink to="autorization">
-                                <button className="btnhead" aria-label="Войти">
-                                    Войти
-                                </button>
-                            </NavLink>
-                            <NavLink to="methodregistration">
-                                <button className="btnhead" aria-label="Зарегистрироваться">
-                                        Зарегистрироваться
-                                </button>
-                            </NavLink>
-                    </div>
-                </div>
-            </>)}         
+                ) 
+            ) }         
             </header>
             
 
@@ -221,9 +211,8 @@ const Layout = () => {
                 <Outlet />
             </main>
 
-            <footer>
-                <div className="footerall d-flex justify-center clear">
-                    <img src={ipethotel} className="iPetHotel" alt="IconPetHotel"/>
+            <div id="footer">
+                <div className="footerall clear">
                     <div className="contentftr">
                         <div className="footercontent text-center align-center">
                             <p>Контакты</p>
@@ -236,19 +225,8 @@ const Layout = () => {
                             </p>
                         </div>
                     </div>
-                    <ul className="footerright">
-                        <li>
-                            <h4 className="footercontent2">
-                                Мы в соцсетях
-                            </h4>
-                        </li>
-                        <li className="footercontent2">
-                            <img src={telegram} className="iTelegram" alt="IconTelegram"/>
-                            <img src={vk} className="iVK" alt="IconVK"/>
-                        </li>
-                    </ul>
                 </div>
-            </footer>
+            </div>
         </>
     )
 }

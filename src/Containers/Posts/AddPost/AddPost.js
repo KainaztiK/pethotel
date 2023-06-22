@@ -5,7 +5,9 @@ import  SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { useCallback } from 'react';
 import Axios from "../../../API/api";
-
+import { useSelector } from "react-redux";
+import {useNavigate} from "react-router-dom";
+import { isAuth } from "../../../redux/slices/authSlice";
 
 let cats =false;
 let dogs = false;
@@ -28,6 +30,25 @@ function Posts() {
     const[NumberError, setNumberError]=useState('Номер не может быть пустым!')
     const[DescriptionError, setDescriptionError]=useState('Описание не может быть пустым!')
     const [formValid, setFormValid] = useState(false)
+    const router = useNavigate()
+    const isUserAuth = useSelector(isAuth);
+
+    useEffect(()=>{
+        if(window.localStorage.getItem("role")==="User")
+        {
+            router("/hotels");
+        }
+        if(window.localStorage.getItem("role")==="Companyy")
+        {
+            router("/posts/add-post");
+        }
+        if(!window.localStorage.getItem("token"))
+        {
+            router("/autorization");
+        }
+
+    }, [router, isUserAuth])
+
     useEffect(()=>{
             if(HotelNameError || CityError || AddressError || NumberError || DescriptionError){
                 setFormValid(false)

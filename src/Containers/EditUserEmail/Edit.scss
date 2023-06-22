@@ -1,0 +1,99 @@
+.containeredit{
+    min-height: calc(100vh - 85px - 25px);
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    .formedit{
+        display: flex;
+        margin-top: 1rem;
+        width: 30rem;
+        height: 15rem;
+        .leftblock{
+            width: 10%;
+            height: 15rem;
+            .backbtn{
+                margin-top: 0;
+                position: relative;
+                width: 2rem;
+                height: 2rem;
+                background: #ADADAD;
+                border: 0;
+                border-radius: 50%;
+                background-image: url("../Hotelid/img/Arrow.svg");
+                background-position: 0.4rem;
+                background-size: 1rem;
+                background-repeat: no-repeat;
+                cursor: pointer;
+            }
+        }
+        .rightblock{
+            position: relative;
+            width: 90%;
+            height: 15rem;
+            padding-right: 2.5rem;
+            .rootedit{
+                display: flex;
+                justify-content: center;
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                margin: 0 auto;
+            }
+            .padinput {
+                padding-bottom: 0.25rem;
+            }
+            .text-field__inputedit {
+                display: block;
+                width: 17rem;
+                height: 2rem;
+                font-weight: 500;
+                color: #AC8E71;
+                background-color: #F3F3F3;
+                background-clip: padding-box;
+                border: 0;
+                border-radius: 0.25rem;
+                padding-left: 1.25rem;
+                font-size: 1rem;
+            }
+      
+              .text-field__inputedit::placeholder {color: #AC8E71;}
+              .text-field__inputedit:focus {
+                border-color: #F3F3F3;
+            }
+            .butsave{
+                margin-top: 1rem;
+                width: 17rem;
+                height: 2rem;
+                border-width: 0;
+                background: #FF5E00;
+                border-radius: 30px;
+                color: #FFFFFF;
+                font-size: 1rem;
+            }
+            .butsave:hover{
+                margin-top: 1rem;
+                width: 17rem;
+                height: 2rem;
+                border-width: 0;
+                color: #000000;
+                background: #FFFFFF;
+                border: 1px solid #FF5E00;
+                font-size: 1rem;
+            }
+            .textedit{
+                line-height: 1.5px;
+                padding-right: 2.5rem;
+                padding-left: 0.5rem;
+                margin: 0 auto;
+                padding: 0;
+                color: #FF5E00;
+                text-align: center;
+            }
+            .ErrorsEdit{
+                color: red;
+                font-size: 0.75rem;
+                font-weight: 700;
+            }
+        }
+    }
+}

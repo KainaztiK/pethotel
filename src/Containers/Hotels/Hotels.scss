@@ -1,83 +1,44 @@
 .blockBackBasicWindow{
   display: flex;
+  position: relative;
   justify-content: center;
-  align-content: center;
-  background: url("./img/fullbacknd.svg");
-  background-size: cover;
   width: 100%;
   min-height: calc(100vh);
   .blockBasicWindow{
     display: flex;
+    position: relative;
     background-color: #FFFFFF;
-    width: 60rem;
-    position: center;
+    width: 100%;
     justify-content: center;
-    align-content: center;
-
-    .logoBasicWindow{
-      width: 5rem;
+    .ImgLogoBasicWindow{
+      position: absolute;
+      justify-content: center;
+      margin: 0 auto;
     }
     .petChoose{
       /* категориии */
       margin-top: 6rem;
       height: 3rem;
-      display: flex;
       position: absolute;
     }
     .textPopularHotel{
       font-size: 1.5rem;
       position: absolute;
       margin-top: 10rem;
-      margin-right: 40rem;
       font-weight: 700;
       color: #7F4E1D;
     }
 
     .BlockHotels{
       margin-top: 13rem;
-      position: absolute;
-      display: flex;
-      flex-wrap: wrap;
-
-      width: 55rem;
+      position: relative;
       .hotels{
-        flex: 33%;
-        max-width: 31%;
-        background-color: #EBEBEB;
-        margin-top: 1rem;
-        position: relative;
+        justify-content: space-evenly;
         display: flex;
-        height: 5rem;
-        width: 5rem;
-        margin-right: 1rem;
-        border-radius: 1rem;
-        transform: rotate(-0.34rem);
-        cursor: pointer;
-
-        .leftBlockHotels{
-          position: relative;
-          width: 7rem;
-          background: url("./img/imgHotel.svg");
-          border-radius: 1rem;
-          transform: rotate(-0.34rem);
-          background-size: cover;
-
-        }
-        .rightBlockHotels{
-          position: relative;
-          width: 10rem;
-          margin-left: 0.5rem;
-          .h3nameHotel{
-            font-weight: 700;
-            font-size: 0.8rem;
-          }
-          .h4sityHotel{
-            margin-top: -0.5rem;
-            font-weight: 400;
-            font-size: 0.7rem;
-
-          }
-        }
+        flex-wrap: wrap;
+        flex: 100%;
+        position: relative;
+        text-decoration: none;   
       }
     }
 

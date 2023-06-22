@@ -7,6 +7,7 @@ import { useCallback } from 'react';
 import {useParams} from "react-router-dom";
 import Axios from "../../../API/api";
 import "./InputFile.css"
+import addImage from "../../../images/addImage.svg"
 
 let cats =false;
 let dogs = false;
@@ -35,6 +36,7 @@ function Posts() {
 
 
     const postimage = document.querySelector('#image')
+
     useEffect(()=>{
         if(id){
             Axios.get(`api/hotels/advertisements/${id}`)
@@ -56,20 +58,6 @@ function Posts() {
             .catch(err=>{
                 console.log(err);
             });
-            if(post.photos !== 0)
-            {
-                console.log(102)
-           
-            }
-            else{
-               console.log(103) 
-            //     Axios.get(`api/photo/${post.photos[0]}`)
-            //    .then(res => {
-            //           postimage.src = res.data;
-            //    }).catch(err=>{
-            //        console.log(err);
-            //    });
-            }
         }
 
         }, [post.name,post.city, post.address, post.number, post.description,
@@ -311,7 +299,16 @@ function Posts() {
                             <p className={classes.p}>Редактирование объявления</p>
                             <div className={classes.AddImgForm}>
                                 <div id={'display_image'} className={classes.displayImage}>
-                                    <img alt='Изображение отсутствует' className={classes.imgSize} src={(post.photos ? post.photos.length : 0) ? `http://185.139.69.220/photo/${post.photos[0]}` : ''}/>                                      
+                                    
+                                    {(post.photos ? post.photos.length : 0) ? 
+                                        (<>
+                                            <img alt={'Изображение объявления'} className={classes.imgSize} src={(post.photos ? post.photos.length : 0) ? `http://185.139.69.220/photo/${post.photos[0]}` : ''}/>
+                                        </>
+                                        )
+                                        :(<>
+                                            <img src={addImage} alt={'Изображение отсутствует'} className={classes.imgSize}/>
+                                        </>)
+                                    }                                      
                                 </div>
                                 <label id={'input-file'} className="input-file">
 	   	                            <input id={'image_input'} type="file" name="file" onChange={handleImage} accept="image/*"/>		

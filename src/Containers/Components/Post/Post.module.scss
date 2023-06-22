@@ -1,0 +1,422 @@
+$blue: #4361ee;
+
+.root {
+  width: 45%;
+  height: 135px;
+  border: 1px solid #EBEBEB;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  position: relative;
+  display: flex;
+  background-color: #EBEBEB;
+  &:hover {
+    border: 1px solid $blue;
+  }
+
+  &Full {
+    &:hover {
+      background-color: #fff;
+      border: 1px solid #dedede;
+    }
+  }
+}
+
+.image {
+  width: 150px;
+  object-fit: cover;
+
+  &Full {
+    min-height: 150px;
+    height: 150px;
+  }
+}
+.buttonNext{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  
+}
+.wrapper {
+  display: flex;
+}
+
+.indention {
+  padding-left: 10px;
+  padding-right: 10px;
+
+  @media screen and (max-width: 500px) {
+    padding: 0;
+  }
+}
+
+.title {
+  font-size: 20px;
+  margin: 0;
+  h2{
+    color: #000;
+  }
+  a {
+    color: #000;
+    text-decoration: none !important;
+    &:hover {
+      color: $blue;
+    }
+    &:visited {
+      color: #000;
+    }
+    &:active {
+      color: #000;
+    }
+  }
+
+  &Full {
+    font-size: 20px;
+    font-weight: 900;
+  }
+}
+.city {
+  font-size: 14px;
+  margin: 0;
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+
+  &Full {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: -0.5rem;
+  }
+}
+
+.skeleton {
+  background-color: #fff;
+  border: 1px solid #dedede;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 15px;
+
+  &Content {
+    padding: 20px;
+  }
+
+  &Info {
+    margin-left: 50px;
+  }
+}
+
+.skeletonUser {
+  display: flex;
+
+  &Details {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 1921px) {
+  .root{
+    width: 45%;
+  }
+  .image {
+    width: 150px;
+    object-fit: cover;
+  
+    &Full {
+      min-height: 150px;
+      height: 150px;
+    }
+  }
+  .title {
+    font-size: 16px;
+  
+    &Full {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+  .city {
+    font-size: 12px;
+
+    &Full {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
+@media screen and (max-width: 1496px) {
+  .root{
+    width: 45%;
+  }
+  .image {
+    width: 135px;
+    object-fit: cover;
+  
+    &Full {
+      min-height: 135px;
+      height: 135px;
+    }
+  }
+  .title {
+    font-size: 16px;
+  
+    &Full {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+  .city {
+    font-size: 12px;
+
+    &Full {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
+@media screen and (max-width: 1199px) {
+  .root{
+    width: 100%;
+  }
+  .image {
+    width: 120px;
+    object-fit: cover;
+  
+    &Full {
+      min-height: 120px;
+      height: 120px;
+    }
+  }
+  .title {
+    font-size: 16px;
+  
+    &Full {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+  .city {
+    font-size: 12px;
+
+    &Full {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
+@media screen and (max-width: 1145px) {
+  .root{
+    width: 100%;
+  }
+  .image {
+    width: 120px;
+    object-fit: cover;
+  
+    &Full {
+      min-height: 120px;
+      height: 120px;
+    }
+  }
+  .title {
+    font-size: 16px;
+  
+    &Full {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+  .city {
+    font-size: 12px;
+
+    &Full {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
+@media screen and (max-width: 1095px) {
+  .root{
+    width: 100%;
+  }
+  .image {
+    width: 120px;
+    object-fit: cover;
+  
+    &Full {
+      min-height: 120px;
+      height: 120px;
+    }
+  }
+  .title {
+    font-size: 16px;
+  
+    &Full {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+  .city {
+    font-size: 12px;
+
+    &Full {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
+@media screen and (max-width: 1023px) {
+  .root{
+    width: 100%;
+  }
+  .image {
+    width: 120px;
+    object-fit: cover;
+  
+    &Full {
+      min-height: 120px;
+      height: 120px;
+    }
+  }
+  .title {
+    font-size: 16px;
+  
+    &Full {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+  .city {
+    font-size: 12px;
+
+    &Full {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
+@media screen and (max-width: 842px) {
+  .root{
+    width: 100%;
+  }
+  .image {
+    width: 110px;
+    object-fit: cover;
+  
+    &Full {
+      min-height: 110px;
+      height: 110px;
+    }
+  }
+  .title {
+    font-size: 16px;
+  
+    &Full {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+  .city {
+    font-size: 12px;
+
+    &Full {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .root{
+    width: 100%;
+  }
+  .image {
+    width: 100px;
+    object-fit: cover;
+  
+    &Full {
+      min-height: 100px;
+      height: 100px;
+    }
+  }
+  .title {
+    font-size: 16px;
+  
+    &Full {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+  .city {
+    font-size: 12px;
+
+    &Full {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
+@media screen and (max-width: 579px) {
+  .root{
+    width: 100%;
+  }
+  .image {
+    width: 85px;
+    object-fit: cover;
+  
+    &Full {
+      min-height: 85px;
+      height: 85px;
+    }
+  }
+  .title {
+    font-size: 16px;
+  
+    &Full {
+      font-size: 16px;
+      font-weight: 900;
+    }
+  }
+  .city {
+    font-size: 12px;
+
+    &Full {
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+}
+@media screen and (max-width: 479px) {
+  .root{
+    width: 100%;
+  }
+  .image {
+    width: 75px;
+    object-fit: cover;
+  
+    &Full {
+      min-height: 75px;
+      height: 75px;
+    }
+  }
+  .title {
+    font-size: 14px;
+  
+    &Full {
+      font-size: 14px;
+      font-weight: 900;
+    }
+  }
+  .city {
+    font-size: 10px;
+
+    &Full {
+      font-size: 10px;
+      font-weight: 700;
+    }
+  }
+}
+@media screen and (max-width: 339px) {
+  .root{
+    width: 100%;
+  }
+}

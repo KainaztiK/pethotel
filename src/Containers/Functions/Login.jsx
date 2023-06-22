@@ -17,8 +17,8 @@ export const Login = () => {
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
-      email: "qwer@gmail.com",
-      password: "QWEqwe123!@#",
+      email: "falileev.sergey2003@mail.ru",
+      password: "qwerty123456",
     },
     mode: "onChange",
   });
@@ -27,7 +27,7 @@ export const Login = () => {
     const data  = await dispatch(fetchAuth(values));
 
     if (`error` in data) {
-      return alert(data.payload);
+      return alert('Неверный логин или пароль');
     }
 
     if ('token' in data.payload) {

@@ -27,6 +27,7 @@ function EditProfileCompany() {
 
     const router = useNavigate()
     const isUserAuth = useSelector(isAuth);
+
     useEffect(()=>{
         fetchUserInfo();
         if(window.localStorage.getItem("role")==="User")
@@ -44,13 +45,16 @@ function EditProfileCompany() {
     }, [router, isUserAuth])
 
     useEffect(()=>{
-        if(OldPasswordError || NewPasswordError){
+        if(OldPasswordError || NewPasswordError)
+        {
             setValidPassword(false)
             console.log(2)
+            document.getElementById('buttonPassword').className = classes.InCreatePostModule;
         }
         else{
             console.log(3)
             setValidPassword(true)
+            document.getElementById('buttonPassword').className = classes.CreatePostModule;
         }
     }, [OldPasswordError, NewPasswordError])
 
@@ -131,40 +135,51 @@ function EditProfileCompany() {
 
     const saveName = () => {
         console.log(UserName)
-        try{
-            const res = Axios.put(`api/authentication/ChangeUserName/${userInfo.id}?userName=${UserName}`, {headers} )
+        Axios.put(`api/authentication/ChangeUserName/${userInfo.id}?userName=${UserName}`, {headers} )
+        .then(res => {
             console.log(res)
-            //document.location.reload();
-        }
-        catch {
-            alert("что-то пошло не так")
-        }
+            if(res.status===204)
+            {
+                document.location.reload();
+            }
+        })
+        .catch(err=>{
+            console.log(err);
+        });
+       
     }
 
     const saveEmail = () => {
         console.log(Email)
-        try{
-            const res = Axios.put(`api/authentication/ChangeEmail/${userInfo.id}?email=${Email}`, {headers} )
-            console.log(res)
-           // document.location.reload();
-        }
-        catch {
-            alert("что-то пошло не так")
-        }
+        const res = Axios.put(`api/authentication/ChangeEmail/${userInfo.id}?email=${Email}`, {headers} )
+        .then(res => {
+            if(res.status===204)
+            {
+                document.location.reload();
+            }
+        })
+        .catch(err=>{
+            console.log(err);
+        });
     }
     const savePassword =() => {
-        console.log(1);
-        try{
-            const res = Axios.post(`api/authentication/ChangePassword`, {
+        Axios.post(`api/authentication/ChangePassword`, {
                 email: userInfo.email,
                 currentPassword: OldPassword,
                 newPassword: NewPassword
             }, {headers} )
+        .then(res => {
             console.log(res)
-        }
-        catch {
-            alert("что-то пошло не так")
-        }
+        })
+        .catch(err=>{
+        console.log(err);
+        if(err.response.status===400)
+        {
+            alert('Вы ввели некорректные данные!')
+        } 
+        });
+            
+        
     }
 
     let token = window.localStorage.getItem('token');
