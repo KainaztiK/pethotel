@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./Posts.module.css"
-import axios from "axios";
 import addButton from "../../images/addPost.png";
 import changePost from "../../images/change.png";
 import deletePost from "../../images/delete.png";
@@ -36,8 +35,8 @@ function Posts() {
 
     useEffect(() => {
         if(userInfo.id !== undefined)
-        {//axios.get(`https://localhost:5001/api/hotels/advertisements/${userInfo.id}/advertisements`)
-        axios.get(`http://185.139.69.220/api/hotels/advertisements/${userInfo.id}/advertisements`)
+        {
+            Axios.get(`api/hotels/advertisements/${userInfo.id}/advertisements`)
             .then(res => {
                 setPosts(res.data)
                 console.log(res) 
@@ -81,9 +80,7 @@ function Posts() {
         
         const deletePostClick = async()=>{
             try{
-                const res = await axios.delete(
-                    //`http://185.139.69.220/api/hotels/advertisements/advertisement/${post.advertisementId}`
-                    `http://185.139.69.220/api/hotels/advertisements/advertisement/${post.advertisementId}`
+                const res = await Axios.delete(`api/hotels/advertisements/advertisement/${post.advertisementId}`
                     ,{headers} )
                 console.log(res);
                 document.location.reload();

@@ -209,7 +209,6 @@ function Posts() {
                 Dog,
                 Rodent,
                 Other)
-            //const res = await axios.post('http://185.139.69.220/api/hotels/advertisements/create-advertisement', {
                 const res = await Axios.post('api/hotels/advertisements/create-advertisement', {
                 name:HotelName,
                 city:City,
