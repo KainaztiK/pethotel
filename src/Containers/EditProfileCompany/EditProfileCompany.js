@@ -170,6 +170,7 @@ function EditProfileCompany() {
             }, {headers} )
         .then(res => {
             console.log(res)
+            document.location.reload();
         })
         .catch(err=>{
         console.log(err);
