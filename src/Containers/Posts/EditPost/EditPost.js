@@ -256,7 +256,7 @@ function Posts() {
                 }
             })
             .catch(err=>{
-                console.log(err);
+                alert('Для начала выберите изображение!')
             });
     }
     function deleteImg(){

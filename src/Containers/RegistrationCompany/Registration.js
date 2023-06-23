@@ -63,7 +63,7 @@ function Registration(){
     const INNHandler = (e) => {
         const innInput = document.querySelector('#INN')
         setINN(e.target.value)
-        const regex = /((?=.*\d).{12})/;
+        const regex = /((?=.*\d).{10})/;
         if(!regex.test(e.target.value)){
             setINNError('Неверное значение ИНН')
             console.log('Ошибка в ИНН')
@@ -180,8 +180,7 @@ function Registration(){
         const hotel = document.querySelector('#Hotel').value;
         const password = document.querySelector('#Password').value;
         console.log(inn, hotel, email, password, login)
-        try{
-            const res = await Axios.post('api/authentication/registrationCompanyy', {
+        await Axios.post('api/authentication/registrationCompanyy', {
                 INN,
                 HotelName,
                 Email,
@@ -191,12 +190,19 @@ function Registration(){
                     "Companyy"
                 ]
             })
-            console.log(res)
-            window.location.href = '/';
-        }
-        catch {
-            alert("что-то пошло не так")
-        }
+            .then(res => {
+                console.log(res)
+                window.location.href = '/';
+                if(res.status===400)
+                {
+                    alert('Введены некорректные данные! Имя пользователя должно состоять из двух слов, ИНН должен содержать только цифры.')
+                }
+            })
+            .catch(err=>{
+                if(err.status === 400)
+                {
+                    alert('Введены некорректные данные! Имя пользователя должно состоять из двух слов, ИНН должен содержать только цифры.')
+                } });
     }
 
 
