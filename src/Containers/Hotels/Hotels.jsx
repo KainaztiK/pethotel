@@ -12,7 +12,10 @@ import { Post } from "../Components/Post/index";
 import { fetchHotels } from '../../redux/actions/hotels';
 
 function Hotels(){
-    const [categoryId, setCategoryId] = useState('');
+    const [categoryId, setCategoryId] = useState({
+        name: '',
+        value: null,
+    });
     const router = useNavigate()
     const isUserAuth = useSelector(isAuth);
     const dispatch = useDispatch();
@@ -35,7 +38,12 @@ function Hotels(){
         {
             router("/");
         }
-    }, [isUserAuth, router]);
+        console.log(hotels.items)
+
+    }, [isUserAuth, router, hotels]);
+
+
+
     return (
         <div>
             <div className="blockBackBasicWindow">
@@ -47,16 +55,36 @@ function Hotels(){
                     {/*Pet Choose*/}
                     <div className="petChoose">
                         <Categories value={categoryId} onChangeCategory={(i)=>setCategoryId(i)}/>
+                        {/* <button onClick={handleSortChange}>Сортировать</button> */}
                     </div>
                     {/*Text Hotelid*/}
                     <div className="textPopularHotel">
                         Популярные отели
                     </div>
+                    
                     {/*Main Hotels*/}
                     <div className="BlockHotels">
                         <Grid container>
                             <Grid item className="hotels">
-                                {(isPostsLoading ? [...Array(5)] : hotels.items).slice(0).reverse().sort().map((hotels, index) => (
+                                {(isPostsLoading ? [...Array(5)] : hotels.items.filter(hotel=>{
+                                    if(categoryId.value===null){
+                                        return hotels;
+                                    }
+                                    else{
+                                        if(hotel.cat===categoryId.value && categoryId.name==='Кошки'){
+                                            return hotels;
+                                        }
+                                        if(hotel.dog===categoryId.value && categoryId.name==='Собаки'){
+                                            return hotels;
+                                        }
+                                        if(hotel.rodent===categoryId.value && categoryId.name==='Грызуны'){
+                                            return hotels;
+                                        }
+                                        if(hotel.other===categoryId.value && categoryId.name==='Другие'){
+                                            return hotels;
+                                        }
+                                    }  
+                                })).slice(0).reverse().map((hotels, index) => (
                                     isPostsLoading ? (
                                     <Post key={index} isLoading={true} />
                                     )
@@ -76,9 +104,34 @@ function Hotels(){
                         </Grid>
                     </div>
                 </div>
-            </div>
+            </div>  
         </div>
     );
+      
 }
 
 export default Hotels;
+
+
+
+// .filter(
+//     (values)=>{
+//         if(categoryId.value!==null){
+//             return true;
+//         }
+//         else{
+//             if(categoryId.name==='Кошки' && categoryId.value===values.cat){
+//                 return true;
+//             }
+//             if(categoryId.name==='Собаки' && categoryId.value===values.dog){
+//                 return true;
+//             }
+//             if(categoryId.name==='Грызуны' && categoryId.value===values.rodent){
+//                 return true;
+//             }
+//             if(categoryId.name==='Другие' && categoryId.value===values.other){
+//                 return true;
+//             }
+//         }
+//         return true;
+//     })

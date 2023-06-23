@@ -29,7 +29,7 @@ function Search() {
         }
         if(window.localStorage.getItem("role")==="Companyy")
         {
-            router("/posts");
+            router("/search");
         }
         if(!window.localStorage.getItem("token"))
         {

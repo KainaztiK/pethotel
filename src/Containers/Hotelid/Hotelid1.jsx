@@ -67,6 +67,12 @@ const Hotelid1 = () => {
         imageUrl={(hotel.photos ? hotel.photos.length : 0) ? `http://185.139.69.220/photo/${hotel.photos[hotel.photos.length-1]}` : ''}
         isFullPost
       >
+        <div className="petsActive">
+          {Cat && <div className="pet">Кошки</div>}
+          {Dog && <div className="pet">Собаки</div>}
+          {Rodent && <div className="pet">Грызуны</div>}
+          {Other && <div className="pet">Другое</div>}
+        </div>
         <div>
           <ReactMarkdown children={hotel.description} />
         </div>

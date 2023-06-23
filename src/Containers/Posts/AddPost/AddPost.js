@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./AddPost.module.css"
-import axios from "axios";
-import addImg from "../../../images/addImage.svg"
 import alert_Img from "../../../images/alert.png"
 import  SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { useCallback } from 'react';
 import Axios from "../../../API/api";
-
+import { useSelector } from "react-redux";
+import {useNavigate} from "react-router-dom";
+import { isAuth } from "../../../redux/slices/authSlice";
 
 let cats =false;
 let dogs = false;
@@ -24,17 +24,31 @@ function Posts() {
     const[Dog, setDog]=useState(false)
     const[Rodent, setRodent]=useState(false)
     const[Other, setOther]=useState(false)
-    const[HotelNameNull, setHotelNameNull]=useState(false)
-    const[CityNull, setCityNull]=useState(false)
-    const[AddressNull, setAddressNull]=useState(false)
-    const[NumberNull, setNumberNull]=useState(false)
-    const[DescriptionNull, setDescriptionNull]=useState(false)
     const[HotelNameError, setHotelNameError]=useState('Название не может быть пустым!')
     const[CityError, setCityError]=useState('Город не может быть пустым!')
     const[AddressError, setAddressError]=useState('Адрес не может быть пустой!')
     const[NumberError, setNumberError]=useState('Номер не может быть пустым!')
     const[DescriptionError, setDescriptionError]=useState('Описание не может быть пустым!')
     const [formValid, setFormValid] = useState(false)
+    const router = useNavigate()
+    const isUserAuth = useSelector(isAuth);
+
+    useEffect(()=>{
+        if(window.localStorage.getItem("role")==="User")
+        {
+            router("/hotels");
+        }
+        if(window.localStorage.getItem("role")==="Companyy")
+        {
+            router("/posts/add-post");
+        }
+        if(!window.localStorage.getItem("token"))
+        {
+            router("/autorization");
+        }
+
+    }, [router, isUserAuth])
+
     useEffect(()=>{
             if(HotelNameError || CityError || AddressError || NumberError || DescriptionError){
                 setFormValid(false)
@@ -133,23 +147,7 @@ function Posts() {
         }
     }, []);
 
-    const blurHandler = (e) => {
-        switch (e.target.name) {
-            case 'hotel':
-                setHotelNameNull(true)
-                break
-            case 'city':
-                setCityNull(true)
-                break
-            case 'address':
-                setAddressNull(true)
-                break
-            case 'number':
-                setNumberNull(true)
-                break  
-            default:
-        }
-    }
+
     const catsHandler=()=>{
         if(cats === false) {
             cats = true;
@@ -211,7 +209,8 @@ function Posts() {
                 Dog,
                 Rodent,
                 Other)
-            const res = await axios.post('http://185.139.69.220/api/hotels/advertisements/create-advertisement', {
+            //const res = await axios.post('http://185.139.69.220/api/hotels/advertisements/create-advertisement', {
+                const res = await Axios.post('api/hotels/advertisements/create-advertisement', {
                 name:HotelName,
                 city:City,
                 address:Address,
@@ -260,22 +259,22 @@ function Posts() {
                             <div className={classes.FormInputs}>
                                 <div className={classes.inputBox}>
                                     <input className={classes.textBox} id={'HotelName'} type={'text'} placeholder={'Введите название отеля'} name={'hotel'}
-                                           onChange={e => HotelNameHandler(e)} onBlur={e => blurHandler(e)} value={HotelName}/>
+                                           onChange={e => HotelNameHandler(e)}  value={HotelName}/>
                                     <img src={alert_Img} className={classes.alertOff} id={'HNalert'} title="Длина Название - не более 60" alt='Ошибка!'/>
                                 </div>
                                 <div className={classes.inputBox}>
                                     <input className={classes.textBox} id={'City'} type={'text'} placeholder={'Укажите город'} name={'city'}
-                                           onChange={e => CityHandler(e)} onBlur={e => blurHandler(e)} value={City}/>
+                                           onChange={e => CityHandler(e)} value={City}/>
                                     <img src={alert_Img} className={classes.alertOff} id={'Cityalert'} title="Длина названия города - не более 60" alt='Ошибка!'/>
                                 </div>
                                 <div className={classes.inputBox}>
                                     <input className={classes.textBox} id={'Address'} type={'text'} placeholder={'Укажите адрес'} name={'address'}
-                                           onChange={e => AddressHandler(e)} onBlur={e => blurHandler(e)} value={Address}/>
+                                           onChange={e => AddressHandler(e)} value={Address}/>
                                     <img src={alert_Img} className={classes.alertOff} id={'Addralert'} title="Длина адреса - не более 60" alt='Ошибка!'/>
                                 </div>
                                 <div className={classes.inputBox}>
                                     <input className={classes.textBox} id={'Number'} type={'text'} placeholder={'Укажите номер для связи'} name={'number'}
-                                           onChange={e => NumberHandler(e)} onBlur={e => blurHandler(e)} value={Number} maxLength={11}/>
+                                           onChange={e => NumberHandler(e)} value={Number} maxLength={11}/>
                                     <img src={alert_Img} className={classes.alertOff} id={'Numbalert'} title="Неверно указан номер" alt='Ошибка!'/>
                                 </div>
                             </div>

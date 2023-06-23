@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import classes from "./EditPost.module.css"
-import addImg from "../../../images/addImage.svg"
 import alert_Img from "../../../images/alert.png"
 import  SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
@@ -8,6 +7,7 @@ import { useCallback } from 'react';
 import {useParams} from "react-router-dom";
 import Axios from "../../../API/api";
 import "./InputFile.css"
+import addImage from "../../../images/addImage.svg"
 
 let cats =false;
 let dogs = false;
@@ -26,12 +26,17 @@ function Posts() {
     const[Dog, setDog]=useState(false)
     const[Rodent, setRodent]=useState(false)
     const[Other, setOther]=useState(false)
-    const[HotelNameError, setHotelNameError]=useState('Название не может быть пустым!')
-    const[CityError, setCityError]=useState('Город не может быть пустым!')
-    const[AddressError, setAddressError]=useState('Адрес не может быть пустой!')
-    const[NumberError, setNumberError]=useState('Номер не может быть пустым!')
-    const[DescriptionError, setDescriptionError]=useState('Описание не может быть пустым!')
+    const[Photo, setPhoto]=useState('')
+    const[HotelNameError, setHotelNameError]=useState('')
+    const[CityError, setCityError]=useState('')
+    const[AddressError, setAddressError]=useState('')
+    const[NumberError, setNumberError]=useState('')
+    const[DescriptionError, setDescriptionError]=useState('')
     const [formValid, setFormValid] = useState(false)
+
+
+    const postimage = document.querySelector('#image')
+
     useEffect(()=>{
         if(id){
             Axios.get(`api/hotels/advertisements/${id}`)
@@ -46,18 +51,31 @@ function Posts() {
                 setDog(post.dog);
                 setRodent(post.rodent);
                 setOther(post.other);
-                console.log(res)
+                setPhoto(post.photos);
             })
             .catch(err=>{
                 console.log(err);
-
             });
         }
 
         }, [post.name,post.city, post.address, post.number, post.description,
-            post.cat, post.dog, post.rodent, post.other, id,]
+            post.cat, post.dog, post.rodent, post.other,postimage, id]
     )
     
+    useEffect(()=>{
+        if(HotelNameError || CityError || AddressError || NumberError || DescriptionError){
+            setFormValid(false)
+            document.getElementById('buttonAdd').className = classes.ButtonInvalid;
+            console.log('да');
+        }
+        else{
+            console.log('нет');
+            setFormValid(true)
+            document.getElementById('buttonAdd').className = classes.CreatePostButton;
+        }
+    }, [HotelNameError, CityError, AddressError, NumberError, DescriptionError, post]
+    )
+
     const HotelNameHandler = (e) => {
         const hotelName = document.querySelector('#HotelName')
         const alert = document.querySelector('#HNalert')
@@ -230,6 +248,23 @@ function Posts() {
         Axios.post(`api/hotels/advertisements/${id}`,formData)
             .then(res => {
                 console.log(res)
+                if(res.status===200)
+                {
+                    document.location.reload();
+                }
+            })
+            .catch(err=>{
+                console.log(err);
+            });
+    }
+    function deleteImg(){
+        Axios.delete(`photo/${post.photos[0]}`)
+            .then(res => {
+                console.log(res)
+                if(res.status===204)
+                {
+                    document.location.reload();
+                }
             })
             .catch(err=>{
                 console.log(err);
@@ -261,14 +296,23 @@ function Posts() {
                             <p className={classes.p}>Редактирование объявления</p>
                             <div className={classes.AddImgForm}>
                                 <div id={'display_image'} className={classes.displayImage}>
-                                                                            
+                                    
+                                    {(post.photos ? post.photos.length : 0) ? 
+                                        (<>
+                                            <img alt={'Изображение объявления'} className={classes.imgSize} src={(post.photos ? post.photos.length : 0) ? `http://185.139.69.220/photo/${post.photos[0]}` : ''}/>
+                                        </>
+                                        )
+                                        :(<>
+                                            <img src={addImage} alt={'Изображение отсутствует'} className={classes.imgSize}/>
+                                        </>)
+                                    }                                      
                                 </div>
-                                <img src={addImg} className={classes.AddImg} id={'img_back'} alt='Добавление изображение'></img>
-                                <label className="input-file">
+                                <label id={'input-file'} className="input-file">
 	   	                            <input id={'image_input'} type="file" name="file" onChange={handleImage} accept="image/*"/>		
 	   	                            <span>Выберите файл</span>
  	                            </label>
                                  <button id={'send_img'} onClick={handleAPI} className={classes.sendImg}>Сохранить изображение</button>
+                                 <button id={'delete_img'} onClick={deleteImg} className={classes.deleteImg}>Удалить изображение</button>
                             </div>
                             <div className={classes.FormInputs}>
                                 <div className={classes.inputBox}>
@@ -302,7 +346,7 @@ function Posts() {
                                     <p className={classes.checkBoxPlace} onChange={e => ratsHandler(e)}><input defaultChecked={rats} className={classes.CheckBox} type={'checkbox'} id={'rats'} value={Rodent}/>Грызуны</p>
                                     <p className={classes.checkBoxPlace} onChange={e => otherHandler(e)}><input defaultChecked={other} className={classes.CheckBox} type={'checkbox'} id={'other'} value={Other}/>Другое</p>
                                 </div>
-                                <button id={'buttonAdd'} onClick={e => createPost(e)} disabled={formValid} className={classes.CreatePostButton}>Сохранить объявление</button>
+                                <button id={'buttonAdd'} onClick={e => createPost(e)} disabled={!formValid} className={classes.CreatePostButton}>Сохранить объявление</button>
                             </div>
                         </div>
                     </div>

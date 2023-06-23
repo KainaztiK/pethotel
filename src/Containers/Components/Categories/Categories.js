@@ -1,15 +1,23 @@
 import "./Categories.scss"
-const categories = ['Кошки', 'Собаки', 'Грызуны', 'Другие'];
+const categories = [
+    {name: 'Все',  value: null}, 
+    {name: 'Кошки',  value: true}, 
+    {name: 'Собаки', value: true}, 
+    {name: 'Грызуны', value: true},
+    {name: 'Другие', value: true}
+];
 
 export function Categories({value, onChangeCategory}){
-    
+    const onClickCategoriesItem = (categories) => {
+        onChangeCategory(categories);
+    }    
     return(
         <>
             <div className="categories">
                 <ul>
-                    {categories.map((categoryName, i) => ( 
-                    <li key={i} onClick={() => onChangeCategory(i)} className={value === i ? 'active' : ''}>
-                        {categoryName}
+                    {categories.map((categories, i) => ( 
+                    <li key={i} onClick={() => onClickCategoriesItem(categories)} className={value.name === categories.name ? 'active' : ''}>
+                        {categories.name}
                     </li>
                     ))}
                 </ul>

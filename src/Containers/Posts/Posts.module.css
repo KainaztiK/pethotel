@@ -4,7 +4,6 @@
     flex-wrap: wrap;
     width: 100%;
     height: 100vh;
-    background-image: url("../MainWin/img/backnd.svg");
     background-size: cover;
 }
 .Button2{
@@ -41,6 +40,7 @@
     width: 1300px;
     height: 620px;
     background-color: #FFE6C9;
+    border-radius: 40px;
 
 }
 .ContainerEmpty{
@@ -80,6 +80,12 @@
     margin-top: 5px;
     display: flex;
 }
+.PostImage{
+    border-radius: 25px;
+    height: 100%;
+    width: 25%;
+    
+}
 .PostImg{
     float: right;
     margin-right: 10px;
@@ -110,12 +116,12 @@
     float: left;
     cursor: pointer;
     text-align: left;
-    margin-left: 50px;
+    margin-left: 20px;
 }
 .PostAddress{
     float: left;
     text-align: left;
-    margin-left: 50px;
+    margin-left: 20px;
 }
 
 .PostsThere{
