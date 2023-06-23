@@ -167,7 +167,10 @@ function EditProfileCompany() {
                 newPassword: NewPassword
             }, {headers} )
         .then(res => {
-            console.log(res)
+            if(res.status===204)
+            {
+                document.location.reload();
+            }
         })
         .catch(err=>{
         console.log(err);
