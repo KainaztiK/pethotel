@@ -66,7 +66,7 @@ function Hotels(){
                     <div className="BlockHotels">
                         <Grid container>
                             <Grid item className="hotels">
-                                {(isPostsLoading ? [...Array(5)] : hotels.items.filter(hotel=>{
+                                {(isPostsLoading ? [...Array(6)] : hotels.items.filter((hotel)=>{
                                     if(categoryId.value===null){
                                         return hotels;
                                     }

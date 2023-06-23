@@ -34,6 +34,7 @@ function App() {
           <Route exact path={"hotels"} element={<Hotels/>}/>
           <Route exact path={"hotels/:advertisementId"} element={<Hotelid1/>}/>
           <Route exact path={"search/:advertisementId"} element={<Hotelid1/>}/>
+          <Route exact path={"posts/:advertisementId"} element={<Hotelid1/>}/>
           <Route path={"edit-user"} element={<Edit/>}/>
           <Route path={"edit-name"} element={<EditName/>}/>
           <Route path={"edit-email"} element={<EditEmail/>}/>

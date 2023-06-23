@@ -37,7 +37,7 @@ function Search() {
         }
     }, [router, isUserAuth])
 
-    const skeletons = [...Array(5)].map((_, index) => <Post key={index} isLoading={true} />);
+    const skeletons = [...Array(6)].map((_, index) => <Post key={index} isLoading={true} />);
 
     function filterHotelv2(){
         try {

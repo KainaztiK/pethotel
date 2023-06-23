@@ -216,8 +216,8 @@ const Layout = () => {
                     <div className="contentftr">
                         <div className="footercontent text-center align-center">
                             <p>Контакты</p>
-                            <p>+7 (xxx)xxx-xx-xx</p>
-                            <p>+7 (xxx)xxx-xx-xx</p>
+                            <p>+7 (960)331-22-54</p>
+                            <p>+7 (917)991-72-77</p>
                         </div>
                         <div className="footercontent1">
                             <p>

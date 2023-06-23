@@ -10,7 +10,7 @@
     /* Задний фон у регистрации */
     margin: 20px auto;
     background: #FFE6C9;
-    width: 45rem;
+    width: 40rem;
     height: 40rem;
     border-radius: 40px;
     display: flex;
@@ -36,7 +36,9 @@
       display: flex;
       position: absolute;
       margin-top: 14rem;
-      width: 25rem;
+      width: 20rem;
+      margin-right: 2rem;
+      margin-left: 2rem;
       flex-direction: column;
       .padinput{
         padding-bottom: 0.5rem;

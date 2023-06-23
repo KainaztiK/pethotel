@@ -29,7 +29,7 @@ export const Login = () => {
     if (`error` in data) {
       return alert('Неверный логин или пароль');
     }
-
+    
     if ('token' in data.payload) {
       window.localStorage.setItem('token', 'Bearer ' + data.payload.token);
       window.localStorage.setItem('role', data.payload.role);

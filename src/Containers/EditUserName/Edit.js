@@ -44,7 +44,16 @@ function EditName() {
   });
   
   const onSubmit = async (values) => {
-    const data  = await Axios.put(`/api/authentication/ChangeUserName/${userInfo.id}?userName=${values.userName}`);
+    const data  = await Axios.put(`/api/authentication/ChangeUserName/${userInfo.id}?userName=${values.userName}`)
+    .then(res => {
+        if(res.status===204)
+        {
+            document.location.reload();
+        }
+    })
+    .catch(err=>{
+        console.log(err);
+    });
 
     if (`error` in data) {
       return alert(data.payload);

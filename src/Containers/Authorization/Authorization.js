@@ -2,7 +2,6 @@ import React from 'react';
 import '../Common.scss';
 import Autorizat from "../Functions/Autorize";
 import {useNavigate} from "react-router-dom";
-import lapkimg from "../Authorization/img/lapkimg.svg"
 import { useSelector } from "react-redux";
 import { isAuth } from "../../redux/slices/authSlice";
 import { useEffect } from 'react';
@@ -31,14 +30,6 @@ function Authorization(){
                     <div className="mainenter">
                         <div className="leftblockenter">
                             <Autorizat/>
-                        </div>
-                        <div className="rightblockenter">
-                            <div className="blocklapkimg">
-                                <img className="lapkimg" src={lapkimg} alt="lapki"/>
-                            </div>
-                            <div className="textfieldrightblock">
-                                Pet Hotel
-                            </div>
                         </div>
                     </div>
                 </div>

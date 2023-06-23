@@ -45,7 +45,16 @@ function Edit() {
   });
 
   const onSubmit = async (values) => {
-    const data  = await Axios.post('api/authentication/ChangePassword', {email: userInfo.email, currentPassword: values.currentPassword, newPassword: values.newPassword});
+    const data  = await Axios.post('api/authentication/ChangePassword', {email: userInfo.email, currentPassword: values.currentPassword, newPassword: values.newPassword})
+    .then(res => {
+        if(res.status===204)
+        {
+            document.location.reload();
+        }
+    })
+    .catch(err=>{
+        console.log(err);
+    });
 
     if (`error` in data ) {
       return alert(data.payload);
