@@ -214,9 +214,7 @@ function Posts() {
     }
 
     const createPost= async () => {
-        console.log(window.localStorage.getItem("token"));
-        try{
-            const res = await Axios.put(`api/hotels/advertisements/${id}`, {
+        Axios.put(`api/hotels/advertisements/advertisement/${id}`, {
                 name:HotelName,
                 city:City,
                 address:Address,
@@ -226,13 +224,14 @@ function Posts() {
                 dog:Dog,
                 rodent:Rodent,
                 other:Other
+            }).then(res => {
+                console.log(res)
+                window.location.href = '/posts';
             })
-            console.log(res)
-            window.location.href = '/posts';
-        }
-        catch {
-            alert("что-то пошло не так")
-        }
+            .catch(err=>{
+                console.log(err);
+                alert("что-то пошло не так")
+            });
     }
 
     function handleImage(e){
