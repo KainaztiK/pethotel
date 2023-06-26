@@ -91,7 +91,7 @@ function Posts() {
         }
         const editPostClick = () => router(`/posts/edit-post/${post.advertisementId}`)
         const checkPost=()=>{
-            router(`/hotel/${post.advertisementId}`)
+            router(`/hotels/${post.advertisementId}`)
         }
 
         return(
